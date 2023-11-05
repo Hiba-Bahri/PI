@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { AuthContentComponent } from './auth-content/auth-content.component';
-import { WelcomeContentComponent } from './welcome-content/welcome-content.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { ContentComponent } from './content/content.component';
-import { ButtonsComponent } from './buttons/buttons.component';
+import { HeaderComponent } from './auth/header/header.component';
+import { AuthContentComponent } from './auth/auth-content/auth-content.component';
+import { WelcomeContentComponent } from './auth/welcome-content/welcome-content.component';
+import { LoginFormComponent } from './auth/login-form/login-form.component';
+import { ContentComponent } from './auth/content/content.component';
+import { ButtonsComponent } from './auth/buttons/buttons.component';
 
 @NgModule({
   declarations: [
