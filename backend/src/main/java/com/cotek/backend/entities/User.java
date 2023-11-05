@@ -7,8 +7,8 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Data
-@Entity
-@Table(name = "user")
+@Entity(name = "user")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
     @Id
