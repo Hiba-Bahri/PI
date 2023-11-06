@@ -1,8 +1,9 @@
 package com.cotek.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +20,6 @@ public class Member extends User {
     private String disponibilite;
 
     @ManyToOne
+    @JsonIgnore
     private Team team;
-
 }

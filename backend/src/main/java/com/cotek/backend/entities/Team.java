@@ -1,6 +1,7 @@
 package com.cotek.backend.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,10 +15,9 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name",nullable = false, columnDefinition = "VARCHAR(20)")
+    @Column(name = "name",nullable = false, columnDefinition = "VARCHAR(50)")
     private String name;
 
     @OneToMany(mappedBy = "team")
-    private ArrayList<Member> members = new ArrayList<>();
-
+    private List<Member> members = new ArrayList<>();
 }
