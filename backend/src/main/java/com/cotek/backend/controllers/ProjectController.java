@@ -25,9 +25,9 @@ public class ProjectController {
         return projectService.getProjectById(id);
     }
 
-    @PostMapping("/addProject")
-    public ResponseEntity<Project> addProject(@RequestBody Project p){
-        return projectService.addProject(p);
+    @PostMapping("/createProject")
+    public ResponseEntity<Project> createProject(@RequestBody Project p){
+        return projectService.createProject(p);
     }
 
     @PutMapping("/updateProject/{id}")

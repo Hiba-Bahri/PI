@@ -30,7 +30,7 @@ public class ProjectService {
         }
     }
 
-    public ResponseEntity<Project> addProject(Project p){
+    public ResponseEntity<Project> createProject(Project p){
         Project createdProject = projectRepository.save(p);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProject);
 
