@@ -528,3 +528,91 @@ tbody tr.active-row {
   .form-group{
     margin-top: 60px;
   }
+
+  .container2{
+    color: #261554;;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+  .container2{
+    display: none;
+    background: #fff;
+    width: 850px;
+    height: 300px;
+    padding: 30px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  #show:checked ~ .container2{
+    display: block;
+  }
+  .container2 .close-btn{
+    position: absolute;
+    color: #261554;
+    right: 20px;
+    top: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .container2 .close-btn:hover{
+    color: #3498db;
+  }
+  .container2 .text{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .container2 form{
+    margin-top: -20px;
+  }
+  .container2 form .data, .container2 form .credentials .data{
+    height: 45px;
+    width: 100%;
+    margin: 40px 0;
+    color: #261554;
+  }
+  .container2:target {
+    display: block;
+}
+
+/* Style for the accordion container */
+.accordion {
+    width: 500x; /* Adjust the width as needed */
+}
+
+/* Style for each accordion item */
+.accordion-item {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+/* Style for the title of each section */
+.accordion-title {
+    background-color: #f5f5f5;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Style for the content of each section (hidden by default) */
+.accordion-content {
+    display: none;
+    padding: 10px;
+}
+
+/* Show content when the title is clicked */
+.accordion-title:hover {
+    background-color: #e0e0e0;
+}
+
+.accordion-item.active .accordion-title {
+    background-color: #e0e0e0;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}

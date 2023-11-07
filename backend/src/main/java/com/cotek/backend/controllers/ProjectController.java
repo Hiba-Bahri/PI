@@ -1,11 +1,13 @@
 package com.cotek.backend.controllers;
 
 import com.cotek.backend.entities.Project;
+import com.cotek.backend.entities.Team;
 import com.cotek.backend.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.font.TextLayout;
 import java.util.List;
 
 @RestController
@@ -37,5 +39,10 @@ public class ProjectController {
     @DeleteMapping("/deleteProject/{id}")
     public ResponseEntity<String> deleteProject(@PathVariable Long id){
         return projectService.deleteProject(id);
+    }
+
+    @PutMapping("/updateProjectTeam/{id}")
+    public ResponseEntity<Project> updateProjectTeam(@PathVariable Long id, @RequestBody Team teamid){
+        return projectService.updateProjectTeam(id, teamid);
     }
 }

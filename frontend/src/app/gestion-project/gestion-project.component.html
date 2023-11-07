@@ -24,23 +24,48 @@
                 <h5 style="margin-left: 15px;">Description : {{project.description}}</h5>
                 <!-- <h2>Ajouter <br> un administrateur</h2> -->
                 <div class="more">
-                  <a href="#"><i class="fa fa-pen" aria-hidden="true" style="color: white;"></i></a>
-                  <h4 style="color: white;">Nom de l'equipe</h4>
+                  <a href="#teamSection"><i class="fa fa-pen" aria-hidden="true" style="color: white;"></i></a>
+                  <a href="#teamSection" style="text-decoration: none;"><button style="background-color:transparent;border:0" type="button" (click)="retrieve(project.id)"><h4 style="color: white;">{{project.team ? project.team.name : 'Affecter une equipe'}}</h4></button></a>
                   <!-- <a href="/cadre#CreatecadreSection" class="read-more">Afficher le formulaire</a> -->
                 </div>
               </div>
             </div>
             <!--image card end-->
             <!--image card start-->
-          </div>
-          <div class="create-row">
-            <div class="image">
-              <a href="#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
+            </div>
+            <div class="create-row">
+              <div class="image">
+                <a href="#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
+              </div>
             </div>
           </div>
+           
           </div>
-          </div>
+        <div id="teamSection" class="container2">
+          <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn" ></a>
 
+          <h3>Affect a team</h3>
+          <div class="accordion" style="margin-top:20px ;">
+            <div class="accordion-item" *ngFor="let item of accordionItems" [ngClass]="{ 'active': item.active }">
+                <div class="accordion-title" style="display: flex;justify-content:space-between;">
+                  <div>
+                    {{ item.id }} - {{item.name}}
+                  </div>
+                  <div (click)="toggleAccordionItem(item)">
+                    <i class=" fa fa-solid fa-chevron-down"></i>
+                  </div>
+              
+              </div>
+                <div class="accordion-content" [ngStyle]="{ 'display': item.active ? 'block' : 'none' }">
+                    <div *ngFor="let member of item.members" style="display:flex;	justify-content: space-between;">
+                        <div> Full Name : {{member.firstName}} {{member.lastName}}</div>
+                        <div> Poste : {{member.profession}}</div>
+                    </div>
+                    <div style="display:flex;justify-content:flex-end"><button class='BTN' (click)="updateProjectTeam(item.id)" style="border: 0;margin-top:5px">Affect Team</button></div>
+                </div>
+            </div>
+        </div>
+        </div>
         <div id="CreatecadreSection" class="container" *ngIf="createSectionVisible" >
             <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn"></a>
             <div class="text">Create a Project</div>

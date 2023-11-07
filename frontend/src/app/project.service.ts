@@ -27,5 +27,9 @@ export class ProjectService {
   deleteProject(id:number){
     return this.http.delete(`${this.baseUrl}/deleteProject/${id}`)
   }
+
+  updateProjectTeam(id:any,team:any){
+    return this.http.put(`${this.baseUrl}/updateProjectTeam/${id}`,team)
+  }
   
 }
