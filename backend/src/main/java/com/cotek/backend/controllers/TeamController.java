@@ -28,5 +28,8 @@ public class TeamController {
     public ResponseEntity<String> deleteTeam(@PathVariable Long id){
         return teamService.deleteTeam(id);
     }
+
+    @GetMapping("/getTeamById/{id}")
+    public ResponseEntity<Team> getTeamById(@PathVariable Long id){return teamService.getTeamById(id);}
 }
 

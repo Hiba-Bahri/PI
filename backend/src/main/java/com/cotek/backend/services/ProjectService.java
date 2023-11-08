@@ -1,6 +1,7 @@
 package com.cotek.backend.services;
 
 import com.cotek.backend.entities.Project;
+import com.cotek.backend.entities.Team;
 import com.cotek.backend.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class ProjectService {
         }
     }
 
-    public ResponseEntity<Project> addProject(Project p){
+    public ResponseEntity<Project> createProject(Project p){
         Project createdProject = projectRepository.save(p);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProject);
 
@@ -70,5 +71,14 @@ public class ProjectService {
         }else{
             return  ResponseEntity.notFound().build();
         }
+    }
+
+    public ResponseEntity<Project> updateProjectTeam(Long id, Team teamid){
+        if (projectRepository.existsById(id)){
+            Project exising = projectRepository.findById(id).get();
+            exising.setTeam(teamid);
+            projectRepository.save(exising);
+        }
+        return ResponseEntity.ok().build();
     }
 }

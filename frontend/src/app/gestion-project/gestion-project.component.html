@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Cards With Hover Effect</title>
+    <link rel="stylesheet" href="gestion-project.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  </head>
+  <body>
+      <h1>Gestion des projets</h1> 
+
+
+    <!--image card layout start-->
+    <div id="options_section" class="container_page">
+        <!--image row start-->
+        <div class="column1">
+          <div class="row" *ngFor="let project of projects">
+            <!--image card start-->
+            <div class="image">
+              <img src="../../assets/images/1.jpg" alt="">
+              <div class="details">
+                <a href="#ModifierSection"style="text-decoration:none; "><button style="border: 0px;background-color:transparent;color:#261554;" (click)="retrieve(project.id)"><h4 style="margin-left: 15px;">{{project.title}}</h4><br></button></a>
+                <h5 style="margin-left: 15px;">Description : {{project.description}}</h5>
+                <!-- <h2>Ajouter <br> un administrateur</h2> -->
+                <div class="more">
+                  <a href="#teamSection"><i class="fa fa-pen" aria-hidden="true" style="color: white;"></i></a>
+                  <a href="#teamSection" style="text-decoration: none;"><button style="background-color:transparent;border:0" type="button" (click)="retrieve(project.id)"><h4 style="color: white;">{{project.team ? project.team.name : 'Affecter une equipe'}}</h4></button></a>
+                  <!-- <a href="/cadre#CreatecadreSection" class="read-more">Afficher le formulaire</a> -->
+                </div>
+              </div>
+            </div>
+            <!--image card end-->
+            <!--image card start-->
+            </div>
+            <div class="create-row">
+              <div class="image">
+                <a href="#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
+              </div>
+            </div>
+          </div>
+           
+          </div>
+        <div id="teamSection" class="container2">
+          <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn" ></a>
+
+          <h3>Affect a team</h3>
+          <div class="accordion" style="margin-top:20px ;">
+            <div class="accordion-item" *ngFor="let item of accordionItems" [ngClass]="{ 'active': item.active }">
+                <div class="accordion-title" style="display: flex;justify-content:space-between;">
+                  <div>
+                    {{ item.id }} - {{item.name}}
+                  </div>
+                  <div (click)="toggleAccordionItem(item)">
+                    <i class=" fa fa-solid fa-chevron-down"></i>
+                  </div>
+              
+              </div>
+                <div class="accordion-content" [ngStyle]="{ 'display': item.active ? 'block' : 'none' }">
+                    <div *ngFor="let member of item.members" style="display:flex;	justify-content: space-between;">
+                        <div> Full Name : {{member.firstName}} {{member.lastName}}</div>
+                        <div> Poste : {{member.profession}}</div>
+                    </div>
+                    <div style="display:flex;justify-content:flex-end"><button class='BTN' (click)="updateProjectTeam(item.id)" style="border: 0;margin-top:5px">Affect Team</button></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="CreatecadreSection" class="container" *ngIf="createSectionVisible" >
+            <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn"></a>
+            <div class="text">Create a Project</div>
+            <form (ngSubmit)="onSubmit()">
+                <div class="data">
+                  <label id="title">Title</label>
+                  <input for="title" type="text" name="title" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.title" required>
+                </div>
+                <div class="data">
+                  <label id="owner">Owner</label>
+                  <input for="owner" type="text" name="owner" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.owner"   required>
+                </div>
+                <div class="data">
+                  <label id="description">Description</label>
+                  <textarea cols="50" name="description" rows="3" style="border-radius: 7px;resize:none" [(ngModel)]="formData.description" ></textarea>
+                <!-- <input for="cin" type="text" name="cin" pattern="[0-9]{8}" required> -->
+                </div>
+              <div class="data" style="margin-top:60px">
+                <label id="keywords">Keywords</label>
+                <input for="keywords" type="tel" name="keywords" pattern="[0-9]{8}" [(ngModel)]="formData.keywords"  required>
+              </div>
+              <div class="data">
+                <label id="dtechnologies">Technologies</label>
+                <input for="technologies" type="tel" name="technologies" pattern="[0-9]{8}" [(ngModel)]="formData.technologies"  required>
+              </div>
+              <div class="btn">
+                <div class="inner"></div>
+                <button type="submit">Create</button>
+                <button type="reset">Reset</button>
+             </div>
+            </form>
+         </div>
+         <div id="ModifierSection" class="container" *ngIf="showProject">
+            <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn"></a>
+            <div class="text">{{updatedProject.title}}</div>
+            <form action="#" (ngSubmit)="edit(updatedProject.id)">
+                <div class="data">
+                  <label id="title">Title</label>
+                  <input for="title" type="text" name="title" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="updatedProject.title" required>
+                </div>
+                <div class="data">
+                  <label id="owner">Owner</label>
+                  <input for="owner" type="text" name="owner" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="updatedProject.owner" required>
+                </div>
+              <div class="data">
+                <label id="description">Description</label>
+                <textarea cols="50" name="description" rows="3" style="border-radius: 7px;resize:none" [(ngModel)]="updatedProject.description" ></textarea>
+              </div>
+              <div class="data" style="margin-top:60px">
+                <label id="keywords">Keywords</label>
+                <input for="keywords" type="tel" name="keywords" pattern="[0-9]{8}" [(ngModel)]="updatedProject.keywords" required>
+              </div>
+              <div class="data">
+                <label id="technologies">Technologies</label>
+                <input for="technologies" type="text" name="technologies" [(ngModel)]="updatedProject.technologies" required>
+              </div>
+              <div class="btn">
+                <div class="inner"></div>
+                <button type="submit">Edit</button>
+                <button type="button" (click)="delete(updatedProject.id)">Delete</button>
+             </div>
+            </form>
+         </div>
+        </body>
