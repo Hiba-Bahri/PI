@@ -1,3 +1,15 @@
-<div class="app">
-  <app-gestion-equipe></app-gestion-equipe>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekup</title>
+    <link rel="stylesheet" href="app.component.css">
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item1"><app-side-bar></app-side-bar></div>
+      <div class="grid-item2"><router-outlet></router-outlet></div>
+    </div>
+  </body>
+</html>

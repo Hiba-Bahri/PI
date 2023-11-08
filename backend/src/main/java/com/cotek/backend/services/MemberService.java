@@ -46,7 +46,7 @@ public class MemberService {
             member.setTeam(team);
             memberRepository.save(member);
             teamRepository.save(team);
-            return ResponseEntity.ok(team);
+            return ResponseEntity.ok("Member added from the team successfully");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Team not found with ID: " + teamId);
         }

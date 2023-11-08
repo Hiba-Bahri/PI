@@ -1,0 +1,209 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(17px);
+    --webkit-backdrop-filter: blur(17px);
+    border-right: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.logo img {
+    width: 170px;
+    content: url("../../assets/images/CoTEST.png");
+}
+
+.sidebar .logo {
+    color: #261554;
+    display: flex;
+    align-items: center;
+    padding: 25px 10px 15px;
+}
+
+.logo h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-left: 15px;
+    display: none;
+}
+
+.sidebar:hover .logo h2 {
+    display: block;
+}
+
+.sidebar .links {
+    list-style: none;
+    margin-top: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: calc(100% - 140px);
+}
+
+.sidebar .links::-webkit-scrollbar {
+    display: none;
+}
+
+.links li {
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.links li:hover {
+    cursor: pointer;
+    background: #fff;
+}
+
+.links h4 {
+    color: #261554;
+    font-weight: 500;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.sidebar:hover .links h4 {
+    display: block;
+}
+
+.links li span  {
+    padding: 12px 10px;
+    color: #261554;
+}
+
+.links li a {
+    padding: 10px;
+    color: #261554;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.sidebar:hover .links li a {
+    display: block;
+}
+
+.links .logout-link {
+    margin-top: 20px;
+}
+
+hr {
+    margin: 5px 8px;
+    width: 200px;
+    border: 2px solid #261554;
+}
+
+.active {
+    background-color: #ffffff; 
+    border-radius: 5px;
+  }
+
+@media (max-width: 1159px) and (min-width: 850px) {
+
+    .logo img {
+        width: 60px;
+        content: url("../../assets/images/mini-CoTEST.png");
+    }
+
+    hr {
+        width: 60px;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .sidebar:hover {
+        width: 270px;
+    }
+    
+    .sidebar:hover hr{
+        width: 200px;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(17px);
+        --webkit-backdrop-filter: blur(17px);
+        border-right: 1px solid rgba(255, 255, 255, 0.7);
+        transition: width 0.3s ease-in-out;
+    }
+
+    .links li a {
+        padding: 10px;
+        color: #261554;
+        display: none;
+        font-weight: 500;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+
+    .sidebar:hover .logo img{
+        width: 170px;
+        content: url("../../assets/images/COTEST.png");
+    }
+}
+@media (max-width: 849px) {
+    
+    .logo img {
+        width: 60px;
+        content: url("../../assets/images/mini-CoTEST.png");
+    }
+
+    hr {
+        width: 60px;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(17px);
+        --webkit-backdrop-filter: blur(17px);
+        border-right: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .links li a {
+        padding: 10px;
+        color: #261554;
+        display: none;
+        font-weight: 500;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+    .sidebar:hover .links li a {
+        display: none;
+    }
+}

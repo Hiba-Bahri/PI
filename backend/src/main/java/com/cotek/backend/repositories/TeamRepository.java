@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
-    void save(Optional<Team> team);
+    Optional<Team> findByName(String teamName);
 }
