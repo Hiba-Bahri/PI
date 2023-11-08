@@ -7,7 +7,12 @@
 
 body{
     overflow: hidden;
+    background: none;
 } 
+
+h1{
+    color: white;
+}
 
 .container_page{
 	margin: 30px;

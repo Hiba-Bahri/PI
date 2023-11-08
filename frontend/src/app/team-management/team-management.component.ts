@@ -66,6 +66,7 @@ export class TeamManagementComponent implements OnInit {
   }
 
   add(teamId: number, memberId: number){
+    console.log(teamId,memberId);
     this.memberService.addMemberToTeam(teamId,memberId).subscribe((response) => {
       console.log('Member added successfully:', response);
       this.autoRefresh();

@@ -20,12 +20,12 @@
             <div class="image">
               <img src="../../assets/images/1.jpg" alt="">
               <div class="details">
-                <a href="#ModifierSection"style="text-decoration:none; "><button style="border: 0px;background-color:transparent;color:#261554;" (click)="retrieve(project.id)"><h4 style="margin-left: 15px;">{{project.title}}</h4><br></button></a>
+                <a href="/projectManagement#ModifierSection"style="text-decoration:none; "><button style="border: 0px;background-color:transparent;color:#261554;" (click)="retrieve(project.id)"><h4 style="margin-left: 15px;">{{project.title}}</h4><br></button></a>
                 <h5 style="margin-left: 15px;">Description : {{project.description}}</h5>
                 <!-- <h2>Ajouter <br> un administrateur</h2> -->
                 <div class="more">
-                  <a href="#teamSection"><i class="fa fa-pen" aria-hidden="true" style="color: white;"></i></a>
-                  <a href="#teamSection" style="text-decoration: none;"><button style="background-color:transparent;border:0" type="button" (click)="retrieve(project.id)"><h4 style="color: white;">{{project.team ? project.team.name : 'Affecter une equipe'}}</h4></button></a>
+                  <a href="/projectManagement#teamSection"><i class="fa fa-pen" aria-hidden="true" style="color: white;"></i></a>
+                  <a href="/projectManagement#teamSection" style="text-decoration: none;"><button style="background-color:transparent;border:0" type="button" (click)="retrieve(project.id)"><h4 style="color: white;">{{project.team ? project.team.name : 'Affecter une equipe'}}</h4></button></a>
                   <!-- <a href="/cadre#CreatecadreSection" class="read-more">Afficher le formulaire</a> -->
                 </div>
               </div>
@@ -35,14 +35,14 @@
             </div>
             <div class="create-row">
               <div class="image">
-                <a href="#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
+                <a href="/projectManagement#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
               </div>
             </div>
           </div>
            
           </div>
         <div id="teamSection" class="container2">
-          <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn" ></a>
+          <a href="/projectManagement#options_section" id="closePopupButton" class="fas fa-times close-btn" ></a>
 
           <h3>Affect a team</h3>
           <div class="accordion" style="margin-top:20px ;">
@@ -67,7 +67,7 @@
         </div>
         </div>
         <div id="CreatecadreSection" class="container" *ngIf="createSectionVisible" >
-            <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn"></a>
+            <a href="/projectManagement#options_section" id="closePopupButton" class="fas fa-times close-btn"></a>
             <div class="text">Create a Project</div>
             <form (ngSubmit)="onSubmit()">
                 <div class="data">
@@ -99,7 +99,7 @@
             </form>
          </div>
          <div id="ModifierSection" class="container" *ngIf="showProject">
-            <a href="#options_section" id="closePopupButton" class="fas fa-times close-btn"></a>
+            <a href="/projectManagement#options_section" id="closePopupButton" class="fas fa-times close-btn"></a>
             <div class="text">{{updatedProject.title}}</div>
             <form action="#" (ngSubmit)="edit(updatedProject.id)">
                 <div class="data">

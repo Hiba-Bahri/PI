@@ -17,7 +17,7 @@
         <div class="grid-item2">
             <div class="center">
                 <input type="checkbox" id="show">
-                <label for="show" class="show-btn">Create a Team</label>
+                <label for="show" class="button">Create a Team</label>
                 
                 <div class="container" *ngIf="createSectionVisible">
                     <label for="show" class="close-btn fas fa-times" title="close"></label>
@@ -53,7 +53,7 @@
                                             <div class="container2" *ngIf="createSectionVisible">
                                                 <label for="showtoaddmembers" class="close-btn fas fa-times" title="close"></label>
                                                 <div class="text">ADD MEMBERS TO THE TEAM</div>
-                                                <form (ngSubmit)="onSubmit()">
+                                                <form>
                                                   <ul id="accordion">
                                                     <li>
                                                         <label for="dev">
@@ -61,7 +61,7 @@
                                                                 <table id="teamtable">
                                                                     <thead>
                                                                         <tr>
-                                                                            <th id="name">Devloppeur</th>
+                                                                            <th id="name">Developpeur</th>
                                                                         </tr>
                                                                     </thead>
                                                                 </table>
@@ -172,7 +172,7 @@
                                                   </ul>
                                                   <div class="btn">
                                                     <div class="inner"></div>
-                                                    <button type="submit">SUBMIT NAME</button>
+                                                    <button type="submit">SUBMIT</button>
                                                  </div>
                                                </form>
                                             </div>
@@ -198,7 +198,7 @@
                                                     <th id="member_other">{{member.profession}}</th>
                                                     <th>
                                                         <button type="submit" (click)="remove(team.id, member.id)"  >
-                                                          <span class="material-symbols-outlined">remove</span>
+                                                          <span class=" show-btn material-symbols-outlined">remove</span>
                                                         </button>
                                                       </th>
                                                       

@@ -38,7 +38,7 @@ onSubmit(){
   this.projectService.createProject(this.formData).subscribe((project)=>{
     console.log("Data Sent Successfully : ",project);
     this.createSectionVisible = false;
-    this.router.navigate(['/']);
+    this.router.navigate(['/projectManagement']);
   },(error)=>{
       console.error('Error :',error);
       
@@ -57,7 +57,7 @@ retrieve(projectId:any){
 edit(projectId:any){
   this.projectService.updateProject(projectId,this.updatedProject).subscribe((response)=>{
     console.log('Data Updated Successfully :', response);
-    this.router.navigate(['/']);
+    this.router.navigate(['/projectManagement']);
     this.showProject= false;
   },(error)=>{
     console.error('Error :',error);
@@ -68,7 +68,7 @@ edit(projectId:any){
 delete(id:number){
   this.projectService.deleteProject(id).subscribe((response)=>{
     console.log('Project Deleted ',response);
-    this.router.navigate(['/']);
+    this.router.navigate(['/projectManagement']);
     this.showProject= false;
   }, (error)=>{
     console.error('Error :',error);
