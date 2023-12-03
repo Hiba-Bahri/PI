@@ -21,8 +21,9 @@ public class Project {
     @Column(name = "description",columnDefinition = "TEXT", nullable = false)
     private String description;
 
-    @Column(name = "owner",columnDefinition = "VARCHAR(50)", nullable = false)
-    private String owner;
+    @JoinColumn (name = "owner",nullable = false)
+    @ManyToOne
+    private Client owner;
 
     @Column(name = "technologies",columnDefinition = "VARCHAR(255)", nullable = false)
     private String technologies;
