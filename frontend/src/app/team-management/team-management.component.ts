@@ -23,8 +23,7 @@ export class TeamManagementComponent implements OnInit {
   constructor(
     private teamService: TeamService,
     private memberService: MemberService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,9 +38,9 @@ export class TeamManagementComponent implements OnInit {
     this.memberService.getAllMembers().subscribe((data: any) => {
       this.members= data;
 
-      this.devMembers = this.members.filter((member) => member.profession === 'Developpeur');
-      this.testMembers = this.members.filter((member) => member.profession === 'Testeur');
-      this.scrumManagers = this.members.filter((member) => member.profession === 'Scrum manager');
+      this.devMembers = this.members.filter((member) => member.occupation === 'Developpeur');
+      this.testMembers = this.members.filter((member) => member.occupation === 'Testeur');
+      this.scrumManagers = this.members.filter((member) => member.occupation === 'Scrum manager');
       
     });
   }
@@ -57,7 +56,7 @@ export class TeamManagementComponent implements OnInit {
     this.teamService.createTeam(this.formData).subscribe((response) => {
       console.log('Team created successfully:', response);
       this.formData = { name: '', members: [] };
-      this.teamName=this.formData.name;
+      this.teamName = this.formData.name;
       this.createSectionVisible = false;
       this.router.navigate(['/team-management']);
       this.autoRefresh();

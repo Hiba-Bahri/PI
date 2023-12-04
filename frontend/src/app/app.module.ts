@@ -13,6 +13,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { GestionProjectComponent } from './gestion-project/gestion-project.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RDVComponent } from './rdv/rdv.component';
+import { MemberManagementComponent } from './member-management/member-management.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RDVComponent } from './rdv/rdv.component';
     SideBarComponent,
     
     GestionProjectComponent,
-          RDVComponent
+          RDVComponent,
+          MemberManagementComponent
   ],
   imports: [
     BrowserModule,

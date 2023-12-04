@@ -13,6 +13,11 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    @PostMapping("/createMember")
+    public ResponseEntity<Member> createMember(@RequestBody Member m){
+        return memberService.createMember(m);
+    }
+
     @GetMapping("/getAllMembers")
     public List<Member> getAllMembers(){
         return memberService.getAllMembers();

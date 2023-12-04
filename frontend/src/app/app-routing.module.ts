@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { TeamManagementComponent } from './team-management/team-management.component';
 import { GestionProjectComponent } from './gestion-project/gestion-project.component';
 import { RDVComponent} from './rdv/rdv.component';
+import { MemberManagementComponent } from './member-management/member-management.component';
 
 const routes: Routes = [
   {path: 'teamManagement', component:TeamManagementComponent},
+  {path: 'memberManagement', component:MemberManagementComponent},
   {path: 'projectManagement', component:GestionProjectComponent},
-  {path: 'RDVtManagement', component:RDVComponent},
-  {path:'',redirectTo:'/teamManagement', pathMatch: 'full'}
+  {path: 'RDVManagement', component:RDVComponent},
+  {path:'',redirectTo:'/RDVManagement', pathMatch: 'full'}
 ];
 
 @NgModule({

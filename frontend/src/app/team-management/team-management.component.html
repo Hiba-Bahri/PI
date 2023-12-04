@@ -11,9 +11,7 @@
   </head>
   <body>
     <div class="grid-container">
-        <div class="grid-item1">
-            <h1>Team management</h1>
-        </div>
+        <div class="grid-item1"><h1>Team management</h1></div>
         <div class="grid-item2">
             <div class="center">
                 <input type="checkbox" id="show">
@@ -32,7 +30,7 @@
                       </div>
                    </form>
                 </div>
-             </div>
+            </div>
         </div>
         <div class="grid-item3">
             <ul id="accordion">
@@ -44,140 +42,6 @@
                                     <tr>
                                         <th id="name">{{team.name}}</th>
                                         <th id="other">Members: {{team.members.length}}</th>
-                                        <th><div class="center">
-                                            <input type="checkbox" id="showtoaddmembers">
-                                            <label for="showtoaddmembers" class="show-btn"><span class="material-symbols-outlined">
-                                                add
-                                                </span></label>
-                                            
-                                            <div class="container2" *ngIf="createSectionVisible">
-                                                <label for="showtoaddmembers" class="close-btn fas fa-times" title="close"></label>
-                                                <div class="text">ADD MEMBERS TO THE TEAM</div>
-                                                <form>
-                                                  <ul id="accordion">
-                                                    <li>
-                                                        <label for="dev">
-                                                            <div class="details">
-                                                                <table id="teamtable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th id="name">Developpeur</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                </table>
-                                                            </div>
-                                                            <span>&#x3e;</span> 
-                                                        </label>
-                                                        <input type="radio" name="accordion" id="dev">
-                                                        <div class="content">
-                                                            <ul id="accordion-members">
-                                                                <li *ngFor="let devMember of devMembers">
-                                                                    <label for="devMember-{{devMember.id}}">
-                                                                        <div class="details">
-                                                                            <table>
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th id="member_id">#{{devMember.id}}</th>
-                                                                                        <th id="member_other">{{devMember.firstName}} {{devMember.lastName}}</th>
-                                                                                        <th id="member_other">{{devMember.disponibilite}}</th>
-                                                                                        <th><button type="submit" (click)="add(team.id, devMember.id)"> 
-                                                                                            <span class="material-symbols-outlined">add</span>
-                                                                                          </button></th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                            </table>
-                                                                        </div>
-                                                                    </label>
-                                                                    <input type="radio" name="accordion" [id]="'devMember-' + devMember.id">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <label for="test">
-                                                            <div class="details">
-                                                                <table id="teamtable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th id="name">Testeurs</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                </table>
-                                                            </div>
-                                                            <span>&#x3e;</span> 
-                                                        </label>
-                                                        <input type="radio" name="accordion" id="test">
-                                                        <div class="content">
-                                                            <ul id="accordion-members">
-                                                                <li *ngFor="let testMember of testMembers">
-                                                                    <label for="testMember-{{testMember.id}}">
-                                                                        <div class="details">
-                                                                            <table>
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th id="member_id">#{{testMember.id}}</th>
-                                                                                        <th id="member_other">{{testMember.firstName}} {{testMember.lastName}}</th>
-                                                                                        <th id="member_other">{{testMember.disponibilite}}</th>
-                                                                                        <th><button type="submit" (click)="add(team.id, testMember.id)"  >
-                                                                                            <span class="material-symbols-outlined">add</span>
-                                                                                          </button></th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                            </table>
-                                                                        </div>
-                                                                    </label>
-                                                                    <input type="radio" name="accordion" [id]="'testMember-' + testMember.id">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <label for="manager">
-                                                            <div class="details">
-                                                                <table id="teamtable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th id="name">Scrum manager</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                </table>
-                                                            </div>
-                                                            <span>&#x3e;</span> 
-                                                        </label>
-                                                        <input type="radio" name="accordion" id="manager">
-                                                        <div class="content">
-                                                            <ul id="accordion-members">
-                                                                <li *ngFor="let scrumManager of scrumManagers">
-                                                                    <label for="scrumManager-{{scrumManager.id}}">
-                                                                        <div class="details">
-                                                                            <table>
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th id="member_id">#{{scrumManager.id}}</th>
-                                                                                        <th id="member_other">{{scrumManager.firstName}} {{scrumManager.lastName}}</th>
-                                                                                        <th id="member_other">{{scrumManager.disponibilite}}</th>
-                                                                                        <th><button type="submit" (click)="add(team.id, scrumManager.id)"  >
-                                                                                            <span class="material-symbols-outlined">add</span>
-                                                                                          </button></th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                            </table>
-                                                                        </div>
-                                                                    </label>
-                                                                    <input type="radio" name="accordion" [id]="'scrumManager-' + scrumManager.id">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                  </ul>
-                                                  <div class="btn">
-                                                    <div class="inner"></div>
-                                                    <button type="submit">SUBMIT</button>
-                                                 </div>
-                                               </form>
-                                            </div>
-                                         </div>
-                                    </th>
                                     </tr>
                                 </thead>
                             </table>
@@ -195,7 +59,7 @@
                                                 <tr>
                                                     <th id="member_id">#{{member.id}}</th>
                                                     <th id="member_other">{{member.firstName}} {{member.lastName}}</th>
-                                                    <th id="member_other">{{member.profession}}</th>
+                                                    <th id="member_other">{{member.occupation}}</th>
                                                     <th>
                                                         <button type="submit" (click)="remove(team.id, member.id)"  >
                                                           <span class=" show-btn material-symbols-outlined">remove</span>

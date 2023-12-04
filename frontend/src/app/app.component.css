@@ -1,3 +1,7 @@
+body{
+    background-color: #3498db;
+}
+
 .grid-item1 { grid-area: side-bar; }
 .grid-item2 { grid-area: content; }
 
@@ -7,7 +11,7 @@
   gap: 10px;
   padding: 10px;
   
-  background-color: #3498db;
+
 }
 
 @media screen and (max-width: 1159px) {

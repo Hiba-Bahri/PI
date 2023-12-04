@@ -44,7 +44,6 @@ https://repo.maven.apache.org/maven2: java.net.SocketTimeoutException: Connect t
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
