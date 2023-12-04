@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Management</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="member-management.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  </head>
+  <body>
+    <div class="grid-container">
+        <!-- TITLE SECTION -->
+        <div class="grid-item1"><h1>Member management</h1></div>
+        <!-- ADD MEMBER SECTION -->
+        <div class="grid-item2">
+            <div class="center">
+                <!-- ADD MEMBER BUTTON -->
+                <input type="checkbox" id="showForm">
+                <label for="showForm" class="button">Add a Member</label>
+                <!-- ADD MEMBER FORM -->
+                <div class="formContainer" *ngIf="createSectionVisible">
+                    <label for="showForm" class="close-btn fas fa-times" title="close"></label>
+                    <div class="text">ADD A MEMBER</div>
+                    <form (ngSubmit)="onSubmit()">
+                      <div class="data">
+                         <input type="text" placeholder="Firstname" name="Firstname" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.firstName" required>
+                         <input type="text" placeholder="Lastname" name="Lastname" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.lastName" required>
+                         <input type="email" placeholder="Email" name="Email" [(ngModel)]="formData.email" required>
+                         <input type="text" placeholder="Occupation" name="Occupation" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.occupation" required>
+                         <div class="btn">
+                            <div class="inner"></div>
+                            <button type="submit">ADD MEMBER</button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+            </div>
+        </div>
+        <!-- DISPLAY MEMBERS SECTION -->
+        <div class="grid-item3">
+            <form>
+                <ul id="accordion">
+                    <li>
+                        <label for="dev">
+                            <div class="details">
+                                <table id="membertable"><thead><tr><th id="name">Developpeurs</th></tr></thead></table>
+                            </div>
+                            <span>&#x3e;</span> 
+                        </label>
+                        <input type="radio" name="accordion" id="dev">
+                        <div class="content">
+                          <ul id="accordion-members">
+                              <li *ngFor="let devMember of devMembers; let i = index">
+                                  <div class="details">
+                                      <table>
+                                          <thead>
+                                              <tr>
+                                                  <th id="member_id">#{{devMember.id}}</th>
+                                                  <th id="member_other">{{devMember.firstName}} {{devMember.lastName}}</th>
+                                                  <th id="member_other">{{devMember.disponibility}}</th>
+                                                  <th>
+                                                      <input type="checkbox" [id]="'show-' + i">
+                                                      <label [for]="'show-' + i" class="button" (click)="selectMemberId(devMember.id)">plus</label>
+                                                  </th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td colspan="4">
+                                                      <div class="center">
+                                                          <div class="container" *ngIf="createSectionVisible">
+                                                              <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                                              <div class="text">CREATE A TEAM</div>
+                                                              <ul id="accordion">
+                                                                  <li *ngFor="let team of teams">
+                                                                      <label for="{{team.id}}">
+                                                                          <div class="details">
+                                                                              <table id="teamtable">
+                                                                                  <thead>
+                                                                                      <tr>
+                                                                                          <th id="name">{{team.name}}</th>
+                                                                                          <th id="other">Members: {{team.members.length}}</th>
+                                                                                          <th>
+                                                                                              <button type="submit" (click)="add(team.id)" >
+                                                                                                  <span class="show-btn material-symbols-outlined">add</span>
+                                                                                              </button>
+                                                                                          </th>
+                                                                                      </tr>
+                                                                                  </thead>
+                                                                              </table>
+                                                                          </div>
+                                                                      </label>
+                                                                  </li>
+                                                              </ul>
+                                                          </div>
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                                  <label [for]="devMember.id">
+                                      <input type="radio" name="accordion" [id]="devMember.id">
+                                  </label>
+                              </li>
+                          </ul>
+                          
+                        </div>
+                    </li>
+                  <li>
+                      <label for="test">
+                          <div class="details">
+                              <table id="teamtable">
+                                  <thead>
+                                      <tr>
+                                          <th id="name">Testeurs</th>
+                                      </tr>
+                                  </thead>
+                              </table>
+                          </div>
+                          <span>&#x3e;</span> 
+                      </label>
+                      <input type="radio" name="accordion" id="test">
+                      <div class="content">
+                          <ul id="accordion-members">
+                              <li *ngFor="let testMember of testMembers">
+                                  <label for="testMember-{{testMember.id}}">
+                                      <div class="details">
+                                          <table>
+                                              <thead>
+                                                  <tr>
+                                                      <th id="member_id">#{{testMember.id}}</th>
+                                                      <th id="member_other">{{testMember.firstName}} {{testMember.lastName}}</th>
+                                                      <th id="member_other">{{testMember.disponibility}}</th>
+                                                      <th>
+                                                        <div class="center">
+                                                            <input type="checkbox" id="show">
+                                                            <label for="show" class="button"  (click)="selectMemberId(testMember.id)" >plus</label>
+                                                            
+                                                            <div class="container" *ngIf="createSectionVisible">
+                                                                <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                                                <div class="text">CREATE A TEAM</div>
+                                                                <ul id="accordion">
+                                                                    <li *ngFor="let team of teams">
+                                                                        <label for="team-{{team.id}}">
+                                                                            <div class="details">
+                                                                                <table id="teamtable">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th id="name">{{team.name}}</th>
+                                                                                            <th id="other">Members: {{team.members.length}}</th>
+                                                                                            <th>
+                                                                                                <button type="submit" (click)="add(team.id)" >
+                                                                                                  <span class=" show-btn material-symbols-outlined">add</span>
+                                                                                                </button>
+                                                                                              </th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                </table>
+                                                                            </div>
+                                                                        </label>
+                                                                        <input type="radio" name="accordion" [id]="'team-' + team.id">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                      </th>
+                                                  </tr>
+                                              </thead>
+                                          </table>
+                                      </div>
+                                  </label>
+                                  <input type="radio" name="accordion" [id]="'testMember-' + testMember.id">
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+                  <li>
+                      <label for="manager">
+                          <div class="details">
+                              <table id="teamtable">
+                                  <thead>
+                                      <tr>
+                                          <th id="name">Scrum manager</th>
+                                      </tr>
+                                  </thead>
+                              </table>
+                          </div>
+                          <span>&#x3e;</span> 
+                      </label>
+                      <input type="radio" name="accordion" id="manager">
+                      <div class="content">
+                          <ul id="accordion-members">
+                              <li *ngFor="let scrumManager of scrumManagers">
+                                  <label for="scrumManager-{{scrumManager.id}}">
+                                      <div class="details">
+                                          <table>
+                                              <thead>
+                                                  <tr>
+                                                      <th id="member_id">#{{scrumManager.id}}</th>
+                                                      <th id="member_other">{{scrumManager.firstName}} {{scrumManager.lastName}}</th>
+                                                      <th id="member_other">{{scrumManager.disponibility}}</th>
+                                                      <th>
+                                                        <div class="center">
+                                                            <input type="checkbox" id="show">
+                                                            <label for="show" class="button" (click)="selectMemberId(scrumManager.id)">plus</label>
+                                                            
+                                                            <div class="container" *ngIf="createSectionVisible">
+                                                                <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                                                <div class="text">CREATE A TEAM</div>
+                                                                <ul id="accordion">
+                                                                    <li *ngFor="let team of teams">
+                                                                        <label for="team-{{team.id}}">
+                                                                            <div class="details">
+                                                                                <table id="teamtable">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th id="name">{{team.name}}</th>
+                                                                                            <th id="other">Members: {{team.members.length}}</th>
+                                                                                            <th>
+                                                                                                <button type="submit" (click)="add(team.id)" >
+                                                                                                  <span class=" show-btn material-symbols-outlined">add</span>
+                                                                                                </button>
+                                                                                              </th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                </table>
+                                                                            </div>
+                                                                        </label>
+                                                                        <input type="radio" name="accordion" [id]="'team-' + team.id">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                      </th>
+                                                  </tr>
+                                              </thead>
+                                          </table>
+                                      </div>
+                                  </label>
+                                  <input type="radio" name="accordion" [id]="'scrumManager-' + scrumManager.id">
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+                </ul>
+             </form>
+        </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+

@@ -13,8 +13,12 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { GestionProjectComponent } from './gestion-project/gestion-project.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RDVComponent } from './rdv/rdv.component';
+
+import { MemberManagementComponent } from './member-management/member-management.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from './chat/chat.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { ChatComponent } from './chat/chat.component';
     
     GestionProjectComponent,
           RDVComponent,
+
+          MemberManagementComponent,
+
           ChatComponent,
+
   ],
   imports: [
     BrowserModule,

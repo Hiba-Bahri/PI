@@ -13,11 +13,11 @@ import lombok.*;
 @PrimaryKeyJoinColumn(name = "member_id")
 public class Member extends User {
 
-    @Column(name = "profession", columnDefinition = "VARCHAR(50)", nullable = false)
-    private String profession;
+    @Column(name = "occupation", columnDefinition = "VARCHAR(50)", nullable = false)
+    private String occupation;
 
-    @Column(name = "disponibilite", columnDefinition = "VARCHAR(15)",nullable = false)
-    private String disponibilite;
+    @Column(name = "disponibility", columnDefinition = "VARCHAR(15)",nullable = false)
+    private String disponibility;
 
     @ManyToOne
     @JsonIgnore

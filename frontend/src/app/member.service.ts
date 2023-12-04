@@ -10,6 +10,10 @@ export class MemberService {
 
   constructor(private http: HttpClient) {}
 
+  createMember(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/createMember`, data);
+  }
+
   getAllMembers(){
     return this.http.get(`${this.baseUrl}/getAllMembers`);
   }
@@ -18,11 +22,12 @@ export class MemberService {
     return this.http.get(`${this.baseUrl}/member/${memberId}`);
   }
 
-  addMemberToTeam(teamId: number, memberId: number){
-    return this.http.post(`${this.baseUrl}/addMember/${memberId}/In/${teamId}`, {});
+  addMemberToTeam(teamId: number, memberId: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/addMember/${memberId}/In/${teamId}`, {},{ responseType: 'text' });
   }
 
-  removeMemberFromTeam(teamId: number, memberId: number) {
-    return this.http.delete(`${this.baseUrl}/removeMember/${memberId}/from/${teamId}`);
+  removeMemberFromTeam(teamId: number, memberId: number): Observable<any>  {
+    return this.http.delete(`${this.baseUrl}/removeMember/${memberId}/from/${teamId}`, { responseType: 'text' });
   }
+  
 }

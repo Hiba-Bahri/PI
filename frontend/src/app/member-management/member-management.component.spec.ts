@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MemberManagementComponent } from './member-management.component';
+
+describe('MemberManagementComponent', () => {
+  let component: MemberManagementComponent;
+  let fixture: ComponentFixture<MemberManagementComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [MemberManagementComponent]
+    });
+    fixture = TestBed.createComponent(MemberManagementComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
