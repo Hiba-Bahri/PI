@@ -14,7 +14,7 @@ export class GestionProjectComponent implements OnInit{
   createSectionVisible: boolean = true;
   showProject:boolean= true;
   projects: any[] = [];
-  formData = {title:'', description:'', keywords:'', technologies:'',owner:null}
+  formData = {title:'', description:'', keywords:'', technologies:'',owner:null,status:''}
 
   accordionItems: any[] = [];
 
@@ -29,6 +29,7 @@ export class GestionProjectComponent implements OnInit{
 ngOnInit(): void {
   this.projectService.getAllProjects().subscribe((result)=>{
     this.projects=result as any;
+    console.log(this.projects)
   })
 
   this.http.get(`http://localhost:8080/getAllTeams`).subscribe((result2)=>{
@@ -37,11 +38,11 @@ ngOnInit(): void {
 
   this.projectService.getAllClients().subscribe((clientList)=>{
     this.clients = clientList as any;
-    console.log(this.clients);
   })
 }
 
 onSubmit(){
+  this.formData.status = 'In Progress';
   this.projectService.createProject(this.formData).subscribe((project)=>{
     console.log("Data Sent Successfully : ",project);
     this.createSectionVisible = false;
@@ -51,12 +52,13 @@ onSubmit(){
       
   });
 }
-
 retrieve(projectId: any) {
   this.showProject = true;
   this.projectService.getProjectbyId(projectId).subscribe((project) => {
      this.editedProject = project;
      this.updatedProject = { ...this.editedProject };
+
+      
 
      // Ensure updatedProject.owner is initialized and set to the correct client
      if (this.clients.length > 0) {
@@ -88,6 +90,7 @@ delete(id:number){
     
   })
 }
+
 updateProjectTeam(teamId:any){
   this.updatedTeamProject={"id":teamId}
   this.projectService.updateProjectTeam(localStorage.getItem("projectId"),this.updatedTeamProject).subscribe((response)=>{
@@ -98,4 +101,10 @@ updateProjectTeam(teamId:any){
   })
 }
 
+showFinishedProjects = false;
+
+  toggleShowFinishedProjects() {
+    this.showFinishedProjects = !this.showFinishedProjects;
+  }
+  
 }

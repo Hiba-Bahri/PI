@@ -15,22 +15,25 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title",columnDefinition = "VARCHAR(255)", nullable = false)
+    @Column(name = "title", columnDefinition = "VARCHAR(255)", nullable = false)
     private String title;
 
-    @Column(name = "description",columnDefinition = "TEXT", nullable = false)
+    @Column(name = "description", columnDefinition = "TEXT", nullable = false)
     private String description;
 
-    @JoinColumn (name = "owner",nullable = false)
+    @JoinColumn(name = "owner", nullable = false)
     @ManyToOne
     private Client owner;
 
-    @Column(name = "technologies",columnDefinition = "VARCHAR(255)", nullable = false)
+    @Column(name = "technologies", columnDefinition = "VARCHAR(255)", nullable = false)
     private String technologies;
 
-    @Column(name = "keywords",columnDefinition = "VARCHAR(255)", nullable = false)
+    @Column(name = "keywords", columnDefinition = "VARCHAR(255)", nullable = false)
     private String keywords;
 
     @ManyToOne
     private Team team;
+
+    @Column(name = "status")
+    private String status;
 }

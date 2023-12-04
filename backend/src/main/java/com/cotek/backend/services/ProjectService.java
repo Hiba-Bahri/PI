@@ -54,6 +54,9 @@ public class ProjectService {
             if(editedProject.getKeywords() != null){
                 existingProject.setKeywords(editedProject.getKeywords());
             }
+            if(editedProject.getStatus() != null){
+                existingProject.setStatus(editedProject.getStatus());
+            }
             Project updatedProject = projectRepository.save(existingProject);
             return  ResponseEntity.ok(updatedProject);
         }else {
