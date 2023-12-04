@@ -32,7 +32,7 @@ export class MemberManagementComponent implements OnInit {
   ngOnInit() {
     this.memberService.getAllMembers().subscribe((m: any) => {
       this.members = m;
-      this.devMembers = this.members.filter((member) => member.occupation === 'Developpeur');
+      this.devMembers = this.members.filter((member) => member.occupation === 'Developper');
       this.testMembers = this.members.filter((member) => member.occupation === 'Tester');
       this.scrumManagers = this.members.filter((member) => member.occupation === 'Scrum manager');
     });

@@ -53,6 +53,10 @@ h1{
     display: none;
 }
 
+#accordion label  + label input[type="radio"]{
+  display: none;
+}
+
 #accordion-members{
   background: none;
   width: 800px;
@@ -204,7 +208,7 @@ input[type="checkbox"]{
 }
 
 .formContainer{
-  height: 400px;
+  height: 450px;
 }
 
 #show:checked ~ .container{
@@ -239,20 +243,19 @@ input[type="checkbox"]{
 .formContainer form .data{
   height: 45px;
   width: 100%;
-  margin: 40px 0;
+  margin: 25px 0;
 }
 form .data label{
   font-size: 18px;
 }
-form .data input{
+form .data input, form .data select {
   height: 100%;
   width: 100%;
   padding-left: 10px;
   font-size: 17px;
   border: 1px solid silver;
 }
-form .data input:focus{
-  border-color: #3498db;
+form .data input:focus, form .data select:focus{
   border-bottom-width: 2px;
 }
 form .forgot-pass{
@@ -265,14 +268,13 @@ form .forgot-pass a{
 form .forgot-pass a:hover{
   text-decoration: underline;
 }
-form .btn{
-  margin: 30px 0;
+form .data .btn{
   height: 45px;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-form .btn .inner{
+form .data .btn .inner{
   height: 100%;
   width: 300%;
   position: absolute;
@@ -282,7 +284,7 @@ form .btn .inner{
   transition: all 0.4s;
 }
 
-form .btn button{
+form .data .btn button{
   height: 100%;
   width: 100%;
   background: none;

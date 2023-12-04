@@ -1,7 +1,6 @@
 package com.cotek.backend.controllers;
 
 import com.cotek.backend.entities.Client;
-import com.cotek.backend.entities.Member;
 import com.cotek.backend.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

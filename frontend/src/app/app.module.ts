@@ -18,6 +18,7 @@ import { MemberManagementComponent } from './member-management/member-management
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from './chat/chat.component';
+import { ProjectComponent } from './project/project.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ChatComponent } from './chat/chat.component';
           MemberManagementComponent,
 
           ChatComponent,
+            ProjectComponent,
 
   ],
   imports: [
