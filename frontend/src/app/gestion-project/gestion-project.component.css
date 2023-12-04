@@ -621,3 +621,8 @@ tbody tr.active-row {
 .accordion-item.active .accordion-content {
     display: block;
 }
+.owner-select{
+    width: 100%;
+    height: 30px;
+    border-radius: 7px;
+}

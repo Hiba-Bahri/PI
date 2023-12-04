@@ -5,5 +5,9 @@
 
 body{
     font-family: "Tilt Neon";
+
     background-color: #61bbf6;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

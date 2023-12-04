@@ -14,9 +14,11 @@ export class GestionProjectComponent implements OnInit{
   createSectionVisible: boolean = true;
   showProject:boolean= true;
   projects: any[] = [];
-  formData = {title:'', description:'', keywords:'', technologies:'',owner:''}
+  formData = {title:'', description:'', keywords:'', technologies:'',owner:null}
 
   accordionItems: any[] = [];
+
+  clients: any [] = [];
 
   toggleAccordionItem(item:any) {
     item.active = !item.active;
@@ -32,6 +34,11 @@ ngOnInit(): void {
   this.http.get(`http://localhost:8080/getAllTeams`).subscribe((result2)=>{
     this.accordionItems = result2 as any;
   })
+
+  this.projectService.getAllClients().subscribe((clientList)=>{
+    this.clients = clientList as any;
+    console.log(this.clients);
+  })
 }
 
 onSubmit(){
@@ -45,13 +52,19 @@ onSubmit(){
   });
 }
 
-retrieve(projectId:any){
-  this.showProject=true;
-  this.projectService.getProjectbyId(projectId).subscribe((project)=>{
-    this.editedProject = project;
-    this.updatedProject = { ...this.editedProject}
-    localStorage.setItem("projectId",projectId);
-  })
+retrieve(projectId: any) {
+  this.showProject = true;
+  this.projectService.getProjectbyId(projectId).subscribe((project) => {
+     this.editedProject = project;
+     this.updatedProject = { ...this.editedProject };
+
+     // Ensure updatedProject.owner is initialized and set to the correct client
+     if (this.clients.length > 0) {
+        this.updatedProject.owner = this.clients.find(client => client.id === this.editedProject.owner.id) || this.clients[0];
+     }
+
+     localStorage.setItem("projectId", projectId);
+  });
 }
 
 edit(projectId:any){

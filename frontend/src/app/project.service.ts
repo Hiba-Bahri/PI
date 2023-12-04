@@ -32,4 +32,7 @@ export class ProjectService {
     return this.http.put(`${this.baseUrl}/updateProjectTeam/${id}`,team)
   }
   
+  getAllClients(){
+    return this.http.get(`${this.baseUrl}/getAllClients`);
+  }
 }
