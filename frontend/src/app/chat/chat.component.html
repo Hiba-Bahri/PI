@@ -1,0 +1,7 @@
+<div>
+    <div *ngFor="let message of chatHistory">
+      {{ message.sender }}: {{ message.message }}
+    </div>
+    <textarea [(ngModel)]="message" placeholder="Type your message..."></textarea>
+    <button (click)="sendMessage()">Send</button>
+  </div>

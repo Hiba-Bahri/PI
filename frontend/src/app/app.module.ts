@@ -13,6 +13,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { GestionProjectComponent } from './gestion-project/gestion-project.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RDVComponent } from './rdv/rdv.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { RDVComponent } from './rdv/rdv.component';
     SideBarComponent,
     
     GestionProjectComponent,
-          RDVComponent
+          RDVComponent,
+          ChatComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
