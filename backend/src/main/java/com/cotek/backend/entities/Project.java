@@ -36,4 +36,7 @@ public class Project {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name="methodology")
+    private String methodology;
 }

@@ -30,6 +30,29 @@
           <span class="material-symbols-outlined">manage_accounts</span>
           <a routerLink="/memberManagement" routerLinkActive="active">Member Management</a>
         </li></a>
+        <a>
+          <li>
+            <span (click)="toggleNotification()" class="material-symbols-outlined">notifications</span>
+            <a (click)="toggleNotification()">Notifications</a>
+            <div *ngIf="showNotification" class="notification-container">
+              <div class="notification-box">
+                <app-notifications></app-notifications>
+              </div>
+            </div>
+          </li>
+        </a>
+        <!-- <a>
+          <li>
+            <span class="material-symbols-outlined">notifications</span>
+            <a (click)="toggleNotification()">Notifications</a>
+            <div *ngIf="showNotification" class="notification-dropdown">
+              <app-notifications></app-notifications>
+            </div>
+          </li></a>
+      <div [ngClass]="{'notification-dropdown': showNotification}" class="notification-dropdown">
+        <app-notifications></app-notifications>
+      </div>      -->
+        
       </ul>
     </aside>
   </body>

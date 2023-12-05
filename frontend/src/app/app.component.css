@@ -23,5 +23,5 @@ body{
 @media (max-width: 849px) {
     .grid-container {
         grid-template-rows:120px auto;
-    } 
+    }  
 }

@@ -10,6 +10,66 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   </head>
   <body>
-    
+    <div *ngIf="project" style="margin-top: 25px;">
+      <h1 style="margin-top: 25px; color:white; margin-bottom: 20px;">{{project.title}} \ {{project.owner.firstName}} {{project.owner.lastName}} </h1>
+
+      <table style="width:100%;">
+        <thead>
+          <tr>
+            <th colspan="2" style="text-align: center;">Project Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: bold;">Technologies</td>
+            <td>{{project.technologies}}</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Description</td>
+            <td>{{project.description}}</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Keywords</td>
+            <td>{{project.keywords}}</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Team</td>
+            <td>{{project.team.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align: center;">
+        <h3 style="margin-top: 25px; margin-bottom: 25px;"><span style="color: white;">Team members</span></h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Occupation</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let member of project.team.members">
+          <tr>
+            <td>{{member.firstName}}</td>
+            <td>{{member.lastName}}</td>
+            <td>{{member.occupation}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h5 style="margin-top: 25px;margin-bottom: 25px;"><span style="color: white;">Work Methodology : </span> <strong>{{project.methodology}}</strong></h5>
+      <select [(ngModel)]="selectedWorkMethodology" class="">
+        <option value="">Choose a working Methodology</option>
+        <option value="Scrum">Scrum</option>
+        <option value="XP">XP</option>
+        <option value="Cascade">Cascade</option>
+        <option value="V Model">V Model</option>
+      </select>
+      <button class="btn" type="button" style="background-color: white;margin-left: 25px;border: 1 solid #000;" (click)="save_work_methodology(project.id)">Save project</button>
+
+    </div>      
   </body>
 </html>

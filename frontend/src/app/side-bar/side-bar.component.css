@@ -207,3 +207,26 @@ hr {
         display: none;
     }
 }
+
+/* side-bar.component.css */
+
+/* Add this CSS to style the notification dropdown */
+/* sidebar.component.css */
+
+/* ... (your existing styles) */
+
+/* sidebar.component.css */
+
+.notification-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.notification-dropdown.hidden {
+    display: none;
+}

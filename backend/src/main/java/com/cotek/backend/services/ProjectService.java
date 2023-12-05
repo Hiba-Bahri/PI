@@ -57,6 +57,9 @@ public class ProjectService {
             if(editedProject.getStatus() != null){
                 existingProject.setStatus(editedProject.getStatus());
             }
+            if(editedProject.getMethodology() != null){
+                existingProject.setMethodology(editedProject.getMethodology());
+            }
             Project updatedProject = projectRepository.save(existingProject);
             return  ResponseEntity.ok(updatedProject);
         }else {

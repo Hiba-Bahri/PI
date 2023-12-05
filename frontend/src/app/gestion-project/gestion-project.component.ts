@@ -47,6 +47,7 @@ onSubmit(){
     console.log("Data Sent Successfully : ",project);
     this.createSectionVisible = false;
     this.router.navigate(['/projectManagement']);
+    this.ngOnInit();
   },(error)=>{
       console.error('Error :',error);
       
@@ -73,6 +74,7 @@ edit(projectId:any){
   this.projectService.updateProject(projectId,this.updatedProject).subscribe((response)=>{
     console.log('Data Updated Successfully :', response);
     this.router.navigate(['/projectManagement']);
+    this.ngOnInit()
     this.showProject= false;
   },(error)=>{
     console.error('Error :',error);
@@ -80,16 +82,21 @@ edit(projectId:any){
   })
 }
 
+
 delete(id:number){
-  this.projectService.deleteProject(id).subscribe((response)=>{
-    console.log('Project Deleted ',response);
-    this.router.navigate(['/projectManagement']);
-    this.showProject= false;
-  }, (error)=>{
-    console.error('Error :',error);
-    
-  })
+  this.updatedProject.status = 'Finished';
+  this.edit(id);
 }
+// delete(id:number){
+//   this.projectService.deleteProject(id).subscribe((response)=>{
+//     console.log('Project Deleted ',response);
+//     this.router.navigate(['/projectManagement']);
+//     this.showProject= false;
+//   }, (error)=>{
+//     console.error('Error :',error);
+    
+//   })
+// }
 
 updateProjectTeam(teamId:any){
   this.updatedTeamProject={"id":teamId}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../chat.service';
 import { ChatMessage } from '../chat-message.model';
 import { forkJoin } from 'rxjs';
+import { EmojiData } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 @Component({
   selector: 'app-chat',
@@ -9,8 +10,8 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit{
-  sender: string = 'User1'; // Set dynamically based on logged-in user
-  recipient: string = 'User2'; // Set dynamically based on chat partner
+  sender: string = 'Hiba'; // Set dynamically based on logged-in user
+  recipient: string = 'Yassine'; // Set dynamically based on chat partner
   message: string = '';
   chatHistory: ChatMessage[] = [];
 
@@ -49,4 +50,5 @@ export class ChatComponent implements OnInit{
       this.message = ''; // Clear the message input field
     });
   }
+  
 }

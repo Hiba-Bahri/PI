@@ -145,15 +145,16 @@
               </div>
               <div class="data">
                 <label for="status">Status</label>
-                <select id="status" name="status" [(ngModel)]="updatedProject.status" class="owner-select" required>
+                <p id="status"> {{updatedProject.status}}</p>
+                <!-- <select id="status" name="status" [(ngModel)]="updatedProject.status" class="owner-select" required>
                   <option value="In Progress">In Progress</option>
                   <option value="Finished">Finished</option>
-               </select>
+               </select> -->
               </div>
               <div class="btn">
                 <div class="inner"></div>
                 <button type="submit">Edit</button>
-                <button type="button" (click)="delete(updatedProject.id)">Delete</button>
+                <button type="button" (click)="delete(updatedProject.id)">Archive</button>
              </div>
             </form>
          </div>
