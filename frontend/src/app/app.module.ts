@@ -19,7 +19,13 @@ import { MemberManagementComponent } from './member-management/member-management
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from './chat/chat.component';
 import { ProjectComponent } from './project/project.component';
+import { ProjectManagerComponent } from './project-manager/project-manager.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -39,14 +45,17 @@ import { ProjectComponent } from './project/project.component';
 
           ChatComponent,
             ProjectComponent,
-
+            ProjectManagerComponent,
+            NotificationsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SocketIoModule.forRoot(config),
+    EmojiModule
   ],
   providers: [],
   bootstrap: [AppComponent]

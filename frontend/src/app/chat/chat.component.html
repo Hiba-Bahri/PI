@@ -1,7 +1,23 @@
-<div>
+
+<div class="chat-container">
+  <div class="message-container" #messageContainer>
+    <div *ngFor="let message of chatHistory" class="message" [ngClass]="{'sent': message.sender === sender, 'received': message.sender !== sender}">
+      <span class="sender">{{ message.sender }}:</span> {{ message.message }}
+      <span class="timestamp" *ngIf="message.timestamp">{{ message.timestamp | date: 'mediumTime' }}</span>
+    </div>
+  </div>
+  
+  <div class="input-container">
+    <textarea [(ngModel)]="message" placeholder="Type your message..." style="resize: none;"></textarea>
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
+
+
+<!-- <div>
     <div *ngFor="let message of chatHistory">
       {{ message.sender }}: {{ message.message }}
     </div>
     <textarea [(ngModel)]="message" placeholder="Type your message..."></textarea>
     <button (click)="sendMessage()">Send</button>
-  </div>
+  </div> -->

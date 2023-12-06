@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TaskService } from '../task.service';
 import { MemberService } from '../member.service';
+import { ProjectService } from '../project.service';
+import { GestionProjectComponent } from '../gestion-project/gestion-project.component';
+
 
 @Component({
   selector: 'app-project',
@@ -17,16 +20,28 @@ export class ProjectComponent implements OnInit {
   members: any[] = [];
   taskMembers: any[] = [];
   formData = { description: '', progress: '', member: null };
+  project: any;
+  selectedWorkMethodology: string = 'Scrum';
 
   constructor(
     private taskService: TaskService,
     private memberService: MemberService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute, 
+    private projectService:ProjectService
   ) {}
-
-
   
   ngOnInit(){
+
+    this.route.params.subscribe(params => {
+      const projectId = params['projectId'];
+
+      this.projectService.getProjectbyId(projectId).subscribe((result)=>{
+        this.project= result as any;
+        console.log(this.project)
+      })
+  })
+
     this.taskService.getAllTasks().subscribe((t: any) => {
       this.tasks = t;
       this.ongoingTasks = this.tasks.filter((task) => task.progress === 'In progress');
@@ -63,4 +78,13 @@ export class ProjectComponent implements OnInit {
   
   }
   
+  save_work_methodology(id: number) {
+    let updatedProject = { ...this.project, methodology: this.selectedWorkMethodology };
+
+    // Assuming you have a method in your ProjectService to update the work methodology
+    this.projectService.updateProject(id, updatedProject).subscribe((res)=>{
+      console.log("Work Methodology updated successfuly",res);
+      this.ngOnInit()
+    })
+    };
 }

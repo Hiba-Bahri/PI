@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent {
+  showNotification: boolean = false;
 
+  toggleNotification() {
+    this.showNotification = !this.showNotification;
+  }
 }

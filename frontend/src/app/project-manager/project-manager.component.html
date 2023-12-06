@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Liste des projet(s)</h1>
+
+    <div id="options_section" class="container_page">
+          <!--image row start-->
+          <div class="column1">
+            <!-- <button class="BTN" (click)="toggleShowFinishedProjects()">
+              Toggle Show Finished Projects
+            </button> -->
+            <div class="row" *ngFor="let project of projects" style="margin-top: 7%;">
+              <div *ngIf="project.status === 'In Progress'" style="text-align: center">
+                  <div class="image" (click)="redirectToDetails(project.id)">
+                  <img src="../../assets/images/1.jpg" alt="">
+                  <div class="details" style="text-align: center;">
+                    <h4 style="border: 0px;background-color:transparent;color:#261554;margin-left: 15px;">{{project.title}}</h4><br>  
+                    <h5 style="margin-left: 15px;">Description : {{project.description}}</h5>
+                  </div>
+                </div>
+              </div> 
+              </div>
+              <div class="create-row" style="margin-top: 7%;">
+                <div class="image">
+                  <a href="/projectManagement#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
+                </div>
+              </div>
+            </div>
+            </div>
+</body>
+</html>
