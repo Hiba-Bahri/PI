@@ -1,5 +1,8 @@
 package com.cotek.backend.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
@@ -22,4 +25,7 @@ public class Member extends User {
     @ManyToOne
     @JsonIgnore
     private Team team;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
+    private List<Task> tasks = new ArrayList<>();
 }

@@ -165,7 +165,7 @@ hr {
 
     .sidebar:hover .logo img{
         width: 170px;
-        content: url("../../assets/images/COTEST.png");
+        content: url("../../assets/images/CoTEST.png");
     }
 }
 @media (max-width: 849px) {

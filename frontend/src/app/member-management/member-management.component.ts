@@ -42,22 +42,13 @@ export class MemberManagementComponent implements OnInit {
     });
   }
 
-
-  autoRefresh() {
-    const currentRoute = this.router.url;
-    this.router.navigateByUrl(currentRoute, { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentRoute]);
-    });
-  }
-
-
   onSubmit() {
     this.memberService.createMember(this.formData).subscribe((response) => {
       console.log('member created successfully:', response);
       this.formData = { firstName: '', lastName: '', email: '', login: '', password: '', disponibility: '',  occupation: '' };
       this.createSectionVisible = false;
       this.router.navigate(['/member-management']);
-      this.autoRefresh();
+      this.ngOnInit();
       }
     );
   }
@@ -72,7 +63,6 @@ export class MemberManagementComponent implements OnInit {
     console.log(this.selectedMemberId);
     this.memberService.addMemberToTeam(teamId, this.selectedMemberId).subscribe((response: any) => {
       console.log('Member added successfully:', response);
-      this.autoRefresh();
     },
     (error) => {
       console.error('Error adding member:', error);
@@ -84,7 +74,6 @@ export class MemberManagementComponent implements OnInit {
   remove(teamId: number, memberId: number){
     this.memberService.removeMemberFromTeam(teamId,memberId).subscribe((response) => {
       console.log('Member removed successfully:', response);
-      this.autoRefresh();
   });
   }
 

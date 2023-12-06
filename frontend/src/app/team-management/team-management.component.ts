@@ -45,21 +45,14 @@ export class TeamManagementComponent implements OnInit {
     });
   }
 
-  autoRefresh() {
-    const currentRoute = this.router.url;
-    this.router.navigateByUrl(currentRoute, { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentRoute]);
-    });
-  }
-
   onSubmit() {
     this.teamService.createTeam(this.formData).subscribe((response) => {
       console.log('Team created successfully:', response);
       this.formData = { name: '', members: [] };
       this.teamName = this.formData.name;
       this.createSectionVisible = false;
-      this.router.navigate(['/team-management']);
-      this.autoRefresh();
+      this.router.navigate(['/teamManagement']);
+      this.ngOnInit();
       }
     );
   }
@@ -68,22 +61,22 @@ export class TeamManagementComponent implements OnInit {
     console.log(teamId,memberId);
     this.memberService.addMemberToTeam(teamId,memberId).subscribe((response) => {
       console.log('Member added successfully:', response);
-      this.autoRefresh();
+      this.ngOnInit();
   });
   }
 
   remove(teamId: number, memberId: number){
     this.memberService.removeMemberFromTeam(teamId,memberId).subscribe((response) => {
       console.log('Member removed successfully:', response);
-      this.autoRefresh();
+      this.ngOnInit();
   });
   }
 
   delete(teamId: number){
     this.teamService.deleteTeam(teamId).subscribe((Response)=>{
       console.log('Team removed successfully');
-      this.router.navigate(['/team-management']);
-      this.autoRefresh();
+      this.router.navigate(['/teamManagement']);
+      this.ngOnInit();
     })
   }  
 }

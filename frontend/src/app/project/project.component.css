@@ -1,13 +1,104 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing:border-box;
-}
+
 body{
-    height: 100vh;
-    width: 100%;
     background: none;
-    
+    font-family: 'Poppins', sans-serif;
 }
+
+h1{
+    color: rgb(49, 49, 49);
+    margin-top: 40px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.input-group{
+    margin: 60px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.input-group input , .input-group th input , .input-group th .item2{
+    height: 45px;
+    border: 1px solid rgb(174, 174, 174);
+    background-color: white;
+
+
+}
+
+.member-select{
+    width: 100%;
+    height: 46px;
+    border-radius: 7px;
+    border: 1px solid rgb(174, 174, 174);
+
+}
+
+.item1, .item2, .item3{
+}
+.item1, .TaskItem1{
+    flex-basis: 600px;
+}
+
+.item2, .TaskItem3{
+    flex-basis: 250px;
+}
+
+.TaskItem1{
+    flex-basis: 400px;
+}
+
+.TaskItem3{
+    flex-basis: 250px;
+}
+
+.TaskItem4{
+}
+
+.TaskItem5{
+}
+
+.btn-add{
+    background-color: rgb(19, 196, 75);
+    color: white;
+    padding: 0px 15px;
+    height: 46px;
+}
+
+.btn-edit{
+    background-color: rgb(255, 128, 0);
+    color: white;
+    padding: 0px 15px;
+    height: 46px;
+}
+
+.btn-remove{
+    background-color: red;
+    color: white;
+    padding: 0px 15px;
+    height: 46px;
+}
+
+ul{
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+/*li{
+    position: relative;
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 1px solid gray;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}*/

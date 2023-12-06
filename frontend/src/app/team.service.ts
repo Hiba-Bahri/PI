@@ -20,6 +20,6 @@ export class TeamService {
   }
 
   deleteTeam(id: number){
-    return this.http.delete(`${this.baseUrl}/deleteTeam/${id}`);
+    return this.http.delete(`${this.baseUrl}/deleteTeam/${id}`, { responseType: 'text' });
   }
 }

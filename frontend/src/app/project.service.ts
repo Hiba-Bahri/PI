@@ -25,7 +25,7 @@ export class ProjectService {
     return this.http.put(`${this.baseUrl}/updateProject/${id}`,editedProject);
   }
   deleteProject(id:number){
-    return this.http.delete(`${this.baseUrl}/deleteProject/${id}`)
+    return this.http.delete(`${this.baseUrl}/deleteProject/${id}`, { responseType: 'text' })
   }
 
   updateProjectTeam(id:any,team:any){

@@ -19,7 +19,7 @@ import com.cotek.backend.repositories.TeamRepository;
 public class MemberService {
 
     @Autowired
-    MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     private TeamRepository teamRepository;
@@ -86,7 +86,7 @@ public class MemberService {
             memberRepository.save(member);
             teamRepository.save(team);
             memberId = 0L;
-            return ResponseEntity.ok().body("Member added from the team successfully");
+            return ResponseEntity.ok().body("Member added to the team successfully");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Team not found with ID: " + teamId);
         }
