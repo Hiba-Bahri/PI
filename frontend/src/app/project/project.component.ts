@@ -3,8 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TaskService } from '../task.service';
 import { MemberService } from '../member.service';
 import { ProjectService } from '../project.service';
-import { GestionProjectComponent } from '../gestion-project/gestion-project.component';
-
 
 @Component({
   selector: 'app-project',
@@ -19,7 +17,7 @@ export class ProjectComponent implements OnInit {
   ongoingTasks: any[] = [];
   members: any[] = [];
   taskMembers: any[] = [];
-  formData = { description: '', progress: '', member: null };
+  formData = { description: '', progress: 'In Progress', member: null };
   project: any;
   selectedWorkMethodology: string = 'Scrum';
 
@@ -38,15 +36,16 @@ export class ProjectComponent implements OnInit {
 
       this.projectService.getProjectbyId(projectId).subscribe((result)=>{
         this.project= result as any;
-        console.log(this.project)
+        // console.log(this.project)
       })
   })
 
     this.taskService.getAllTasks().subscribe((t: any) => {
       this.tasks = t;
       this.ongoingTasks = this.tasks.filter((task) => task.progress === 'In progress');
+      console.log("ON GOING",this.ongoingTasks)
       this.finishedTasks = this.tasks.filter((task) => task.progress === 'Finished');
-
+      console.log("FINISHED",this.ongoingTasks)
     });
 
     this.memberService.getAllMembers().subscribe((members: any) => {
@@ -87,4 +86,8 @@ export class ProjectComponent implements OnInit {
       this.ngOnInit()
     })
     };
+    showMembers = false;
+    toggleMembers(){
+      this.showMembers = !this.showMembers;
+    }
 }
