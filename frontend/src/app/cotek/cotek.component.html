@@ -1,0 +1,4 @@
+<h1>This is the Index</h1>
+
+<a *ngIf="!isLoggedIn" href="/login"><button>Login</button></a>
+<a *ngIf="isLoggedIn" href="/login"><button (click)="logout()">Logout</button></a>

@@ -23,6 +23,8 @@ import { ProjectManagerComponent } from './project-manager/project-manager.compo
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+import { LoginComponent } from './login/login.component';
+import { CotekComponent } from './cotek/cotek.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -46,7 +48,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
           ChatComponent,
             ProjectComponent,
             ProjectManagerComponent,
-            NotificationsComponent
+            NotificationsComponent,
+            LoginComponent,
+            CotekComponent
   ],
   imports: [
     BrowserModule,

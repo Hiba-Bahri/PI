@@ -9,6 +9,8 @@ import { ProjectManagerComponent } from './project-manager/project-manager.compo
 import { ProjectComponent } from './project/project.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ChatComponent } from './chat/chat.component';
+import { LoginComponent } from './login/login.component';
+import { CotekComponent } from './cotek/cotek.component';
 
 const routes: Routes = [
   {path: 'teamManagement', component:TeamManagementComponent},
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path: 'Project/:projectId', component:ProjectComponent},
   {path: 'notifications', component:NotificationsComponent},
   {path: 'chat', component: ChatComponent},
-  {path:'',redirectTo:'/RDVManagement', pathMatch: 'full'}
+  {path: 'login',component: LoginComponent },
+  {path: '',component:CotekComponent},
+  {path:'',redirectTo:'/', pathMatch: 'full'}
 ];
 
 @NgModule({
