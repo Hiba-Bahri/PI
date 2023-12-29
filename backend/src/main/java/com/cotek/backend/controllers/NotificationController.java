@@ -1,7 +1,6 @@
 package com.cotek.backend.controllers;
 
 import com.cotek.backend.entities.Notification;
-import com.cotek.backend.entities.Project;
 import com.cotek.backend.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
