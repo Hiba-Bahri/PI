@@ -11,10 +11,69 @@
   </head>
   <body>
     <div class="project-container">
-
+      <div *ngIf="project" style="margin-top: 25px;">
+        <h1 style="margin-top: 25px; color:white; margin-bottom: 20px;">{{project.title}} \ {{project.owner.firstName}} {{project.owner.lastName}} </h1>
+  
+        <table style="width:100%;">
+          <thead>
+            <tr>
+              <th colspan="2" style="text-align: center;">Project Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight: bold;">Technologies</td>
+              <td>{{project.technologies}}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;">Description</td>
+              <td>{{project.description}}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;">Keywords</td>
+              <td>{{project.keywords}}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;">Team</td>
+              <td style="cursor: pointer; color: blue;" (click)="toggleMembers()"><strong>{{project.team.name}}</strong></td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;">Work methodology</td>
+              <td>{{project.methodology}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align: center;" *ngIf="showMembers">
+          <h3 style="margin-top: 25px; margin-bottom: 25px;"><span style="color: white;">Team members</span></h3>
+          <table>
+            <thead>
+              <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Occupation</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let member of project.team.members">
+              <tr>
+                <td>{{member.firstName}}</td>
+                <td>{{member.lastName}}</td>
+                <td>{{member.occupation}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <!-- methodology section -->
-      <div class="methodology">
-
+      <div class="methodology" style="margin-top:25px;">
+        <select [(ngModel)]="selectedWorkMethodology" class="">
+          <option value="">Choose a working Methodology</option>
+          <option value="Scrum">Scrum</option>
+          <option value="XP">XP</option>
+          <option value="Cascade">Cascade</option>
+          <option value="V Model">V Model</option>
+        </select>
+        <button class="btn" type="button" style="background-color: white;margin-left: 25px;border: 1 solid #000;" (click)="save_work_methodology(project.id)">Save project</button>
+  
       </div>
 
       <!--tasks section-->
@@ -24,12 +83,12 @@
           <div class="input-group">
             <div class="item1">
               <label for="description">Description</label>
-              <input type="text" class="form-control" id="description" [(ngModel)]="formData.description" required>
+              <input type="text" class="form-control" id="description" [ngModelOptions]="{ standalone: true }" [(ngModel)]="formData.description" required>
             </div>
             <div class="item2">
               <label for="member">Member</label>
-              <select id="member" [(ngModel)]="formData.member" class="member-select">
-                <option *ngFor="let member of members" [ngValue]="member.id">
+              <select id="member" [(ngModel)]="formData.member" [ngModelOptions]="{ standalone: true }" class="member-select">
+                <option *ngFor="let member of members" [ngValue]="member">
                   {{ member.firstName }} {{ member.lastName }} -{{ member.occupation }}-
                 </option>
               </select>
@@ -50,10 +109,10 @@
                       <thead>
                         <tr>
                           <th class="TaskItem1">
-                            <input type="text" class="form-control" id="description" [value]="task.description" [(ngModel)]="formData.description" required>
+                            <input type="text" class="form-control" id="description" [ngModelOptions]="{ standalone: true }" [value]="task.description" [(ngModel)]="formData.description" required>
                           </th>
                           <th class="TaskItem3">
-                            <select id="member" [(ngModel)]="formData.member" class="member-select">
+                            <select id="member" [(ngModel)]="formData.member" [ngModelOptions]="{ standalone: true }" class="member-select">
                               <option *ngFor="let member of members" [ngValue]="member">
                                 {{ member.firstName }} {{ member.lastName }} -{{ member.occupation }}-
                               </option>
@@ -112,67 +171,5 @@
       </div>
 
     </div>
-
-    <div *ngIf="project" style="margin-top: 25px;">
-      <h1 style="margin-top: 25px; color:white; margin-bottom: 20px;">{{project.title}} \ {{project.owner.firstName}} {{project.owner.lastName}} </h1>
-
-      <table style="width:100%;">
-        <thead>
-          <tr>
-            <th colspan="2" style="text-align: center;">Project Information</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="font-weight: bold;">Technologies</td>
-            <td>{{project.technologies}}</td>
-          </tr>
-          <tr>
-            <td style="font-weight: bold;">Description</td>
-            <td>{{project.description}}</td>
-          </tr>
-          <tr>
-            <td style="font-weight: bold;">Keywords</td>
-            <td>{{project.keywords}}</td>
-          </tr>
-          <tr>
-            <td style="font-weight: bold;">Team</td>
-            <td>{{project.team.name}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="text-align: center;">
-        <h3 style="margin-top: 25px; margin-bottom: 25px;"><span style="color: white;">Team members</span></h3>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Occupation</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let member of project.team.members">
-          <tr>
-            <td>{{member.firstName}}</td>
-            <td>{{member.lastName}}</td>
-            <td>{{member.occupation}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div>
-      <h5 style="margin-top: 25px;margin-bottom: 25px;"><span style="color: white;">Work Methodology : </span> <strong>{{project.methodology}}</strong></h5>
-      <select [(ngModel)]="selectedWorkMethodology" class="">
-        <option value="">Choose a working Methodology</option>
-        <option value="Scrum">Scrum</option>
-        <option value="XP">XP</option>
-        <option value="Cascade">Cascade</option>
-        <option value="V Model">V Model</option>
-      </select>
-      <button class="btn" type="button" style="background-color: white;margin-left: 25px;border: 1 solid #000;" (click)="save_work_methodology(project.id)">Save project</button>
-
-    </div>      
   </body>
 </html>
