@@ -1,7 +1,6 @@
 package com.cotek.backend.services;
 
 import com.cotek.backend.entities.Notification;
-import com.cotek.backend.entities.Project;
 import com.cotek.backend.repositories.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

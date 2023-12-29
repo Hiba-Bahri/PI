@@ -24,9 +24,13 @@ public class MemberService {
     @Autowired
     private TeamRepository teamRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
 
     private static final int PASSWORD_LENGTH = 12;
+
 
 
     /*boolean isPasswordMatch = passwordEncoder.matches(passwordToHash, hashedPassword);
@@ -50,11 +54,23 @@ public class MemberService {
         return password.toString();
     }
 
-    public ResponseEntity<Member> createMember(Member m){
-        memberRepository.save(m);
+    public ResponseEntity<Member> createMember(Member m) {
+        if (memberRepository.existsByEmail(m.getEmail())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(null);
+        }
+
         m.setLogin(m.getFirstName() + '_' + m.getId());
         m.setPassword(generatePassword());
+
         Member createdMember = memberRepository.save(m);
+
+        emailService.sendMail(
+            m.getEmail(),
+            "Cotek member login credentials",
+            "You have been added as a member in Cotek Company, these are your credentials\nLogin: " + m.getLogin() + "\nPassword: " + m.getPassword()
+        );
+
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
     }
 
