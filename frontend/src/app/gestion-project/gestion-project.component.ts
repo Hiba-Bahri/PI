@@ -27,10 +27,15 @@ export class GestionProjectComponent implements OnInit{
   constructor(private projectService: ProjectService, private router:Router,private http:HttpClient){}
 
 ngOnInit(): void {
-  this.projectService.getAllProjects().subscribe((result)=>{
-    this.projects=result as any;
-    console.log(this.projects)
-  })
+  this.projectService.getAllProjects().subscribe(
+    (result) => {
+      this.projects = result as any;
+      console.log(this.projects);
+    },
+    (error) => {
+      console.error('Error fetching projects:', error);
+    }
+  );
 
   this.http.get(`http://localhost:8080/getAllTeams`).subscribe((result2)=>{
     this.accordionItems = result2 as any;

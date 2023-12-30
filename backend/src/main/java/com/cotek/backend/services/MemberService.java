@@ -70,7 +70,7 @@ public class MemberService {
             "Cotek member login credentials",
             "You have been added as a member in Cotek Company, these are your credentials\nLogin: " + m.getLogin() + "\nPassword: " + m.getPassword()
         );*/
-        
+
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
     }
     
