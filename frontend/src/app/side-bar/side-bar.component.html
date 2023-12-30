@@ -16,6 +16,7 @@
       <ul class="links">
         <a><li *ngIf="hasRole('admin')">
           <span class="material-symbols-outlined">calendar_month</span>
+          <a routerLink="/project" routerLinkActive="active">Appointments management</a>
           <a routerLink="/RDVManagement" routerLinkActive="active">Appointments manegement</a>
         </li></a>
         <a><li *ngIf="hasRole('admin')">

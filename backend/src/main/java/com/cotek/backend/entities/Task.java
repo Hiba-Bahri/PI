@@ -2,7 +2,9 @@ package com.cotek.backend.entities;
 
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,10 +22,8 @@ public class Task {
     @Column(name = "progress", columnDefinition = "VARCHAR(20)", nullable = false)
     private String progress;
 
-/*
-    @JoinColumn(name = "member", nullable = false)
-*/
     @ManyToOne
-    private Member member;
+    @JoinColumn(name = "member_id")
+    private Member assignedMember;
 
 }

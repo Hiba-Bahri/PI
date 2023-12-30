@@ -12,7 +12,7 @@ import { MemberService } from '../member.service';
 
 export class MemberManagementComponent implements OnInit {
   createSectionVisible: boolean = true;
-  formData = { firstName: '', lastName: '', email: '', login: '', password: '', disponibility: 'true',  occupation: '' };
+  formData = { firstName: '', lastName: '', email: '', login: '', password: '', disponibility: 'true',  occupation: '', role: '' };
   members: any[] = [];
   teams: any[] = [];
   devMembers: any[] = [];
@@ -45,7 +45,7 @@ export class MemberManagementComponent implements OnInit {
   onSubmit() {
     this.memberService.createMember(this.formData).subscribe((response) => {
       console.log('member created successfully:', response);
-      this.formData = { firstName: '', lastName: '', email: '', login: '', password: '', disponibility: '',  occupation: '' };
+      this.formData = { firstName: '', lastName: '', email: '', login: '', password: '', disponibility: '',  occupation: '', role: '' };
       this.createSectionVisible = false;
       this.router.navigate(['/member-management']);
       this.ngOnInit();

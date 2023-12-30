@@ -55,8 +55,8 @@ export class ProjectComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formData);
-    this.taskService.createTask(this.formData).subscribe((response) => {
+    //console.log(this.formData);
+    this.taskService.createTask(console.log(this.formData)).subscribe((response) => {
       console.log('Task added successfully:', response);
       this.ngOnInit();
     });

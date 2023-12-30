@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper=false)
 @Entity(name = "Member")
-@PrimaryKeyJoinColumn(name = "member_id")
 public class Member extends User {
 
     @Column(name = "occupation", columnDefinition = "VARCHAR(50)", nullable = false)
@@ -26,6 +27,6 @@ public class Member extends User {
     @JsonIgnore
     private Team team;
 
-/*    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
-    private List<Task> tasks = new ArrayList<>();*/
+    @OneToMany(mappedBy = "assignedMember", cascade = CascadeType.ALL)
+    private List<Task> tasks = new ArrayList<>();
 }
