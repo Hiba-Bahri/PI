@@ -11,15 +11,17 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { ChatComponent } from './chat/chat.component';
 import { LoginComponent } from './login/login.component';
 import { CotekComponent } from './cotek/cotek.component';
+import { authGuard } from './auth.guard';
+import { authGuardpm } from './auth.guard';
 
 const routes: Routes = [
-  {path: 'teamManagement', component:TeamManagementComponent},
-  {path: 'memberManagement', component:MemberManagementComponent},
-  {path: 'projectManagement', component:GestionProjectComponent},
-  {path: 'RDVManagement', component:RDVComponent},
-  {path: 'project', component:ProjectComponent},
-  {path: 'Projects', component:ProjectManagerComponent},
-  {path: 'Project/:projectId', component:ProjectComponent},
+  {path: 'teamManagement', component:TeamManagementComponent, canActivate: [authGuard]},
+  {path: 'memberManagement', component:MemberManagementComponent, canActivate: [authGuard]},
+  {path: 'projectManagement', component:GestionProjectComponent, canActivate: [authGuard]},
+  {path: 'RDVManagement', component:RDVComponent, canActivate: [authGuard]},
+  {path: 'project', component:ProjectComponent, canActivate: [authGuardpm]},
+  {path: 'Projects', component:ProjectManagerComponent, canActivate: [authGuardpm]},
+  {path: 'Project/:projectId', component:ProjectComponent, canActivate: [authGuardpm]},
   {path: 'notifications', component:NotificationsComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'login',component: LoginComponent },

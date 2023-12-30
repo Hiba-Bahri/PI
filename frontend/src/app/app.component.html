@@ -10,7 +10,7 @@
   <body>
     <div class="grid-container">
       <div class="grid-item1">
-        <app-side-bar></app-side-bar>
+        <app-side-bar *ngIf="islogged()"></app-side-bar>
       </div>
       <div class="grid-item2">
         <router-outlet></router-outlet>

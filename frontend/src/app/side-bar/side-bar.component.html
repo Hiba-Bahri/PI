@@ -14,9 +14,9 @@
       </div>
       <hr>
       <ul class="links">
-        <a><li *ngIf="!hasRole('admin')">
+        <a><li *ngIf="hasRole('admin')">
           <span class="material-symbols-outlined">calendar_month</span>
-          <a routerLink="/project" routerLinkActive="active">Appointments manegement</a>
+          <a routerLink="/RDVManagement" routerLinkActive="active">Appointments manegement</a>
         </li></a>
         <a><li *ngIf="hasRole('admin')">
           <span class="material-symbols-outlined">folder_managed</span>
@@ -30,6 +30,14 @@
           <span class="material-symbols-outlined">manage_accounts</span>
           <a routerLink="/memberManagement" routerLinkActive="active">Member Management</a>
         </li></a>
+        <a><li *ngIf="hasRole('project manager')">
+          <span class="material-symbols-outlined">folder_managed</span>
+          <a routerLink="/Projects" routerLinkActive="active">Projects</a>
+        </li></a>
+        <a><li *ngIf="hasRole('project manager') || hasRole('client')">
+          <span class="material-symbols-outlined">chat</span>
+          <a routerLink="/chat" routerLinkActive="active">Chat</a>
+        </li></a>
         <a>
           <li *ngIf="!hasRole('admin')">
             <span (click)="toggleNotification()" class="material-symbols-outlined">notifications</span>
@@ -41,6 +49,10 @@
             </div>
           </li>
         </a>
+        <a><li *ngIf="hasRole('project manager') || hasRole('admin')">
+          <span class="material-symbols-outlined" (click)="logout()">logout</span>
+          <a  routerLinkActive="active">Logout</a>
+        </li></a>
         <!-- <a>
           <li>
             <span class="material-symbols-outlined">notifications</span>

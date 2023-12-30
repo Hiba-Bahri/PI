@@ -1,4 +1,11 @@
-
+<div class="contacts-container">
+  <div *ngFor="let contact of contacts" class="contact" (click)="selectContact(contact)">
+    <div class="contact-info">
+      <h3>{{ contact.name }}</h3>
+      <p>{{ contact.status }}</p>
+    </div>
+  </div>
+</div>
 <div class="chat-container">
   <div class="message-container" #messageContainer>
     <div *ngFor="let message of chatHistory" class="message" [ngClass]="{'sent': message.sender === sender, 'received': message.sender !== sender}">
@@ -12,12 +19,3 @@
     <button (click)="sendMessage()">Send</button>
   </div>
 </div>
-
-
-<!-- <div>
-    <div *ngFor="let message of chatHistory">
-      {{ message.sender }}: {{ message.message }}
-    </div>
-    <textarea [(ngModel)]="message" placeholder="Type your message..."></textarea>
-    <button (click)="sendMessage()">Send</button>
-  </div> -->
