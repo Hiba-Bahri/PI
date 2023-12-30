@@ -34,6 +34,12 @@
                             <input type="email" placeholder="Email" name="Email" [(ngModel)]="formData.email" required>
                         </div>
                         <div class="data">
+                            <select name="Role" [(ngModel)]="formData.role">
+                                <option value="project manager">Project manager</option>
+                                <option value="member">Member</option>
+                            </select>
+                        </div>
+                        <div class="data">
                             <select name="Occupation" [(ngModel)]="formData.occupation">
                                 <option value="Developper">Developper</option>
                                 <option value="Tester">Tester</option>

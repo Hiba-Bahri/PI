@@ -208,7 +208,7 @@ input[type="checkbox"]{
 }
 
 .formContainer{
-  height: 450px;
+  height: auto;
 }
 
 #show:checked ~ .container{

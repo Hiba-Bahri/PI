@@ -73,6 +73,7 @@ public class MemberService {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
     }
+    
 
     public List<Member> getAllMembers() {
         return memberRepository.findAll();

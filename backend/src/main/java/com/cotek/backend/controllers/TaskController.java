@@ -29,10 +29,10 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
-    @PutMapping("/updateTask/{id}")
+    /*@PutMapping("/updateTask/{id}")
     public ResponseEntity<Task> updateProject(@PathVariable Long id, @RequestBody Task editedTask){
         return taskService.updateTask(id,editedTask);
-    }
+    }*/
 
     @DeleteMapping("/deleteTask/{id}")
     public ResponseEntity<String> deleteTask(@PathVariable Long id){
