@@ -30,6 +30,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
+        <!--~~(org.springframework.security:spring-security-config:6.1.5 failed. Unable to download POM. Tried repositories:
+https://repo.maven.apache.org/maven2: java.net.SocketTimeoutException: Read timed out)~~>--><!--~~(org.springframework.security:spring-security-web:6.1.5 failed. Unable to download POM. Tried repositories:
+https://repo.maven.apache.org/maven2: java.net.SocketTimeoutException: Connect timed out)~~>-->
 <!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -55,16 +58,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        <dependency>
-                    <groupId>org.mapstruct</groupId>
-                    <artifactId>mapstruct</artifactId>
-                    <version>1.5.5.Final</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.mapstruct</groupId>
-                    <artifactId>mapstruct-processor</artifactId>
-                    <version>1.5.5.Final</version>
-                </dependency>-->
 <!--        <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>

@@ -1,6 +1,5 @@
 package com.cotek.backend.entities;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,10 +19,7 @@ public class Task {
     @Column(name = "progress", columnDefinition = "VARCHAR(20)", nullable = false)
     private String progress;
 
-/*
     @JoinColumn(name = "member", nullable = false)
-*/
     @ManyToOne
     private Member member;
-
 }

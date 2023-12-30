@@ -80,7 +80,6 @@ export class ProjectComponent implements OnInit {
   save_work_methodology(id: number) {
     let updatedProject = { ...this.project, methodology: this.selectedWorkMethodology };
 
-    // Assuming you have a method in your ProjectService to update the work methodology
     this.projectService.updateProject(id, updatedProject).subscribe((res)=>{
       console.log("Work Methodology updated successfuly",res);
       this.ngOnInit()

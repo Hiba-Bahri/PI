@@ -26,6 +26,6 @@ public class Member extends User {
     @JsonIgnore
     private Team team;
 
-/*    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
-    private List<Task> tasks = new ArrayList<>();*/
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Task> tasks = new ArrayList<>();
 }
