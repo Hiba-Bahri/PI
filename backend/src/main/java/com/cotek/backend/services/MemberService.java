@@ -59,20 +59,23 @@ public class MemberService {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(null);
         }
-
-        m.setLogin(m.getFirstName() + '_' + m.getId());
-        m.setPassword(generatePassword());
-
-        Member createdMember = memberRepository.save(m);
-
-        emailService.sendMail(
-            m.getEmail(),
+    
+        Member savedMember = memberRepository.save(m);
+    
+        savedMember.setLogin(savedMember.getFirstName() + '_' + savedMember.getId());
+        savedMember.setPassword(generatePassword());
+    
+        Member createdMember = memberRepository.save(savedMember);
+    
+        /*emailService.sendMail(
+            savedMember.getEmail(),
             "Cotek member login credentials",
-            "You have been added as a member in Cotek Company, these are your credentials\nLogin: " + m.getLogin() + "\nPassword: " + m.getPassword()
-        );
-
+            "You have been added as a member in Cotek Company, these are your credentials\nLogin: " + savedMember.getLogin() + "\nPassword: " + savedMember.getPassword()
+        );*/
+    
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
     }
+    
 
     public List<Member> getAllMembers() {
         return memberRepository.findAll();

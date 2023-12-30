@@ -33,7 +33,7 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public ResponseEntity<Task> updateTask(Long id, Task editedTask) {
+    /*public ResponseEntity<Task> updateTask(Long id, Task editedTask) {
 
         Optional<Task> optionalTask = taskRepository.findById(id);
 
@@ -51,21 +51,21 @@ public class TaskService {
             if (editedTask.getMember() != null) {
                 Optional<Member> optionalMember = memberRepository.findById(editedTask.getMember().getId());
 
-/*                if (optionalMember.isPresent()) {
+                if (optionalMember.isPresent()) {
                     Member member = optionalMember.get();
                     member.getTasks().add(existingTask);
                     existingTask.setMember(member);
                     memberRepository.save(member);
                 } else {
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-                }*/
+                }
             }
             Task updatedTask = taskRepository.save(existingTask);
             return ResponseEntity.ok(updatedTask);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-    }
+    }*/
 
     public ResponseEntity<String> deleteTask(Long id) {
         if (taskRepository.existsById(id)) {

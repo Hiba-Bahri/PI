@@ -1,17 +1,11 @@
 package com.cotek.backend.controllers;
 
 import com.cotek.backend.entities.User;
-import com.cotek.backend.repositories.UserRepository;
 import com.cotek.backend.services.UserService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
