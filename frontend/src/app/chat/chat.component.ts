@@ -10,8 +10,23 @@ import { EmojiData } from '@ctrl/ngx-emoji-mart/ngx-emoji';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit{
-  sender: string = 'Hiba'; // Set dynamically based on logged-in user
-  recipient: string = 'Yassine'; // Set dynamically based on chat partner
+
+  recipient: string = ''; 
+    
+  contacts= [
+    {name:'Yassine',status:'online'},
+    {name:'Hiba', status:'online'}]; 
+
+    selectedContact!: string;
+
+    selectContact(contact: any): void {
+      this.selectedContact = contact.name;
+      this.recipient = this.selectedContact; // Set dynamically based on the selected contact
+      console.log(this.selectedContact);
+      this.loadChatHistory(); // Load chat history for the selected contact
+    }
+
+  sender:string = localStorage.getItem("user") ?? ''; // Set dynamically based on logged-in user
   message: string = '';
   chatHistory: ChatMessage[] = [];
 
@@ -37,7 +52,6 @@ export class ChatComponent implements OnInit{
       
     });
   }
-  
 
   sendMessage(): void {
     const newMessage: ChatMessage = {
@@ -50,5 +64,4 @@ export class ChatComponent implements OnInit{
       this.message = ''; // Clear the message input field
     });
   }
-  
 }
