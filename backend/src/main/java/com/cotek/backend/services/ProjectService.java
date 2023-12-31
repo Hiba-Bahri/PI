@@ -95,4 +95,9 @@ public class ProjectService {
     public Project getProjectByOwner(Long ownerId) {
         return projectRepository.findByOwner_Id(ownerId);
     }
+
+
+    public Project getProjectByProjectManagerLogin(String login) {
+        return projectRepository.findByProjectManagerLogin(login);
+    }
 }

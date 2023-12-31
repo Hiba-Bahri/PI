@@ -62,29 +62,24 @@ export class ChatComponent implements OnInit{
     });
 
       })
-    }else if(localStorage.getItem('userRole')==='project manager'){
-      // Replace 'your_project_manager_id' with the actual project manager's user ID
-      const projectManagerId = localStorage.getItem('userId'); // Assuming the project manager's user ID is stored in 'userId'
-
+    }else if (localStorage.getItem('userRole') === 'project manager') {
+      const projectManagerId = localStorage.getItem('user');
+    
       if (projectManagerId) {
-        this.http.get<any>(`http://localhost:8080/getProjectByTeam/${projectManagerId}`).subscribe((project) => {
+        this.http.get<any>(`http://localhost:8080/project-by-manager/${projectManagerId}`).subscribe((project) => {
           console.log(project);
     
-          // Assuming 'team' is an array of team members
-          const teamMembers = project.team?.members || [];
+          // Check if the 'owner' property exists and is not null
+          if (project.owner && project.owner.login) {
+            const ownerLogin = project.owner.login;
     
-          // Filter team members excluding the project manager
-          const clients = teamMembers.filter((member: any) => member.role !== 'project manager');
-    
-          // Add clients to the contacts array
-          clients.forEach((client: any) => {
-            const contactExists = this.contacts.some(contact => contact.name === client.login);
-            if (!contactExists) {
-              this.contacts.push({ name: client.login, status: 'online' });
+            // Check if owner's login is not already in the contacts array
+            if (!this.contacts.some(contact => contact.name === ownerLogin)) {
+              this.contacts.push({ name: ownerLogin, status: 'online' });
             }
-          });
-  })
-}
+          }
+        });
+      }
     }
   }
 

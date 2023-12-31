@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { CotekComponent } from './cotek/cotek.component';
 import { authGuard } from './auth.guard';
 import { authGuardpm } from './auth.guard';
+import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
+import { ClientManagementComponent } from './client-management/client-management.component';
 
 const routes: Routes = [
   {path: 'teamManagement', component:TeamManagementComponent, canActivate: [authGuard]},
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path: 'notifications', component:NotificationsComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'login',component: LoginComponent },
+  {path: 'appointmentForm', component: AppointmentFormComponent},
+  {path :'clientManagement', component: ClientManagementComponent, canActivate: [authGuard]},
   {path: '',component:CotekComponent},
   {path:'',redirectTo:'/', pathMatch: 'full'}
 ];

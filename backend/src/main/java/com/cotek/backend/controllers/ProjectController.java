@@ -54,4 +54,9 @@ public class ProjectController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/project-by-manager/{login}")
+    public Project getProjectByProjectManager(@PathVariable String login) {
+        return projectService.getProjectByProjectManagerLogin(login);
+    }
 }

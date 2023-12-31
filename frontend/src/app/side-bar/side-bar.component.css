@@ -216,17 +216,43 @@ hr {
 /* ... (your existing styles) */
 
 /* sidebar.component.css */
-
-.notification-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
+.notification-popup {
+    position: fixed;
+    top: 20%;
+    left:13%;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-}
-
-.notification-dropdown.hidden {
-    display: none;
-}
+    padding: 20px;
+    z-index: 1000;
+    max-width: 300px;
+  }
+  
+  .notification-popup h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .notification-popup ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .notification-popup li {
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .close-button:hover {
+    color: #333;
+  }
+  
