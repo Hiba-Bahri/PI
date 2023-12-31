@@ -21,7 +21,7 @@ public class Task {
     @Column(name = "progress", columnDefinition = "VARCHAR(20)", nullable = false)
     private String progress;
 
-    @JoinColumn(name = "member", nullable = false)
+    @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne
     private Member member;
 }
