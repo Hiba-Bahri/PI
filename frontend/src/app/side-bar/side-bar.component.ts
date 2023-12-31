@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit{
 
+  showNotificationPopup = false;
+
+
 
   constructor(private router:Router){}
   
@@ -40,6 +43,14 @@ export class SideBarComponent implements OnInit{
       location.reload();
   }); 
   }
+  toggleNotificationPopup() {
+    this.showNotificationPopup = !this.showNotificationPopup;
+  }
 
-
+  handleNotificationClick(notification: any) {
+    // Handle the notification click event
+    console.log('Notification Clicked:', notification);
+    // Optionally, you can close the popup after handling the click
+    this.showNotificationPopup = false;
+  }
 }

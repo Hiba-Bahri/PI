@@ -3,6 +3,7 @@ import { ChatService } from '../chat.service';
 import { ChatMessage } from '../chat-message.model';
 import { forkJoin } from 'rxjs';
 import { EmojiData } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-chat',
@@ -10,12 +11,9 @@ import { EmojiData } from '@ctrl/ngx-emoji-mart/ngx-emoji';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit{
-
   recipient: string = ''; 
     
-  contacts= [
-    {name:'Yassine',status:'online'},
-    {name:'Hiba', status:'online'}]; 
+  contacts: { name: string; status: string }[] = [];
 
     selectedContact!: string;
 
@@ -29,11 +27,60 @@ export class ChatComponent implements OnInit{
   sender:string = localStorage.getItem("user") ?? ''; // Set dynamically based on logged-in user
   message: string = '';
   chatHistory: ChatMessage[] = [];
+  http: HttpClient;
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService, http:HttpClient) {
+    this.http = http;
+  }
+
+  clientId: number | null = null;
 
   ngOnInit(): void {
     this.loadChatHistory();
+    const userId = localStorage.getItem("userId");
+
+  if (userId !== null) {
+    this.clientId = parseInt(userId, 10); // Parse as base 10
+  }
+
+    if(localStorage.getItem('userRole')==='client'){
+      this.http.get<any>(`http://localhost:8080/getProjectByOwner/${this.clientId}`).subscribe((result)=>{
+        console.log(result)
+
+        // Assuming 'team' is an array of team members
+    const teamMembers = result.team?.members || [];
+
+    // Filter team members with the role 'project manager'
+    const projectManagers = teamMembers.filter((member: any) => member.role === 'project manager');
+
+    // Add project managers to the contacts array
+    projectManagers.forEach((projectManager: any) => {
+      const contactExists = this.contacts.some(contact => contact.name === projectManager.login);
+      if (!contactExists) {
+        this.contacts.push({ name: projectManager.login, status: 'online' });
+      }
+    });
+
+      })
+    }else if (localStorage.getItem('userRole') === 'project manager') {
+      const projectManagerId = localStorage.getItem('user');
+    
+      if (projectManagerId) {
+        this.http.get<any>(`http://localhost:8080/project-by-manager/${projectManagerId}`).subscribe((project) => {
+          console.log(project);
+    
+          // Check if the 'owner' property exists and is not null
+          if (project.owner && project.owner.login) {
+            const ownerLogin = project.owner.login;
+    
+            // Check if owner's login is not already in the contacts array
+            if (!this.contacts.some(contact => contact.name === ownerLogin)) {
+              this.contacts.push({ name: ownerLogin, status: 'online' });
+            }
+          }
+        });
+      }
+    }
   }
 
   loadChatHistory(): void {

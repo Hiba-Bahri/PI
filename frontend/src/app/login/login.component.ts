@@ -24,6 +24,7 @@ export class LoginComponent {
                     console.log('User details:', user);
                     localStorage.setItem('user',user.login);
                     localStorage.setItem('userRole',user.role);
+                    localStorage.setItem('userId',user.id.toString());
                     // Store user details in a service or component for later use
                     this.router.navigate(['/']).then(() => {
                         // After navigation, reload the page

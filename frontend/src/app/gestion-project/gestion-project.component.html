@@ -86,15 +86,24 @@
                   <label for="title">Title</label>
                   <input id="title" type="text" name="title" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.title" required>
                 </div>
+
                 <div class="data">
+                  <label for="owner">Owner</label>
+                  <select id="owner" [(ngModel)]="formData.owner" [ngModelOptions]="{ standalone: true }" class="owner-select" required>
+                    <option *ngFor="let client of clients" [ngValue]="client">
+                      {{ client.firstName }}
+                    </option>
+                  </select>
+                </div>
+                <!-- <div class="data">
                   <label for="owner">Owner</label>
                   <select id="owner" [(ngModel)]="formData.owner" [ngModelOptions]="{ standalone: true }" class="owner-select">
                     <option *ngFor="let client of clients" [ngValue]="client">
                       {{ client.firstName }}
                     </option>
                   </select>
-                  <!--<input for="owner" type="text" name="owner" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.owner"   required-->
-                </div>
+                  <input for="owner" type="text" name="owner" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="formData.owner"   required>
+                </div> -->
                 <div class="data">
                   <label for="description">Description</label>
                   <textarea id="description" cols="50" name="description" rows="3" style="border-radius: 7px;resize:none" [(ngModel)]="formData.description" ></textarea>

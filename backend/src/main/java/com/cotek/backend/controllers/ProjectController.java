@@ -44,4 +44,19 @@ public class ProjectController {
     public ResponseEntity<Project> updateProjectTeam(@PathVariable Long id, @RequestBody Team teamid){
         return projectService.updateProjectTeam(id, teamid);
     }
+
+    @GetMapping("/getProjectByOwner/{ownerId}")
+    public ResponseEntity<Project> getProjectByOwner(@PathVariable Long ownerId) {
+        Project project = projectService.getProjectByOwner(ownerId);
+        if (project != null) {
+            return ResponseEntity.ok(project);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/project-by-manager/{login}")
+    public Project getProjectByProjectManager(@PathVariable String login) {
+        return projectService.getProjectByProjectManagerLogin(login);
+    }
 }

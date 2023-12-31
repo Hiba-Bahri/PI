@@ -31,9 +31,13 @@ public class ProjectService {
     }
 
     public ResponseEntity<Project> createProject(Project p){
+        // Check if the owner already owns a project
+        if (p.getOwner() != null && p.getOwner().getOwnedProject() != null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); // or handle as appropriate
+        }
+
         Project createdProject = projectRepository.save(p);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProject);
-
     }
 
     public ResponseEntity<Project> updateProject(Long id, Project editedProject){
@@ -86,5 +90,14 @@ public class ProjectService {
             projectRepository.save(exising);
         }
         return ResponseEntity.ok().build();
+    }
+
+    public Project getProjectByOwner(Long ownerId) {
+        return projectRepository.findByOwner_Id(ownerId);
+    }
+
+
+    public Project getProjectByProjectManagerLogin(String login) {
+        return projectRepository.findByProjectManagerLogin(login);
     }
 }

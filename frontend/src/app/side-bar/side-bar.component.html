@@ -38,21 +38,21 @@
           <span class="material-symbols-outlined">chat</span>
           <a routerLink="/chat" routerLinkActive="active">Chat</a>
         </li></a>
+        <a><li *ngIf="hasRole('admin')">
+          <span class="material-symbols-outlined">manage_accounts</span>
+          <a routerLink="/clientManagement" routerLinkActive="active">Client Management</a>
+        </li></a>
         <a>
-          <li *ngIf="!hasRole('admin')">
-            <span (click)="toggleNotification()" class="material-symbols-outlined">notifications</span>
-            <a (click)="toggleNotification()">Notifications</a>
-            <div *ngIf="showNotification" class="notification-container">
-              <div class="notification-box">
-                <app-notifications></app-notifications>
-              </div>
-            </div>
+          <li *ngIf="hasRole('client') || hasRole('member')">
+            <span (click)="toggleNotificationPopup()" class="material-symbols-outlined">notifications</span>
+            <a (click)="toggleNotificationPopup()">Notifications</a>
           </li>
         </a>
         <a><li *ngIf="hasRole('project manager') || hasRole('admin')">
           <span class="material-symbols-outlined" (click)="logout()">logout</span>
           <a  routerLinkActive="active">Logout</a>
         </li></a>
+        
         <!-- <a>
           <li>
             <span class="material-symbols-outlined">notifications</span>
@@ -64,8 +64,15 @@
       <div [ngClass]="{'notification-dropdown': showNotification}" class="notification-dropdown">
         <app-notifications></app-notifications>
       </div>      -->
-        
       </ul>
+
     </aside>
+    <div *ngIf="showNotificationPopup" class="notification-popup">
+      <span class="close-button" (click)="toggleNotificationPopup()">&times;</span>
+      <div class="notification-box">
+        <h3>Notifications</h3>
+        <app-notifications (notificationClick)="handleNotificationClick($event)"></app-notifications>
+      </div>
+    </div>
   </body>
 </html>

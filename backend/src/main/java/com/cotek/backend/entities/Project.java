@@ -1,5 +1,7 @@
 package com.cotek.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +24,7 @@ public class Project {
     private String description;
 
     @JoinColumn(name = "owner", nullable = false)
-    @ManyToOne
+    @OneToOne
     private Client owner;
 
     @Column(name = "technologies", columnDefinition = "VARCHAR(255)", nullable = false)

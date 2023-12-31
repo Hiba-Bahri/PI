@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectService } from '../project.service';
 import { HttpClient } from '@angular/common/http';
+import { Team } from '../team.model';
 @Component({
   selector: 'app-gestion-project',
   templateUrl: './gestion-project.component.html',
@@ -19,12 +20,16 @@ export class GestionProjectComponent implements OnInit{
   accordionItems: any[] = [];
 
   clients: any [] = [];
+  availableTeams: Team[] = [];
+
 
   toggleAccordionItem(item:any) {
     item.active = !item.active;
   }
 
   constructor(private projectService: ProjectService, private router:Router,private http:HttpClient){}
+
+
 
 ngOnInit(): void {
   this.projectService.getAllProjects().subscribe(
@@ -39,10 +44,21 @@ ngOnInit(): void {
 
   this.http.get(`http://localhost:8080/getAllTeams`).subscribe((result2)=>{
     this.accordionItems = result2 as any;
-  })
+
+    if (Array.isArray(result2)) {
+      // Find available teams
+      this.accordionItems = result2.filter((team: Team) => {
+        // Check if the team's id is not present in any project's team.id
+        return !this.projects.some(project => project.team && project.team.id === team.id);
+      });
+      console.log('Available Teams:', this.accordionItems);
+    }})
 
   this.projectService.getAllClients().subscribe((clientList)=>{
     this.clients = clientList as any;
+
+    this.clients = this.clients.filter(client => !client.ownedProject);
+
   })
 }
 

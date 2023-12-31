@@ -2,3 +2,5 @@
 
 <a *ngIf="!isLoggedIn" href="/login"><button>Login</button></a>
 <a *ngIf="isLoggedIn" href="/login"><button (click)="logout()">Logout</button></a>
+
+<a *ngIf="!isLoggedIn" href="/appointmentForm"><button>Get an appointment</button></a>

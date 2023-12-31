@@ -1,0 +1,33 @@
+/* rdv.component.css */
+h2 {
+    margin-bottom: 20px;
+  }
+  
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .appointments-table th, .appointments-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .appointments-table thead {
+    background-color: #f2f2f2;
+  }
+  
+  .appointments-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .appointments-table tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+  
