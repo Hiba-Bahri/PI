@@ -16,6 +16,7 @@ public class Client extends User {
 
     @Column(name = "tel", columnDefinition = "VARCHAR(8)",nullable = false)
     private String tel;
+    
 /*    @ManyToOne
     @JsonIgnore
     private Team team;*/

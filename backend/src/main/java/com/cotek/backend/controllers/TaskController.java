@@ -2,6 +2,7 @@ package com.cotek.backend.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ public class TaskController {
 
     @PostMapping("/createTask")
     public ResponseEntity<Task> createTask(@RequestBody Task t){
+        System.out.println("---------------------------------this is the data" +t);
         return taskService.createTask(t);
     }
 
@@ -29,10 +31,16 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
-    /*@PutMapping("/updateTask/{id}")
+    @GetMapping("/getAllTasksByProjectId/{projectId}")
+    public ResponseEntity<List<Task>> getAllTasksByProjectId(@PathVariable Long projectId) {
+        List<Task> tasks = taskService.getAllTasksByProjectId(projectId);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
+
+    @PutMapping("/updateTask/{id}")
     public ResponseEntity<Task> updateProject(@PathVariable Long id, @RequestBody Task editedTask){
         return taskService.updateTask(id,editedTask);
-    }*/
+    }
 
     @DeleteMapping("/deleteTask/{id}")
     public ResponseEntity<String> deleteTask(@PathVariable Long id){

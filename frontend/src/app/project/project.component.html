@@ -83,12 +83,12 @@
           <div class="input-group">
             <div class="item1">
               <label for="description">Description</label>
-              <input type="text" class="form-control" id="description" [ngModelOptions]="{ standalone: true }" [(ngModel)]="formData.description" required>
+              <input type="text" class="form-control" id="description" [ngModelOptions]="{ standalone: true }" [(ngModel)]="formDataCreate.description" required>
             </div>
             <div class="item2">
               <label for="member">Member</label>
-              <select id="member" [(ngModel)]="formData.member" [ngModelOptions]="{ standalone: true }" class="member-select">
-                <option *ngFor="let member of members" [ngValue]="member">
+              <select id="member" [(ngModel)]="formDataCreate.member" [ngModelOptions]="{ standalone: true }" class="member-select">
+                <option *ngFor="let member of project.team.members" [ngValue]="member">
                   {{ member.firstName }} {{ member.lastName }} -{{ member.occupation }}-
                 </option>
               </select>
@@ -99,39 +99,41 @@
           </div>
         </form>
         
-
-        <ul id="accordion">  
-          <li *ngFor="let task of ongoingTasks">
-            <form (ngSubmit)="onSubmit()">
-              <label for="task-{{task.id}}">
-                <div class="input-group">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th class="TaskItem1">
-                            <input type="text" class="form-control" id="description" [ngModelOptions]="{ standalone: true }" [value]="task.description" [(ngModel)]="formData.description" required>
-                          </th>
-                          <th class="TaskItem3">
-                            <select id="member" [(ngModel)]="formData.member" [ngModelOptions]="{ standalone: true }" class="member-select">
-                              <option *ngFor="let member of members" [ngValue]="member">
-                                {{ member.firstName }} {{ member.lastName }} -{{ member.occupation }}-
-                              </option>
+        <div class="container">
+          <ul id="accordion">  
+            <li *ngFor="let task of ongoingTasks">
+              <form (ngSubmit)="updateTask(task.id)" #taskForm="ngForm">
+                <label for="task-{{task.id}}">
+                  <div class="input-group">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th class="TaskItem1">
+                              <input type="text" class="form-control" id="description" name="description" [placeholder]="task.description" [value]="task.description" [(ngModel)]="formDataEdit.description" required>
+                            </th>
+                            <th class="TaskItem3">
+                              <select class="member-select" id="memberSelect" name="member" [(ngModel)]="selectedMember">
+                                <option *ngFor="let member of project.team.members" [ngValue]="member">
+                                    {{ member.firstName }} {{ member.lastName }} -{{ member.occupation }}-
+                                </option>
                             </select>
-                          </th>
-                        </tr>
-                      </thead>
-                    </table>
-                    <div class="TaskItem4">
-                      <button type="button"  class="btn btn-edit" (click)="updateTask(task)">Edit</button>
-                    </div>
-                    <div class="TaskItem5">
-                      <button (click)="remove(task.id)" class="btn btn-remove" type="button">Remove Item</button>
-                    </div>
-                </div>
-              </label>
-            </form>
-          </li>
-        </ul>
+                            
+                            </th>
+                          </tr>
+                        </thead>
+                      </table>
+                      <div class="TaskItem4">
+                        <button class="btn btn-edit" type="submit">Edit</button>
+                      </div>
+                      <div class="TaskItem5">
+                        <button (click)="remove(task.id)" class="btn btn-remove" type="button">Remove Item</button>
+                      </div>
+                  </div>
+                </label>
+              </form>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="container">
@@ -145,24 +147,18 @@
                       <thead>
                         <tr>
                           <th class="TaskItem1">
-                            <input type="text" class="form-control" id="description" [(ngModel)]="formData.description" required>
+                            <input type="text" class="form-control" id="description" name="description" [value]="task.description"  readonly>
                           </th>
                           <th class="TaskItem3">
-                            <select id="member" [(ngModel)]="formData.member" class="member-select">
-                              <option *ngFor="let member of members" [ngValue]="member">
-                                {{ member.firstName }} {{ member.lastName }} -{{ member.occupation }}-
-                              </option>
-                            </select>
+                            <input type="text" class="form-control" id="description" name="description" [value]="task.member.firstName + ' ' + task.member.lastName + ' -' + task.member.occupation + '-'" readonly>
+
                           </th>
                         </tr>
                       </thead>
                     </table>
-                    <div class="TaskItem4">
-                      <button type="button"  class="btn btn-edit" (click)="updateTask(task)">Edit</button>
-                    </div>
                     <div class="TaskItem5">
                       <button (click)="remove(task.id)" class="btn btn-remove" type="button">Remove Item</button>
-                    </div>
+                    </div> 
                 </div>
               </label>
             </form>

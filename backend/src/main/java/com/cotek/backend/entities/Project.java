@@ -1,6 +1,5 @@
 package com.cotek.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +31,7 @@ public class Project {
     @Column(name = "keywords", columnDefinition = "VARCHAR(255)", nullable = false)
     private String keywords;
 
-    @ManyToOne
+    @OneToOne
     private Team team;
 
     @Column(name = "status")
@@ -40,4 +39,5 @@ public class Project {
 
     @Column(name="methodology")
     private String methodology;
+
 }

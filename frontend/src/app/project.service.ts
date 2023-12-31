@@ -24,6 +24,7 @@ export class ProjectService {
   updateProject(id:any, editedProject:any):Observable<any>{
     return this.http.put(`${this.baseUrl}/updateProject/${id}`,editedProject);
   }
+  
   deleteProject(id:number){
     return this.http.delete(`${this.baseUrl}/deleteProject/${id}`, { responseType: 'text' })
   }

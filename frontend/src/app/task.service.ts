@@ -13,8 +13,13 @@ export class TaskService {
   getAllTasks(){
     return this.http.get(`${this.baseUrl}/getAllTasks`);
   }
+
+  getAllTasksByProjectId(id: any){
+    return this.http.get(`${this.baseUrl}/getAllTasksByProjectId/${id}`);
+  }
     
   createTask(data:any): Observable<any>{
+    console.log(data.project);
     return this.http.post(`${this.baseUrl}/createTask`,data);
   }
   

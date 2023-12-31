@@ -33,39 +33,52 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    /*public ResponseEntity<Task> updateTask(Long id, Task editedTask) {
+        public List<Task> getAllTasksByProjectId(Long projectId) {
+            return taskRepository.findByProjectId(projectId);
 
+    }
+
+    public ResponseEntity<Task> updateTask(Long id, Task editedTask) {
         Optional<Task> optionalTask = taskRepository.findById(id);
-
+    
         if (optionalTask.isPresent()) {
             Task existingTask = optionalTask.get();
-
+    
             if (editedTask.getDescription() != null) {
                 existingTask.setDescription(editedTask.getDescription());
             }
-
+    
             if (editedTask.getProgress() != null) {
                 existingTask.setProgress(editedTask.getProgress());
             }
-
+    
             if (editedTask.getMember() != null) {
-                Optional<Member> optionalMember = memberRepository.findById(editedTask.getMember().getId());
-
-                if (optionalMember.isPresent()) {
-                    Member member = optionalMember.get();
-                    member.getTasks().add(existingTask);
-                    existingTask.setMember(member);
-                    memberRepository.save(member);
+                Member editedMember = editedTask.getMember();
+                Long memberId = editedMember.getId();
+    
+                if (memberId != null) {
+                    Optional<Member> optionalMember = memberRepository.findById(memberId);
+    
+                    if (optionalMember.isPresent()) {
+                        Member member = optionalMember.get();
+                        member.getTasks().add(existingTask);
+                        existingTask.setMember(member);
+                        memberRepository.save(member);
+                    } else {
+                        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+                    }
                 } else {
-                    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
                 }
             }
+    
             Task updatedTask = taskRepository.save(existingTask);
             return ResponseEntity.ok(updatedTask);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-    }*/
+    }
+    
 
     public ResponseEntity<String> deleteTask(Long id) {
         if (taskRepository.existsById(id)) {

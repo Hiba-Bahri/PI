@@ -17,9 +17,12 @@ export class ProjectComponent implements OnInit {
   ongoingTasks: any[] = [];
   members: any[] = [];
   taskMembers: any[] = [];
-  formData = { description: '', progress: 'In Progress', member: null };
+  formDataCreate = { description: '', progress: 'In progress', member: null, project: null };
+  selectedMember: any;
+  formDataEdit: any = {};
   project: any;
   selectedWorkMethodology: string = 'Scrum';
+  projectId: any ;
 
   constructor(
     private taskService: TaskService,
@@ -32,46 +35,61 @@ export class ProjectComponent implements OnInit {
   ngOnInit(){
 
     this.route.params.subscribe(params => {
-      const projectId = params['projectId'];
+      this.projectId = params['projectId'];
 
-      this.projectService.getProjectbyId(projectId).subscribe((result)=>{
+      this.projectService.getProjectbyId(this.projectId).subscribe((result)=>{
         this.project= result as any;
-        // console.log(this.project)
+        console.log(this.project);
+        this.formDataCreate.project=this.project;
+        /*const projectJSON = JSON.stringify(this.project);
+        this.formDataCreate.project= projectJSON;*/
+
       })
+
+      this.taskService.getAllTasksByProjectId(this.projectId).subscribe((t: any) => {
+        this.tasks = t;
+        this.ongoingTasks = this.tasks.filter((task) => task.progress === 'In progress');
+        this.finishedTasks = this.tasks.filter((task) => task.progress === 'Finished');
+      });
+
   })
-
-    this.taskService.getAllTasks().subscribe((t: any) => {
-      this.tasks = t;
-      this.ongoingTasks = this.tasks.filter((task) => task.progress === 'In progress');
-      console.log("ON GOING",this.ongoingTasks)
-      this.finishedTasks = this.tasks.filter((task) => task.progress === 'Finished');
-      console.log("FINISHED",this.ongoingTasks)
-    });
-
-    this.memberService.getAllMembers().subscribe((members: any) => {
-      this.members = members;
-      this.taskMembers = this.members.filter((member) => member.occupation === 'Developper' || member.occupation === 'Tester');
-    }); 
   }
 
   onSubmit() {
-    console.log(this.formData);
-    this.taskService.createTask(this.formData).subscribe((response) => {
-      console.log('Task added successfully:', response);
-      this.ngOnInit();
-    });
+    if (this.formDataCreate.project !== null) {
+      this.taskService.createTask(this.formDataCreate).subscribe((response) => {
+        console.log('Task added successfully:', response);
+        this.ngOnInit();
+      });
+    } else {
+      console.error('Project is null.');
+    }
   }
+  
 
-
-  updateTask(id:number){
-    this.taskService.updateTask(id, this.formData).subscribe(()=>{
-      this.ngOnInit
-    });
+  onMemberSelectChange(event: any, member: any): void {
+    const selectedMember = event.target.value;
+    this.formDataEdit.member = selectedMember;
   }
+  
+
+  updateTask(id: number) {
+    this.formDataEdit.member = this.selectedMember;
+    console.log("New Edited Task:");
+    console.log(this.formDataEdit);
+    this.taskService.updateTask(id, this.formDataEdit).subscribe(
+      () => {
+        this.ngOnInit();
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+  
 
   remove(taskId: number){
     this.taskService.deleteTask(taskId).subscribe(() => {
-      this.router.navigate(['/project']);
       this.ngOnInit();
   });
   
