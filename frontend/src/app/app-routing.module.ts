@@ -13,8 +13,10 @@ import { LoginComponent } from './login/login.component';
 import { CotekComponent } from './cotek/cotek.component';
 import { authGuard } from './auth.guard';
 import { authGuardpm } from './auth.guard';
+import { authGuardmember } from './auth.guard';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { ClientManagementComponent } from './client-management/client-management.component';
+import { MemberTaskManagementComponent } from './member-task-management/member-task-management.component';
 
 const routes: Routes = [
   {path: 'teamManagement', component:TeamManagementComponent, canActivate: [authGuard]},
@@ -24,6 +26,7 @@ const routes: Routes = [
   {path: 'project', component:ProjectComponent, canActivate: [authGuardpm]},
   {path: 'Projects', component:ProjectManagerComponent, canActivate: [authGuardpm]},
   {path: 'Project/:projectId', component:ProjectComponent, canActivate: [authGuardpm]},
+  {path: 'memberTaskManagement', component:MemberTaskManagementComponent, canActivate: [authGuardmember]},
   {path: 'notifications', component:NotificationsComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'login',component: LoginComponent },

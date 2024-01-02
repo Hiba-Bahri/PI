@@ -1,9 +1,7 @@
 package com.cotek.backend.controllers;
 
 import com.cotek.backend.entities.Appointment;
-import com.cotek.backend.entities.Task;
 import com.cotek.backend.services.AppointmentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +11,6 @@ import java.util.List;
 public class AppointmentController {
     private final AppointmentService appointmentService;
 
-    @Autowired
     public AppointmentController(AppointmentService appointmentService) {
         this.appointmentService = appointmentService;
     }

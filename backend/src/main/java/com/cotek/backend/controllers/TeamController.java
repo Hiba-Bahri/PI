@@ -24,9 +24,9 @@ public class TeamController {
         return teamService.createTeam(team);
     }
 
-    @DeleteMapping("/deleteTeam/{id}")
-    public ResponseEntity<String> deleteTeam(@PathVariable Long id){
-        return teamService.deleteTeam(id);
+    @DeleteMapping("/archiveTeam/{id}")
+    public ResponseEntity<String> archiveTeam(@PathVariable Long id){
+        return teamService.archiveTeam(id);
     }
 
     @GetMapping("/getTeamById/{id}")

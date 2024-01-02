@@ -16,9 +16,6 @@ public class TeamService {
     @Autowired
     TeamRepository teamRepository;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
     }
@@ -37,11 +34,12 @@ public class TeamService {
         }
     }
 
-    public ResponseEntity<String> deleteTeam(Long id) {
+    public ResponseEntity<String> archiveTeam(Long id) {
         if (teamRepository.existsById(id)) {
-            teamRepository.deleteById(id);
-            jdbcTemplate.execute("ALTER TABLE team AUTO_INCREMENT=1");
-            return ResponseEntity.ok("Team with ID " + id + " has been deleted.");
+            Team team = teamRepository.findById(id).get();
+            team.setStatus("Archived");
+            teamRepository.save(team);
+            return ResponseEntity.ok("Team with ID " + id + " has been archived.");
         } else {
             return ResponseEntity.notFound().build();
         }

@@ -3,13 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TaskService } from '../task.service';
 import { MemberService } from '../member.service';
 import { ProjectService } from '../project.service';
+import { Member } from '../member.model';
+
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
-
 export class ProjectComponent implements OnInit {
 
   tasks: any[] = [];
@@ -17,6 +18,7 @@ export class ProjectComponent implements OnInit {
   ongoingTasks: any[] = [];
   members: any[] = [];
   taskMembers: any[] = [];
+  member: Member | null = null;
   formDataCreate = { description: '', progress: 'In progress', member: null, project: null };
   selectedMember: any;
   formDataEdit: any = {};
@@ -25,34 +27,30 @@ export class ProjectComponent implements OnInit {
   projectId: any ;
 
   constructor(
+
     private taskService: TaskService,
     private memberService: MemberService,
     private router: Router,
     private route: ActivatedRoute, 
-    private projectService:ProjectService
-  ) {}
+    private projectService: ProjectService
+  ) {      }
   
-  ngOnInit(){
-
+  ngOnInit() {
     this.route.params.subscribe(params => {
       this.projectId = params['projectId'];
 
-      this.projectService.getProjectbyId(this.projectId).subscribe((result)=>{
-        this.project= result as any;
+      this.projectService.getProjectbyId(this.projectId).subscribe((result) => {
+        this.project = result;
         console.log(this.project);
-        this.formDataCreate.project=this.project;
-        /*const projectJSON = JSON.stringify(this.project);
-        this.formDataCreate.project= projectJSON;*/
-
-      })
+        this.formDataCreate.project = this.project;
+      });
 
       this.taskService.getAllTasksByProjectId(this.projectId).subscribe((t: any) => {
         this.tasks = t;
-        this.ongoingTasks = this.tasks.filter((task) => task.progress === 'In progress');
-        this.finishedTasks = this.tasks.filter((task) => task.progress === 'Finished');
+        this.ongoingTasks = this.tasks.filter((task: any) => task.progress === 'In progress');
+        this.finishedTasks = this.tasks.filter((task: any) => task.progress === 'Finished');
       });
-
-  })
+    });
   }
 
   onSubmit() {
@@ -65,17 +63,15 @@ export class ProjectComponent implements OnInit {
       console.error('Project is null.');
     }
   }
-  
 
   onMemberSelectChange(event: any, member: any): void {
     const selectedMember = event.target.value;
-    this.formDataEdit.member = selectedMember;
+    this.formDataCreate.member = selectedMember;
   }
-  
 
   updateTask(id: number) {
     this.formDataEdit.member = this.selectedMember;
-    console.log("New Edited Task:");
+    console.log('New Edited Task:');
     console.log(this.formDataEdit);
     this.taskService.updateTask(id, this.formDataEdit).subscribe(
       () => {
@@ -86,25 +82,25 @@ export class ProjectComponent implements OnInit {
       }
     );
   }
-  
 
-  remove(taskId: number){
+  remove(taskId: number) {
     this.taskService.deleteTask(taskId).subscribe(() => {
       this.ngOnInit();
-  });
-  
+    });
   }
-  
+
   save_work_methodology(id: number) {
     let updatedProject = { ...this.project, methodology: this.selectedWorkMethodology };
 
-    this.projectService.updateProject(id, updatedProject).subscribe((res)=>{
-      console.log("Work Methodology updated successfuly",res);
-      this.ngOnInit()
-    })
-    };
-    showMembers = false;
-    toggleMembers(){
-      this.showMembers = !this.showMembers;
-    }
+    this.projectService.updateProject(id, updatedProject).subscribe((res) => {
+      console.log('Work Methodology updated successfully', res);
+      this.ngOnInit();
+    });
+  }
+
+  showMembers = false;
+
+  toggleMembers() {
+    this.showMembers = !this.showMembers;
+  }
 }

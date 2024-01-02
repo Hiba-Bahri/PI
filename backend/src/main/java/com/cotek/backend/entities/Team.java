@@ -21,6 +21,9 @@ public class Team {
     @Column(name = "name",nullable = false, columnDefinition = "VARCHAR(50)")
     private String name;
 
+    @Column(name = "status",nullable = false, columnDefinition = "VARCHAR(50)")
+    private String status;
+
     @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
 }

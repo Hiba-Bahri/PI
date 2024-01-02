@@ -15,7 +15,7 @@ export class GestionProjectComponent implements OnInit{
   createSectionVisible: boolean = true;
   showProject:boolean= true;
   projects: any[] = [];
-  formData = {title:'', description:'', keywords:'', technologies:'',owner:null,status:''}
+  formData = {title:'', description:'', keywords:'', technologies:'',owner:null, status:''}
 
   accordionItems: any[] = [];
 

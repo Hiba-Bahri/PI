@@ -11,11 +11,12 @@ import { MemberService } from '../member.service';
 
 export class TeamManagementComponent implements OnInit {
   createSectionVisible: boolean = true;
-  formData = { name: '', members: [] };
+  formData = { name: '', members: [], status: "active" };
   teams: any[] = [];
   members: any[] = [];
   devMembers: any[] = [];
   testMembers: any[] = [];
+  activeTeams: any[] = [];
   scrumManagers: any[] = [];
   teamName: String = '';
   count: number = 0;
@@ -29,8 +30,8 @@ export class TeamManagementComponent implements OnInit {
   ngOnInit() {
     this.teamService.getAllTeams().subscribe((data: any) => {
       this.teams = data;
-
-      this.teams.forEach((team) => {
+      this.activeTeams= this.teams.filter((team: any) => team.status === 'active');
+      this.activeTeams.forEach((team) => {
         this.count += team.members.length;
       });
     });
@@ -48,7 +49,7 @@ export class TeamManagementComponent implements OnInit {
   onSubmit() {
     this.teamService.createTeam(this.formData).subscribe((response) => {
       console.log('Team created successfully:', response);
-      this.formData = { name: '', members: [] };
+      this.formData = { name: '', members: [], status: "active" };
       this.teamName = this.formData.name;
       this.createSectionVisible = false;
       this.router.navigate(['/teamManagement']);
@@ -72,9 +73,9 @@ export class TeamManagementComponent implements OnInit {
   });
   }
 
-  delete(teamId: number){
-    this.teamService.deleteTeam(teamId).subscribe((Response)=>{
-      console.log('Team removed successfully');
+  archive(teamId: number){
+    this.teamService.archiveTeam(teamId).subscribe((Response)=>{
+      console.log('Team archived successfully');
       this.router.navigate(['/teamManagement']);
       this.ngOnInit();
     })

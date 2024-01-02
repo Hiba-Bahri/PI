@@ -19,7 +19,7 @@ export class TeamService {
     return this.http.post(`${this.baseUrl}/createTeam`, data);
   }
 
-  deleteTeam(id: number){
-    return this.http.delete(`${this.baseUrl}/deleteTeam/${id}`, { responseType: 'text' });
+  archiveTeam(id: number){
+    return this.http.delete(`${this.baseUrl}/archiveTeam/${id}`, { responseType: 'text' });
   }
 }

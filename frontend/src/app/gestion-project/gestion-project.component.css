@@ -8,15 +8,17 @@
 body{
     overflow: hidden;
     background: none;
+    height: 100%;
 } 
 
 h1{
-    color: white;
+    color: #261554;
 }
 
 .container_page{
 	margin: 30px;
     position: fixed;
+    height: auto;
 }
 
 .row{

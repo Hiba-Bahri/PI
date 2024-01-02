@@ -17,6 +17,7 @@ export class MemberManagementComponent implements OnInit {
   teams: any[] = [];
   devMembers: any[] = [];
   testMembers: any[] = [];
+  activeTeams:any[] = [];
   scrumManagers: any[] = [];
   count: number = 0;  
   selectedMemberId: number = 0;
@@ -39,6 +40,10 @@ export class MemberManagementComponent implements OnInit {
 
     this.teamService.getAllTeams().subscribe((t: any) => {
       this.teams = t;
+      this.activeTeams= this.teams.filter((team: any) => team.status === 'active');
+      this.activeTeams.forEach((team) => {
+        this.count += team.members.length;
+      });
     });
   }
 

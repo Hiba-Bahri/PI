@@ -12,7 +12,7 @@ body{
     
 }
 h1{
-  color: white;
+  color: #261554;
 }
 #accordion{
     margin-top: 20px;
@@ -37,16 +37,15 @@ h1{
     color: rgb(0, 0, 0);
 }
 
-#accordion li label span{
+.checkbutton{
     transform: rotate(90deg);
     font-size: 22px;
     color: #333;
 }
 
-#accordion-members li label span{
-  transform: rotate(180deg);
-  font-size: 22px;
-  color: #333;
+button{
+  border: none;
+  color: #ed5620;
 }
 
 
@@ -75,7 +74,7 @@ h1{
     list-style: none;
     width: 100%;
     margin-bottom: 10px;
-    background: #dfdede;
+    background: #ededed;
     padding: 5px;
     border-radius: 4px;
 }
@@ -147,7 +146,6 @@ thead tr{
 }
 
 
-
 .grid-item2{
     align-items: end;
     justify-self: end;
@@ -172,7 +170,7 @@ thead tr{
   padding: 10px 20px;
   font-size: 20px;
   font-weight: 500;
-  color: #3498db;
+  color: #261554;
   cursor: pointer;
 }
 

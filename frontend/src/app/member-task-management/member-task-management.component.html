@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>side bar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="member-task-management.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  </head>
+  <body>
+    <div class="grid-container">
+        <div class="grid-item1"><h1>Your tasks for the day</h1></div>
+        <div class="grid-item2">
+            <ul id="accordion">
+                <li *ngFor="let task of tasks">
+                    <label for="task-{{task.id}}">
+                      <div class="details">
+                        <table id="teamtable">
+                          <thead>
+                            <tr>
+                              <th id="name">{{task.description}}</th>
+                              <th>
+                                <div class="toggle-switch">
+                                  <input class="toggle-input" id="toggle-{{task.id}}" type="checkbox" (change)="toggleTaskStatus(task)" [checked]="task.progress === 'Finished'">
+                                  <label class="toggle-label" for="toggle-{{task.id}}"></label>
+                                </div>
+                              </th>
+                            </tr>
+                          </thead>
+                        </table>
+                      </div>
+                    </label>
+                  </li>
+                  
+                
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>
