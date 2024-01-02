@@ -49,9 +49,9 @@ public class ProjectService {
             if(editedProject.getDescription()!=null){
                 existingProject.setDescription(editedProject.getDescription());
             }
-            if(editedProject.getOwner() != null){
+/*          if(editedProject.getOwner() != null){
                 existingProject.setOwner(editedProject.getOwner());
-            }
+            }*/
             if(editedProject.getTechnologies() != null){
                 existingProject.setTechnologies(editedProject.getTechnologies());
             }

@@ -33,4 +33,9 @@ public class MemberController {
     public ResponseEntity<?> removeMemberFromTeam(@PathVariable Long teamId, @PathVariable Long memberId) {
         return memberService.removeMemberFromTeam(teamId, memberId);
     }
+
+    @GetMapping("/getMemberById/{memberId}")
+    public ResponseEntity<Member> getMemberById(@PathVariable Long memberId){
+        return memberService.getMemberById(memberId);
+    }
 }

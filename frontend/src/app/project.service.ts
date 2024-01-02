@@ -21,6 +21,9 @@ export class ProjectService {
     return this.http.get<any>(`${this.baseUrl}/getProjectById/${projectId}`);
   }
 
+  getProjectByManager(managerId:any){
+    return this.http.get<any>(`${this.baseUrl}/project-by-manager/${managerId}`)
+  }
   updateProject(id:any, editedProject:any):Observable<any>{
     return this.http.put(`${this.baseUrl}/updateProject/${id}`,editedProject);
   }

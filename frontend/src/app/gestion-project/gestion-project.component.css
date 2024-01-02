@@ -8,19 +8,20 @@
 body{
     overflow: hidden;
     background: none;
-} 
+  } 
 
 h1{
+  margin-left: 19%;
     color: white;
 }
 
 .container_page{
-	margin: 30px;
-    position: fixed;
+	margin-left: 20%;
+  position: relative;
+  z-index: 1;
 }
 
 .row{
-	/* width: 100%; */
 	display: flex;
     flex-wrap: wrap;
 	justify-content: space-between;
@@ -83,8 +84,8 @@ h1{
 	text-transform: uppercase;
 	font-weight: 300;
 	margin-top: 90px;
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 	transition: 0.4s;
 	transition-property: transform;
 }
@@ -100,18 +101,10 @@ h1{
 	width: 100%;
 	padding: 15px;
 	bottom: 0px;
-    display: flex; /* Add this line */
-    justify-content: flex-end; /* Align items to the right */
-	/* transition: 0.6s; */
-    /* text-align: center; */
-	/* transition-property: bottom; */
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* align-items: baseline; */
+  display: flex; /* Add this line */
+  justify-content: flex-end; /* Align items to the right */
 }
-/* .image:hover .more{ */
-	/* bottom: 0; */
-/* } */
+
 .more a {
     margin-top: 4px;
     margin-right: 10px; /* Adjust the margin to your desired spacing */
@@ -318,6 +311,7 @@ input{
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 2;
     transform: translate(-50%, -50%);
   }
   input[type="checkbox"]{
@@ -537,6 +531,7 @@ tbody tr.active-row {
   .container2{
     color: #261554;;
     position: absolute;
+    z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

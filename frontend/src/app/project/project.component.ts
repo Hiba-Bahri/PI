@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TaskService } from '../task.service';
 import { MemberService } from '../member.service';
 import { ProjectService } from '../project.service';
+import { NotificationsService } from '../notifications.service';
 
 @Component({
   selector: 'app-project',
@@ -23,13 +24,15 @@ export class ProjectComponent implements OnInit {
   project: any;
   selectedWorkMethodology: string = 'Scrum';
   projectId: any ;
+  notif={message:'',receiver:''}
 
   constructor(
     private taskService: TaskService,
     private memberService: MemberService,
     private router: Router,
     private route: ActivatedRoute, 
-    private projectService:ProjectService
+    private projectService:ProjectService,
+    private notificationService: NotificationsService
   ) {}
   
   ngOnInit(){
@@ -39,7 +42,7 @@ export class ProjectComponent implements OnInit {
 
       this.projectService.getProjectbyId(this.projectId).subscribe((result)=>{
         this.project= result as any;
-        console.log(this.project);
+        console.log("fetched Project",this.project);
         this.formDataCreate.project=this.project;
         /*const projectJSON = JSON.stringify(this.project);
         this.formDataCreate.project= projectJSON;*/
@@ -58,7 +61,12 @@ export class ProjectComponent implements OnInit {
   onSubmit() {
     if (this.formDataCreate.project !== null) {
       this.taskService.createTask(this.formDataCreate).subscribe((response) => {
+        // this.notif.message='A new task is affected to you';
+        // this.notif.receiver!= this.formDataCreate.member;
         console.log('Task added successfully:', response);
+        // this.notificationService.saveNotif(this.notif).subscribe((not)=>{
+        //   console.log("Notification saved")
+        // })
         this.ngOnInit();
       });
     } else {
@@ -97,12 +105,19 @@ export class ProjectComponent implements OnInit {
   
   save_work_methodology(id: number) {
     let updatedProject = { ...this.project, methodology: this.selectedWorkMethodology };
-
-    this.projectService.updateProject(id, updatedProject).subscribe((res)=>{
-      console.log("Work Methodology updated successfuly",res);
-      this.ngOnInit()
-    })
-    };
+  
+    console.log('Updated Project:', updatedProject); // Log the updated project for debugging
+  
+    this.projectService.updateProject(id, updatedProject).subscribe(
+      (res) => {
+        console.log('Work Methodology updated successfully', res);
+        this.ngOnInit();
+      },
+      (error) => {
+        console.error('Error updating work methodology:', error);
+      }
+    );
+  }
     showMembers = false;
     toggleMembers(){
       this.showMembers = !this.showMembers;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TeamService } from '../team.service';
 import { MemberService } from '../member.service';
+import { NotificationsService } from '../notifications.service';
 
 @Component({
   selector: 'app-member-management',
@@ -20,12 +21,16 @@ export class MemberManagementComponent implements OnInit {
   scrumManagers: any[] = [];
   count: number = 0;  
   selectedMemberId: number = 0;
+  notif={message:'',receiver:''}
+  team: any={}
+  member:any={};
 
 
   constructor(
     private memberService: MemberService,
     private teamService: TeamService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationsService
   ) {}
 
 
@@ -62,6 +67,19 @@ export class MemberManagementComponent implements OnInit {
   add(teamId: number): void{
     console.log(this.selectedMemberId);
     this.memberService.addMemberToTeam(teamId, this.selectedMemberId).subscribe((response: any) => {
+          this.teamService.getTeamById(teamId).subscribe((res)=>{
+            this.team = res as any;
+            console.log("The TEAM IS :",this.team)
+            this.memberService.getMemberById(this.selectedMemberId).subscribe((res2)=>{
+              this.member = res2;
+              console.log("THE MEMBER IS",this.member)
+              this.notif.message="You have been added to team : "+this.team.name
+              this.notif.receiver=this.member.login
+              this.notificationService.saveNotif(this.notif).subscribe((not)=>{
+                console.log("Notification saved");
+              })
+            })
+          })
       console.log('Member added successfully:', response);
     },
     (error) => {

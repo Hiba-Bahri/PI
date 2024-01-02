@@ -14,6 +14,9 @@ export class TeamService {
   getAllTeams(){
     return this.http.get(`${this.baseUrl}/getAllTeams`);
   }
+  getTeamById(id: number){
+    return this.http.get(`${this.baseUrl}/getTeamById/${id}`);
+  }
 
   createTeam(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/createTeam`, data);

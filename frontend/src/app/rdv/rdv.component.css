@@ -1,10 +1,13 @@
 /* rdv.component.css */
 h2 {
-    margin-bottom: 20px;
+  color: white;
+    margin-left: 18%;
+    margin-bottom: 10px;
   }
   
   .table-container {
-    width: 100%;
+    margin-left:18%;
+    width: 80%;
     overflow-x: auto;
   }
   

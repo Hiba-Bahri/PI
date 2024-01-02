@@ -8,12 +8,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./project-manager.component.css']
 })
 export class ProjectManagerComponent implements OnInit{
-  projects: any[] = [];
+  project :any={};
+  manager='';
   constructor(private projectService: ProjectService, private router:Router, private http:HttpClient){}
 
   ngOnInit(): void {
-    this.projectService.getAllProjects().subscribe((result)=>{
-      this.projects=result as any;
+    this.manager= localStorage.getItem("user") ?? '';
+    this.projectService.getProjectByManager(this.manager).subscribe((result)=>{
+      this.project=result as any;
     })    
   }
   redirectToDetails(projectId: number) {

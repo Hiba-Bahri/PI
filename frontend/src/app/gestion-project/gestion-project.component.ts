@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProjectService } from '../project.service';
 import { HttpClient } from '@angular/common/http';
 import { Team } from '../team.model';
+import { NotificationsService } from '../notifications.service';
 @Component({
   selector: 'app-gestion-project',
   templateUrl: './gestion-project.component.html',
@@ -16,6 +17,8 @@ export class GestionProjectComponent implements OnInit{
   showProject:boolean= true;
   projects: any[] = [];
   formData = {title:'', description:'', keywords:'', technologies:'',owner:null,status:''}
+  notif = {message:'', receiver:''}
+  team :any={};
 
   accordionItems: any[] = [];
 
@@ -27,7 +30,7 @@ export class GestionProjectComponent implements OnInit{
     item.active = !item.active;
   }
 
-  constructor(private projectService: ProjectService, private router:Router,private http:HttpClient){}
+  constructor(private projectService: ProjectService, private router:Router,private http:HttpClient, private notificationService: NotificationsService){}
 
 
 
@@ -67,6 +70,12 @@ onSubmit(){
   this.projectService.createProject(this.formData).subscribe((project)=>{
     console.log("Data Sent Successfully : ",project);
     this.createSectionVisible = false;
+    this.notif.message="Your project has been created";
+    this.notif.receiver=project.owner.login;
+    this.notificationService.saveNotif(this.notif).subscribe((not)=>{
+      console.log(not);
+      
+    })
     this.router.navigate(['/projectManagement']);
     this.ngOnInit();
   },(error)=>{
@@ -78,6 +87,7 @@ retrieve(projectId: any) {
   this.showProject = true;
   this.projectService.getProjectbyId(projectId).subscribe((project) => {
      this.editedProject = project;
+     localStorage.setItem('projectToEdit', project.owner.login)
      this.updatedProject = { ...this.editedProject };
 
       
@@ -93,6 +103,14 @@ retrieve(projectId: any) {
 
 edit(projectId:any){
   this.projectService.updateProject(projectId,this.updatedProject).subscribe((response)=>{
+
+    this.notif.message="Your project is edited"
+  if('projectToEdit' in localStorage){
+    this.notif.receiver = localStorage.getItem('projectToEdit') ?? '' ;
+  }
+  this.notificationService.saveNotif(this.notif).subscribe((not)=>{
+    console.log(not);
+  })
     console.log('Data Updated Successfully :', response);
     this.router.navigate(['/projectManagement']);
     this.ngOnInit()
@@ -106,6 +124,13 @@ edit(projectId:any){
 
 delete(id:number){
   this.updatedProject.status = 'Finished';
+  this.notif.message="Your project is finished"
+  if('projectToEdit' in localStorage){
+    this.notif.receiver = localStorage.getItem('projectToEdit') ?? '' ;
+  }
+  this.notificationService.saveNotif(this.notif).subscribe((not)=>{
+    console.log(not);
+  })
   this.edit(id);
 }
 // delete(id:number){
@@ -122,6 +147,25 @@ delete(id:number){
 updateProjectTeam(teamId:any){
   this.updatedTeamProject={"id":teamId}
   this.projectService.updateProjectTeam(localStorage.getItem("projectId"),this.updatedTeamProject).subscribe((response)=>{
+    this.http.get(`http://localhost:8080/getTeamById/${teamId}`).subscribe((result)=>{
+      this.team=result;
+      this.notif.message="The Team "+this.team.name+" Is assigned to your project"
+      if('projectToEdit' in localStorage){
+        this.notif.receiver = localStorage.getItem('projectToEdit') ?? '' ;
+      }
+      this.notificationService.saveNotif(this.notif).subscribe((not)=>{
+        console.log(not);
+      })
+
+      this.notif.message="Your team has been affected to a project"
+        this.notif.receiver = this.team.members.find((member:any) => member.role === 'project manager').login ?? '' ;
+      
+      this.notificationService.saveNotif(this.notif).subscribe((not)=>{
+        console.log(not);
+      })
+      
+    })
+    
     console.log('Data Updated Successfully : ',response)
   },(error)=>{
     console.error('Error : ',error);

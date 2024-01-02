@@ -19,7 +19,7 @@ export class MemberService {
   }
 
   getMemberById(memberId: number) {          
-    return this.http.get(`${this.baseUrl}/member/${memberId}`);
+    return this.http.get(`${this.baseUrl}/getMemberById/${memberId}`);
   }
 
   addMemberToTeam(teamId: number, memberId: number): Observable<any> {

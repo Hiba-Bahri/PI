@@ -1,34 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Image Cards With Hover Effect</title>
-    <link rel="stylesheet" href="gestion-project.component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-  </head>
-  <body>
-      <h1>Gestion des projets</h1> 
-
-
-    <!--image card layout start-->
-    <div id="options_section" class="container_page">
-      <span>
-        <h4 style="color: white;">See Archived Projects</h4>
-        <label class="switch">
-          <input type="checkbox" (change)="toggleShowFinishedProjects()">
-          <span class="slider round"></span>
-        </label>
-      </span>
+<h1>Gestion des projets</h1>     <!--image card layout start-->
+  <div id="options_section" class="container_page">
+    <span>
+      <h4 style="color: white;">See Archived Projects</h4>
+      <label class="switch">
+        <input type="checkbox" (change)="toggleShowFinishedProjects()">
+        <span class="slider round"></span>
+      </label>
+    </span>
 
         <!--image row start-->
-        <div class="column1">
+    <div class="column1">
           <!-- <button class="BTN" (click)="toggleShowFinishedProjects()">
             Toggle Show Finished Projects
           </button> -->
           <div class="row" *ngFor="let project of projects" style="margin-top: 7%;">
             <div *ngIf="(project.status === 'In Progress' && !showFinishedProjects) || (project.status === 'Finished' && showFinishedProjects)">
-                <div class="image">
+              <div class="image">
                 <a href="/projectManagement#ModifierSection"><img src="../../assets/images/1.jpg" alt=""></a>
                 <div class="details">
                   <a href="/projectManagement#ModifierSection"style="text-decoration:none; "><button style="border: 0px;background-color:transparent;color:#261554;" (click)="retrieve(project.id)"><h4 style="margin-left: 15px;">{{project.title}}</h4><br></button></a>
@@ -40,19 +27,18 @@
                     <!-- <a href="/cadre#CreatecadreSection" class="read-more">Afficher le formulaire</a> -->
                   </div>
                 </div>
-              </div>
-            </div> 
+            </div>
+          </div> 
             <!--image card end-->
             <!--image card start-->
-            </div>
-            <div class="create-row" style="margin-top: 7%;">
-              <div class="image">
-                <a href="/projectManagement#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
-              </div>
-            </div>
-          </div>
-           
-          </div>
+    </div>
+      <div class="create-row" style="margin-top: 7%;">
+        <div class="image">
+          <a href="/projectManagement#CreatecadreSection"><button style="border: 0px; height:100%" type="button"><img src="../../assets/images/create.png" ></button></a>
+        </div>
+      </div>
+    </div>   
+  </div>
         <div id="teamSection" class="container2">
           <a href="/projectManagement#options_section" id="closePopupButton" class="fas fa-times close-btn" ></a>
 
@@ -130,16 +116,8 @@
             <form action="#" (ngSubmit)="edit(updatedProject.id)">
                 <div class="data">
                   <label for="title">Title</label>
-                  <input id="title" type="text" name="title" pattern="[A-Z]{1} [A-Za-z]*" [(ngModel)]="updatedProject.title" required>
+                  <input id="title" type="text" name="title" pattern="[A-Z]{1} [A-Za-z]*"  [(ngModel)]="updatedProject.title" required>
                 </div>
-                <div class="data">
-                  <label for="owner">Owner</label>
-                  <select id="owner" name="owner" [(ngModel)]="updatedProject.owner" class="owner-select" required>
-                     <option *ngFor="let client of clients" [ngValue]="client">
-                        {{ client.firstName }}
-                     </option>
-                  </select>
-               </div>
               <div class="data">
                 <label for="description">Description</label>
                 <textarea cols="50" name="description" rows="3" style="border-radius: 7px;resize:none" [(ngModel)]="updatedProject.description" ></textarea>
@@ -167,4 +145,3 @@
              </div>
             </form>
          </div>
-        </body>
