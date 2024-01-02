@@ -219,7 +219,7 @@ hr {
 .notification-popup {
     position: fixed;
     top: 20%;
-    left:13%;
+    left:17%;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
