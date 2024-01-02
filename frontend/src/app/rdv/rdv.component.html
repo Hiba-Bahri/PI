@@ -23,7 +23,7 @@
         <td>{{ convertToDate(appointment.appointmentDate) | date: 'dd/MM/yyyy' }}</td>
         <td>{{ convertToTime(appointment.appointmentTime) | date: 'shortTime' }}</td>
         <td>{{ appointment.status }}</td>
-        <td>
+        <td class="buttons">
             <!-- Add buttons for accepting and rejecting appointments -->
             <button *ngIf="appointment.status !== 'Accepted'" (click)="acceptAppointment(appointment.id)">Accept</button>
             <button *ngIf="appointment.status !== 'Rejected'" (click)="rejectAppointment(appointment.id)">Reject</button>

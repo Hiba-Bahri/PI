@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="team-management.component.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-  </head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />  
+</head>
   <body>
     <div class="grid-container">
         <div class="grid-item1"><h1>Team management</h1></div>
@@ -34,7 +35,7 @@
         </div>
         <div class="grid-item3">
             <ul id="accordion">
-                <li *ngFor="let team of teams">
+                <li *ngFor="let team of activeTeams">
                     <label for="team-{{team.id}}">
                         <div class="details">
                             <table id="teamtable">
@@ -46,7 +47,7 @@
                                 </thead>
                             </table>
                         </div>
-                        <span>&#x3e;</span> 
+                        <span class="checkbutton">&#x3e;</span> 
                     </label>
                     <input type="radio" name="accordion" [id]="'team-' + team.id">
                     <div class="content">
@@ -57,12 +58,13 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th id="member_id">#{{member.id}}</th>
                                                     <th id="member_other">{{member.firstName}} {{member.lastName}}</th>
                                                     <th id="member_other">{{member.occupation}}</th>
                                                     <th>
                                                         <button type="submit" (click)="remove(team.id, member.id)"  >
-                                                          <span class=" show-btn material-symbols-outlined">remove</span>
+                                                          <span class="material-symbols-outlined">
+                                                            delete
+                                                            </span>
                                                         </button>
                                                       </th>
                                                 </tr>
@@ -72,8 +74,8 @@
                                 </label>
                                 <input type="radio" name="accordion" [id]="'member-' + member.id">
                             </li>
-                            <button type="button" (click)="delete(team.id)"  >
-                                <label class="show-btn">Delete this team</label>
+                            <button type="button" (click)="archive(team.id)"  >
+                                <label class="show-btn">Archive this team</label>
                             </button>
                         </ul>
                     </div>

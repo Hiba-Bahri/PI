@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background: none;
+}
+
+
+.grid-item1 { grid-area: header; }
+.grid-item2 { grid-area: main; }
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    'header header header header'
+    'menu menu menu menu'
+    'main main main main';
+  gap: 40px;
+  padding: 10px;
+}
+
+.grid-item2{
+    align-items: center;
+    justify-self: center;
+}
+
+h1{
+  color: white;
+}
+
+#accordion{
+    margin-top: 20px;
+    width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#accordion li{
+    list-style: none;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #ffff;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#accordion li label{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+
+table{
+    border: solid 1px black;
+    border-collapse: collapse;
+    margin: auto;
+    min-width: 400px;
+    width: auto;
+    overflow: hidden; 
+    border-radius: 10px;
+    text-align: left;
+    color: #261554;
+
+}
+thead tr{
+    text-align: left;
+}
+
+#teamtable thead tr th{
+    width: 600px;
+    text-align: left;
+}
+
+#teamtable thead tr{
+  width: 200px;
+  text-align: left;
+}
+
+#name{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Genel stil */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  margin: 10px;
+}
+
+/* Giriş stil */
+.toggle-switch .toggle-input {
+  display: none;
+}
+
+/* Anahtarın stilinin etrafındaki etiketin stil */
+.toggle-switch .toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 24px;
+  background-color: #c31919;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Anahtarın yuvarlak kısmının stil */
+.toggle-switch .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+/* Anahtarın etkin hale gelmesindeki stil değişiklikleri */
+.toggle-switch .toggle-input:checked + .toggle-label {
+  background-color: #4CAF50;
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px);
+}
+
+/* Light tema */
+.toggle-switch.light .toggle-label {
+  background-color: #BEBEBE;
+}
+
+.toggle-switch.light .toggle-input:checked + .toggle-label {
+  background-color: #9B9B9B;
+}
+
+.toggle-switch.light .toggle-input:checked + .toggle-label::before {
+  transform: translateX(6px);
+}
+
+/* Dark tema */
+.toggle-switch.dark .toggle-label {
+  background-color: #4B4B4B;
+}
+
+.toggle-switch.dark .toggle-input:checked + .toggle-label {
+  background-color: #717171;
+}
+
+.toggle-switch.dark .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px);
+}

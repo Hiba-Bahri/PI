@@ -1,7 +1,6 @@
 package com.cotek.backend.services;
 
 import com.cotek.backend.entities.Client;
-import com.cotek.backend.entities.User;
 import com.cotek.backend.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

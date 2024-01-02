@@ -22,7 +22,7 @@ public class TaskController {
 
     @PostMapping("/createTask")
     public ResponseEntity<Task> createTask(@RequestBody Task t){
-        System.out.println("---------------------------------this is the data" +t);
+        System.out.println(t);
         return taskService.createTask(t);
     }
 
@@ -35,6 +35,17 @@ public class TaskController {
     public ResponseEntity<List<Task>> getAllTasksByProjectId(@PathVariable Long projectId) {
         List<Task> tasks = taskService.getAllTasksByProjectId(projectId);
         return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllTasksByMemberId/{memberId}")
+    public ResponseEntity<List<Task>> getAllTasksByMemberId(@PathVariable Long memberId) {
+        List<Task> tasks = taskService.getAllTasksByMemberId(memberId);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
+
+    @PutMapping("/updateTask/{taskId}/Status")
+    public ResponseEntity<Task> updateTaskStatus(@RequestBody String status, @PathVariable Long taskId){
+        return taskService.updateTaskStatus(status,taskId);
     }
 
     @PutMapping("/updateTask/{id}")

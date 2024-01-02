@@ -2,7 +2,6 @@ package com.cotek.backend.services;
 
 
 import com.cotek.backend.entities.Appointment;
-import com.cotek.backend.entities.Task;
 import com.cotek.backend.repositories.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,6 @@ public class AppointmentService {
     @Autowired
     private EmailService emailService;
 
-    @Autowired
     public AppointmentService(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
     }

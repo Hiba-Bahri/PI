@@ -15,32 +15,36 @@
       <hr>
       <ul class="links">
         <a><li *ngIf="hasRole('admin')">
-          <span class="material-symbols-outlined">calendar_month</span>
-          <a routerLink="/RDVManagement" routerLinkActive="active">Appointments manegement</a>
+          <span class="material-symbols-outlined" routerLink="/RDVManagement">calendar_month</span>
+          <a routerLink="/RDVManagement" routerLinkActive="active">Appointments management</a>
         </li></a>
         <a><li *ngIf="hasRole('admin')">
-          <span class="material-symbols-outlined">folder_managed</span>
+          <span class="material-symbols-outlined" routerLink="/projectManagement">folder_managed</span>
           <a routerLink="/projectManagement" routerLinkActive="active">Projects management</a>
         </li></a>
         <a><li *ngIf="hasRole('admin')">
-          <span class="material-symbols-outlined">groups</span>
+          <span class="material-symbols-outlined" routerLink="/teamManagement">groups</span>
           <a routerLink="/teamManagement" routerLinkActive="active">Teams Management</a>
         </li></a>
         <a><li *ngIf="hasRole('admin')">
-          <span class="material-symbols-outlined">manage_accounts</span>
+          <span class="material-symbols-outlined" routerLink="/memberManagement">manage_accounts</span>
           <a routerLink="/memberManagement" routerLinkActive="active">Member Management</a>
         </li></a>
         <a><li *ngIf="hasRole('project manager')">
-          <span class="material-symbols-outlined">folder_managed</span>
+          <span class="material-symbols-outlined" routerLink="/Projects">folder_managed</span>
           <a routerLink="/Projects" routerLinkActive="active">Projects</a>
         </li></a>
         <a><li *ngIf="hasRole('project manager') || hasRole('client')">
-          <span class="material-symbols-outlined">chat</span>
+          <span class="material-symbols-outlined" routerLink="/chat">chat</span>
           <a routerLink="/chat" routerLinkActive="active">Chat</a>
         </li></a>
         <a><li *ngIf="hasRole('admin')">
-          <span class="material-symbols-outlined">manage_accounts</span>
+          <span class="material-symbols-outlined"  routerLink="/clientManagement" >manage_accounts</span>
           <a routerLink="/clientManagement" routerLinkActive="active">Client Management</a>
+        </li></a>
+        <a><li *ngIf="hasRole('member')">
+          <span class="material-symbols-outlined" routerLink="/memberTaskManagement">manage_accounts</span>
+          <a routerLink="/memberTaskManagement" routerLinkActive="active">Your daily tasks</a>
         </li></a>
         <a>
           <li *ngIf="hasRole('client') || hasRole('member')">
@@ -48,9 +52,9 @@
             <a (click)="toggleNotificationPopup()">Notifications</a>
           </li>
         </a>
-        <a><li *ngIf="hasRole('project manager') || hasRole('admin')">
+        <a><li *ngIf="hasRole('project manager') || hasRole('admin') || hasRole('member') || hasRole('client')">
           <span class="material-symbols-outlined" (click)="logout()">logout</span>
-          <a  routerLinkActive="active">Logout</a>
+          <a  (click)="logout()" routerLinkActive="active">Logout</a>
         </li></a>
         
         <!-- <a>

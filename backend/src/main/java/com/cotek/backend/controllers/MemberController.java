@@ -23,6 +23,11 @@ public class MemberController {
         return memberService.getAllMembers();
     }
 
+    @GetMapping("/getMemberById/{memberId}")
+    public ResponseEntity<Member> getMemberById(@PathVariable Long memberId){
+        return memberService.getMemberById(memberId);
+    }
+
     @PostMapping("/addMember/{memberId}/In/{teamId}")
     public ResponseEntity<String> addMemberToTeam(@PathVariable Long teamId, @PathVariable Long memberId) {
         memberService.addMemberToTeam(teamId, memberId);

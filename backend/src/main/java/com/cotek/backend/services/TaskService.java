@@ -35,7 +35,11 @@ public class TaskService {
 
     public List<Task> getAllTasksByProjectId(Long projectId) {
         return taskRepository.findByProjectId(projectId);
+    }
 
+
+    public List<Task> getAllTasksByMemberId(Long memberId) {
+        return taskRepository.findByMemberId(memberId);
     }
 
     public ResponseEntity<Task> updateTask(Long id, Task editedTask) {
@@ -78,8 +82,19 @@ public class TaskService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+    
+    public ResponseEntity<Task> updateTaskStatus(String status, Long taskId) {
+        Optional<Task> optionalTask = taskRepository.findById(taskId);
+        if (optionalTask.isPresent()){
+            Task existingTask = optionalTask.get();
+            existingTask.setProgress(status);
+            Task changedTask = taskRepository.save(existingTask);
+            return ResponseEntity.status(HttpStatus.CREATED).body(changedTask);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
-
+        }
+    }
     public ResponseEntity<String> deleteTask(Long id) {
         if (taskRepository.existsById(id)) {
             taskRepository.deleteById(id);

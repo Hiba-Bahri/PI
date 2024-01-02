@@ -8,7 +8,7 @@
 body{
     overflow: hidden;
     background: none;
-  } 
+    } 
 
 h1{
   margin-left: 19%;
@@ -19,7 +19,18 @@ h1{
 	margin-left: 20%;
   position: relative;
   z-index: 1;
+    height: 100%;
+} 
+
+h1{
+    color: #261554;
 }
+
+.container_page{
+	margin: 30px;
+    position: fixed;
+    height: auto;
+  }
 
 .row{
 	display: flex;

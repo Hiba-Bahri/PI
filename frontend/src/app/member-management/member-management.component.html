@@ -76,19 +76,20 @@
                                             <table>
                                                 <thead>
                                                     <tr>
-                                                        <th id="member_id">#{{devMember.id}}</th>
                                                         <th id="member_other">{{devMember.firstName}} {{devMember.lastName}}</th>
                                                         <th id="member_other">{{devMember.disponibility}}</th>
                                                         <th>
                                                           <div class="center">
                                                               <input type="checkbox" id="show">
-                                                              <label for="show" class="button"  (click)="selectMemberId(devMember.id)" >plus</label>
+                                                              <label for="show" class="buttonPlus"  (click)="selectMemberId(devMember.id)" ><span class="material-symbols-outlined">
+                                                                                                        add
+                                                                                                        </span> </label>
                                                               
                                                               <div class="container" *ngIf="createSectionVisible">
                                                                   <label for="show" class="close-btn fas fa-times" title="close"></label>
-                                                                  <div class="text">CREATE A TEAM</div>
+                                                                  <div class="text">CHOOSE THE TEAM</div>
                                                                   <ul id="accordion">
-                                                                      <li *ngFor="let team of teams">
+                                                                      <li *ngFor="let team of activeTeams">
                                                                           <label for="team-{{team.id}}">
                                                                               <div class="details">
                                                                                   <table id="teamtable">
@@ -97,9 +98,9 @@
                                                                                               <th id="name">{{team.name}}</th>
                                                                                               <th id="other">Members: {{team.members.length}}</th>
                                                                                               <th>
-                                                                                                  <button type="submit" (click)="add(team.id)" >
-                                                                                                    <span class=" show-btn material-symbols-outlined">add</span>
-                                                                                                  </button>
+                                                                                                <label class="buttonPlus"  (click)="add(team.id)" ><span class="material-symbols-outlined">
+                                                                                                    add
+                                                                                                    </span> </label>
                                                                                                 </th>
                                                                                           </tr>
                                                                                       </thead>
@@ -144,19 +145,20 @@
                                           <table>
                                               <thead>
                                                   <tr>
-                                                      <th id="member_id">#{{testMember.id}}</th>
                                                       <th id="member_other">{{testMember.firstName}} {{testMember.lastName}}</th>
                                                       <th id="member_other">{{testMember.disponibility}}</th>
                                                       <th>
                                                         <div class="center">
                                                             <input type="checkbox" id="show">
-                                                            <label for="show" class="button"  (click)="selectMemberId(testMember.id)" >plus</label>
+                                                            <label for="show" class="buttonPlus"  (click)="selectMemberId(testMember.id)" ><span class="material-symbols-outlined">
+                                                                                                        add
+                                                                                                        </span> </label>
                                                             
                                                             <div class="container" *ngIf="createSectionVisible">
                                                                 <label for="show" class="close-btn fas fa-times" title="close"></label>
-                                                                <div class="text">CREATE A TEAM</div>
+                                                                <div class="text">CHOOSE THE TEAM</div>
                                                                 <ul id="accordion">
-                                                                    <li *ngFor="let team of teams">
+                                                                    <li *ngFor="let team of activeTeams">
                                                                         <label for="team-{{team.id}}">
                                                                             <div class="details">
                                                                                 <table id="teamtable">
@@ -165,9 +167,9 @@
                                                                                             <th id="name">{{team.name}}</th>
                                                                                             <th id="other">Members: {{team.members.length}}</th>
                                                                                             <th>
-                                                                                                <button type="submit" (click)="add(team.id)" >
-                                                                                                  <span class=" show-btn material-symbols-outlined">add</span>
-                                                                                                </button>
+                                                                                                <label class="buttonPlus"  (click)="add(team.id)" ><span class="material-symbols-outlined">
+                                                                                                    add
+                                                                                                    </span> </label>
                                                                                               </th>
                                                                                         </tr>
                                                                                     </thead>
@@ -212,19 +214,20 @@
                                           <table>
                                               <thead>
                                                   <tr>
-                                                      <th id="member_id">#{{scrumManager.id}}</th>
                                                       <th id="member_other">{{scrumManager.firstName}} {{scrumManager.lastName}}</th>
                                                       <th id="member_other">{{scrumManager.disponibility}}</th>
                                                       <th>
                                                         <div class="center">
                                                             <input type="checkbox" id="show">
-                                                            <label for="show" class="button" (click)="selectMemberId(scrumManager.id)">plus</label>
+                                                            <label for="show" class="buttonPlus" (click)="selectMemberId(scrumManager.id)"><span class="material-symbols-outlined">
+                                                                                                        add
+                                                                                                        </span> </label>
                                                             
                                                             <div class="container" *ngIf="createSectionVisible">
                                                                 <label for="show" class="close-btn fas fa-times" title="close"></label>
-                                                                <div class="text">CREATE A TEAM</div>
+                                                                <div class="text">CHOOSE THE TEAM</div>
                                                                 <ul id="accordion">
-                                                                    <li *ngFor="let team of teams">
+                                                                    <li *ngFor="let team of activeTeams">
                                                                         <label for="team-{{team.id}}">
                                                                             <div class="details">
                                                                                 <table id="teamtable">
@@ -233,9 +236,9 @@
                                                                                             <th id="name">{{team.name}}</th>
                                                                                             <th id="other">Members: {{team.members.length}}</th>
                                                                                             <th>
-                                                                                                <button type="submit" (click)="add(team.id)" >
-                                                                                                  <span class=" show-btn material-symbols-outlined">add</span>
-                                                                                                </button>
+                                                                                                <label class="buttonPlus" (click)="add(team.id)"><span class="material-symbols-outlined">
+                                                                                                    add
+                                                                                                    </span> </label>
                                                                                               </th>
                                                                                         </tr>
                                                                                     </thead>

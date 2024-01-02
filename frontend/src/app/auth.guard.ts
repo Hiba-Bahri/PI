@@ -21,3 +21,13 @@ export const authGuardpm:CanActivateFn= (route,state)=>{
     return false
   }
 }
+
+export const authGuardmember:CanActivateFn= (route,state)=>{
+  const router = inject (Router)
+  if(localStorage.getItem("userRole")==='member'){
+    return true;
+  }else{
+    router.navigate(['/login'])
+    return false
+  }
+}

@@ -19,7 +19,6 @@ export class GestionProjectComponent implements OnInit{
   formData = {title:'', description:'', keywords:'', technologies:'',owner:null,status:''}
   notif = {message:'', receiver:''}
   team :any={};
-
   accordionItems: any[] = [];
 
   clients: any [] = [];
