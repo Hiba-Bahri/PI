@@ -1,0 +1,456 @@
+*{
+    background: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Jost' , sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right : 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
+
+.logo img{
+    max-width: 120px;
+    height: auto;
+}
+
+.navmenu{
+    display: flex;
+}
+
+.navmenu a{
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all .42s ease;
+}
+
+.nav-icon{
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon i{
+    margin-right: 20px;
+    color: #2c2c2c;
+    font-size: 25px;
+    font-weight: 400;
+    transition: all .42 ease;
+}
+
+.nav-icon i:hover{
+    /*transform: scale(1.1);*/
+    color: rgb(188, 9, 9);
+}
+
+#menu-icon{
+    font-size: 35px;
+    color: #2c2c2c;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+
+section{
+    padding: 5% 10%;
+}
+
+.main-home {
+    width: 100%;
+    height: 100vh;
+    background-image: url("~src/assets/images/appartment.jpg");
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+
+.main-text h5{
+    color: rgb(188, 9, 9);
+    font-size: 26px;
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.main-text h1{
+    color: rgb(84, 84, 84);
+    font-size: 90px;
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 6px 0 40px;
+}
+
+.main-btn{
+    display: inline-block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border : 2px solid #111;
+    padding: 12px 25px;
+    transition: all .42s ease;
+}
+
+.main-btn:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+.main-btn i{
+    vertical-align: middle;
+}
+
+/*.underline-text{
+    font-style: italic;
+  }*/
+  
+.underline-text , .underline-nav {
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+  }
+
+  .underline-nav::before{
+    height: 2px;
+  }
+
+  .underline-text::before{
+    height: 5px;
+  }
+
+  .underline-text::before, .underline-nav::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background-color: rgb(188, 9, 9);
+    transition: width 0.3s ease;
+  }
+
+  .underline-text:hover::before, .underline-nav:hover::before {
+    width: 100%;
+  }
+
+  .underline-text {
+    background-image: linear-gradient(transparent, transparent); /* Ensure the underline starts at 0 width */
+    background-position: 100% 100%; /* Start the underline at the bottom-right corner */
+    background-size: 0% 2px; /* Set initial width and height for the underline */
+    transition: color 0.3s ease, background-size 0.3s ease, background-position 0.3s ease; /* Add transitions for text color, underline width, and position */
+  }
+
+  .underline-text:hover , .underline-nav:hover {
+    color: rgb(188, 9, 9); /* Set the text color on hover */
+    background-size: 100% 2px; /* Expand the underline to 100% width on hover */
+    background-position: 0% 100%; /* Move the underline to the bottom-left corner on hover */
+  }
+
+.down-arrow{
+    position: absolute;
+    top: 85%;
+    right: 11%;
+}
+
+.down i{
+    font-size: 30px;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    padding: 12px 12px;
+}
+
+.down i:hover{
+    background-color: #000000;
+    color: #fff;
+    transition: all .42s ease;
+}
+
+header.sticky{
+    background: #fff;
+    padding: 5px 10%;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+}
+
+.center-text h2{
+    color: #111;
+    font-size: 28px;
+    text-transform: capitalize;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.center-text span{
+    color: rgb(188, 9, 9);
+}
+
+.ads{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    gap: 2rem;
+}
+
+.row{
+    position: relative;
+    transition: all .40s;
+}
+
+.row img{
+    width: 100%;
+    height: auto;
+    transition: all .40s;
+}
+
+.row img:hover{
+    transform: scale(0.9);
+}
+
+.ad-text h5{
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #27b737;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+.heart-icon{
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+}
+
+.heart-icon:hover{
+    color: rgb(188, 9, 9);
+}
+
+.adType h5{
+    color: rgb(188, 9, 9);
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.price h4{
+    color: rgb(2, 2, 2);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.price p{
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.contact{
+    background-color: #f3f4f6;
+}
+
+.contact-info{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    gap: 4rem;
+    height: auto;
+}
+
+
+.contact-info h4{
+    color: #212529;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.contact-info h4:hover{
+    color: rgb(188, 9, 9);
+}
+
+.contact-info p{
+    color: #565656;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .42s;
+}
+
+.contact-info p:hover{
+    color: rgb(188, 9, 9);
+}
+
+.social-icon i{
+    color: #565656;
+    margin-right: 10px;
+    font-size: 20px;
+    transition: all .42s;
+}
+
+.social-icon i:hover{
+    transform: scale(1.3);
+    color: rgb(188, 9, 9);
+}
+
+.end-text{
+    background-color: rgb(84, 84, 84);
+    text-align: center;
+    padding: 10px;
+}
+
+.end-text p{
+    color: #ffffff;
+    text-transform: capitalize;
+}
+
+.bottom-logo{
+    height: auto;
+    align-self: center; 
+    justify-self: center;
+}
+
+.logo-img img{
+    max-width: 200px;
+}
+
+@media(max-width:890px) {  
+    header{
+        padding: 20px 3%;
+        transition: .4s;
+    }
+}
+@media(max-width:630px){
+    .main-text h1{
+        font-size: 50px;
+        transition: .4s;
+    }
+    .main-text p{
+        font-size: 18px;
+        transition: .4s;
+    }
+    .main-btn{
+        padding: 10px 20px;
+        transition: .4s;
+    }
+}
+
+@media(max-width:750px){
+    .navmenu{
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 300px;
+        height: auto;
+        background: #202020;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 10px;
+        transition: all .42s;
+    }
+
+    .navmenu a{
+        display: block;
+        margin: 18px 0;
+        color: #fff;
+    }
+    .navmenu.open{
+        right : 0;
+    }
+
+    #menu-icon{
+        display: block;
+    }
+}
+
+
+.modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    padding: 0 10px;
+    pointer-events: none;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.4s ease;
+}
+
+.modal.show{
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 999;
+}
+
+.modal .content{
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 300px 350px auto;
+    gap: 2rem;
+}
+
+.item img{
+    width: 100%;
+    height: auto;
+    transition: all .40s;
+}
+
+.item{
+    position: relative;
+    transition: all .40s;
+    background-color: #f3f4f6;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item .flex-item{
+    height: auto;
+}
+ 
+.close-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+    outline: none;
+}
+
+.close-btn:hover{
+    color: #BC0909 ;
+    transform: scale(1.3);
+}

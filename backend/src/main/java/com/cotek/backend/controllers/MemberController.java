@@ -39,8 +39,4 @@ public class MemberController {
         return memberService.removeMemberFromTeam(teamId, memberId);
     }
 
-    @GetMapping("/getMemberById/{memberId}")
-    public ResponseEntity<Member> getMemberById(@PathVariable Long memberId){
-        return memberService.getMemberById(memberId);
-    }
 }

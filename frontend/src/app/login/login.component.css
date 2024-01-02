@@ -1,11 +1,21 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: none;
+}
+
+
+
 .login-container {
-    width: 300px;
-    margin: auto;
-    margin-top: 50px;
+    width: 300px;    
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+background-color: #ccc;
   }
   
   form {

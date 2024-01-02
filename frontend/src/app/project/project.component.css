@@ -37,8 +37,7 @@ h1{
 
 }
 
-.item1, .item2, .item3{
-}
+
 .item1, .TaskItem1{
     flex-basis: 600px;
 }
@@ -55,11 +54,6 @@ h1{
     flex-basis: 250px;
 }
 
-.TaskItem4{
-}
-
-.TaskItem5{
-}
 
 .btn-add{
     background-color: rgb(19, 196, 75);

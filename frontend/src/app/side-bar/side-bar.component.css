@@ -6,7 +6,6 @@
 }
 
 body {
-    height: 100vh;
     width: 100%;
     background-position: center;
     background-size: cover;
@@ -117,7 +116,7 @@ hr {
     border-radius: 5px;
   }
 
-@media (max-width: 1159px) and (min-width: 850px) {
+@media (min-width: 850px) {
 
     .logo img {
         width: 60px;

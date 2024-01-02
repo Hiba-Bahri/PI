@@ -1,19 +1,27 @@
-*{
-    background-color: #3498db;
-}
-body{
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     background-color: #dbdbdb;
 }
 
-.grid-item1 { grid-area: side-bar; }
-.grid-item2 { grid-area: content; }
-
 .grid-container {
-    display: grid;
-    grid-template-areas: 'side-bar content content content ';
-  gap: 10px;
-  padding: 10px;  
+    position: relative;
+    gap: 30px;
+  
+}
 
+.grid-item2 .grid-item1{
+    position: absolute;
+
+}
+
+.grid-item2{
+    z-index: 1;
+}
+
+.grid-item1{
+    z-index: 2;
 }
 
 @media screen and (max-width: 1159px) {
