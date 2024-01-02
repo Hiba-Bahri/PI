@@ -25,8 +25,8 @@
         <td>{{ appointment.status }}</td>
         <td class="buttons">
             <!-- Add buttons for accepting and rejecting appointments -->
-            <button *ngIf="appointment.status !== 'Accepted'" (click)="acceptAppointment(appointment.id)">Accept</button>
-            <button *ngIf="appointment.status !== 'Rejected'" (click)="rejectAppointment(appointment.id)">Reject</button>
+            <button class="accept" *ngIf="appointment.status !== 'Accepted'" (click)="acceptAppointment(appointment.id)">Accept</button>
+            <button class="reject" *ngIf="appointment.status !== 'Rejected'" (click)="rejectAppointment(appointment.id)">Reject</button>
           </td>
       </tr>
     </tbody>

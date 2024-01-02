@@ -28,6 +28,7 @@ import { CotekComponent } from './cotek/cotek.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { ClientManagementComponent } from './client-management/client-management.component';
 import { MemberTaskManagementComponent } from './member-task-management/member-task-management.component';
+import { ClientProjectDetailsComponent } from './client-project-details/client-project-details.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -56,7 +57,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
             CotekComponent,
             AppointmentFormComponent,
             ClientManagementComponent,
-            MemberTaskManagementComponent
+            MemberTaskManagementComponent,
+            ClientProjectDetailsComponent
   ],
   imports: [
     BrowserModule,

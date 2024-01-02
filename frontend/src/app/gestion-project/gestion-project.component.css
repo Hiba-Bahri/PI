@@ -1,4 +1,3 @@
-
 *{
 	margin: 0;
 	padding: 0;
@@ -6,40 +5,32 @@
 }
 
 body{
-    overflow: hidden;
-    background: none;
-    } 
-
+  overflow: hidden;
+  background: none;
+} 
 
 .container_page{
 	margin-left: 20%;
   position: relative;
   z-index: 1;
-    height: 100%;
+  height: 100%;
 } 
 
 h1{
     color: #261554;
 }
 
-.container_page{
-	margin: 30px;
-    position: fixed;
-    height: auto;
-  }
-
 .row{
 	display: flex;
     flex-wrap: wrap;
 	justify-content: space-between;
     align-items: flex-start;
-    height: 350px;
 }
 
 .column1{
 	height: 100%;
 	display: flex;
-	justify-content:left;
+	justify-content:space-around;
 	flex-wrap: wrap;
 }
 

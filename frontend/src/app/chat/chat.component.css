@@ -23,7 +23,8 @@
   }
   
   .received {
-    background-color: #ddd; /* Gray for received messages */
+    color: #fff;
+    background-color: #7275a1; /* Gray for received messages */
     align-self: flex-start;
   }
   

@@ -34,6 +34,10 @@
           <span class="material-symbols-outlined" routerLink="/Projects">folder_managed</span>
           <a routerLink="/Projects" routerLinkActive="active">Projects</a>
         </li></a>
+        <a><li *ngIf="hasRole('client')">
+          <span class="material-symbols-outlined" routerLink="/chat">folder_managed</span>
+          <a routerLink="/clientProjectDetails" routerLinkActive="active">My projet</a>
+        </li></a>
         <a><li *ngIf="hasRole('project manager') || hasRole('client')">
           <span class="material-symbols-outlined" routerLink="/chat">chat</span>
           <a routerLink="/chat" routerLinkActive="active">Chat</a>

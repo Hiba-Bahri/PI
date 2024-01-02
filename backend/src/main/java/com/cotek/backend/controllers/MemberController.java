@@ -38,5 +38,4 @@ public class MemberController {
     public ResponseEntity<?> removeMemberFromTeam(@PathVariable Long teamId, @PathVariable Long memberId) {
         return memberService.removeMemberFromTeam(teamId, memberId);
     }
-
 }

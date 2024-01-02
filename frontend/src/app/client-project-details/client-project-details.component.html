@@ -1,0 +1,23 @@
+<h1>Project : {{project.title}}</h1>
+<table class="task-table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Progress</th>
+        <th>Member</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks" class="task-row">
+            <td>{{ task.description }}</td>
+            <td  [ngClass]="{'finished': task.progress === 'Finished', 'inProgress': task.progress === 'In Progress', 'notStarted': task.progress === 'Not Started'}">{{ task.progress }}</td>
+            <td>{{task.member.login}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="progress-container">
+    <div class="progress-bar" [ngStyle]="{ 'width.%': calculateProgress() }"></div>
+    <div class="progress-text">Progress : {{ calculateProgress() }}%</div>
+  </div>
+  

@@ -1,8 +1,11 @@
 /* rdv.component.css */
 h2 {
-  color: white;
-    margin-left: 18%;
+  color: #261554;
+  margin-left: 18%;
     margin-bottom: 10px;
+  }
+  table{
+    border: 1px solid #000;
   }
   
   .table-container {
@@ -15,12 +18,12 @@ h2 {
     width: 100%;
     border-collapse: collapse;
   }
-  
   .appointments-table th, .appointments-table td {
     padding: 12px;
     width: auto;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #000;
+
   }
   
   .appointments-table thead {
@@ -41,3 +44,17 @@ h2 {
     gap: 2px;
   }
   
+  .buttons button{
+    background: transparent;
+    border: 1px #000 solid;
+    border-radius: 5px;
+  }
+  button.accept:hover{
+    color: #fff;
+    background: darkgreen;
+  }
+
+  button.reject:hover{
+    color:#fff;
+    background: darkred;
+  }
