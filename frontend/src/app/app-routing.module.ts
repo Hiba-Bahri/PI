@@ -18,6 +18,7 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
 import { ClientManagementComponent } from './client-management/client-management.component';
 import { MemberTaskManagementComponent } from './member-task-management/member-task-management.component';
 import { ClientProjectDetailsComponent } from './client-project-details/client-project-details.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {path: 'teamManagement', component:TeamManagementComponent, canActivate: [authGuard]},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent },
   {path: 'appointmentForm', component: AppointmentFormComponent},
   {path :'clientManagement', component: ClientManagementComponent, canActivate: [authGuard]},
+  {path :'aboutManagement', component: AboutComponent, canActivate: [authGuard]},
   {path: '',component:CotekComponent},
   {path:'clientProjectDetails', component:ClientProjectDetailsComponent },
   {path:'',redirectTo:'/', pathMatch: 'full'}

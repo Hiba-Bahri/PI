@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.cotek.backend.entities.Member;
 import com.cotek.backend.entities.Team;
 import com.cotek.backend.repositories.MemberRepository;
@@ -54,16 +55,17 @@ public class MemberService {
         return password.toString();
     }
 
-    public ResponseEntity<Member> createMember(Member m) {
-        if (memberRepository.existsByEmail(m.getEmail())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(null);
-        }
 
+
+      public ResponseEntity<Member> createMember(Member m) {
         m.setLogin(m.getFirstName() + '_' + m.getId());
         m.setPassword(generatePassword());
 
         Member createdMember = memberRepository.save(m);
+
+        createdMember.setLogin(createdMember.getFirstName() + '_' + createdMember.getId());
+
+        memberRepository.save(createdMember);
 
         /*emailService.sendMail(
             m.getEmail(),
@@ -73,7 +75,6 @@ public class MemberService {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
     }
-    
 
     public List<Member> getAllMembers() {
         return memberRepository.findAll();

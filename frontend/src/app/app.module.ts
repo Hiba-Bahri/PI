@@ -29,6 +29,7 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
 import { ClientManagementComponent } from './client-management/client-management.component';
 import { MemberTaskManagementComponent } from './member-task-management/member-task-management.component';
 import { ClientProjectDetailsComponent } from './client-project-details/client-project-details.component';
+import { AboutComponent } from './about/about.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -58,7 +59,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
             AppointmentFormComponent,
             ClientManagementComponent,
             MemberTaskManagementComponent,
-            ClientProjectDetailsComponent
+            ClientProjectDetailsComponent,
+            AboutComponent
   ],
   imports: [
     BrowserModule,

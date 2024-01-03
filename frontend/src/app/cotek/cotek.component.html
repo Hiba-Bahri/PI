@@ -21,88 +21,117 @@
 <body>
 
   <header *ngIf="!isLoggedIn">
-    <a class="logo"><img  src="../assets/images/CoTEST.png" alt="" /></a>
+    <a class="logo"><img  src="../assets/images/white coteck.png" alt="" /></a>
     <ul class="navmenu">
-        <li><a class="underline-nav" >Home</a></li>
-        <li><a class="underline-nav" >Shop</a></li>
-        <li><a  class="underline-nav" >About</a></li>
-        <li><a  *ngIf="!isLoggedIn"  href="/appointmentForm" class="underline-nav" >Register</a></li>
+        <li><a href="#" class="underline-nav"  routerLinkActive="active" >Home</a></li>
+        <li><a  class="underline-nav" href="#about" >About</a></li>
+        <li><a  *ngIf="!isLoggedIn"  href="#appointmentForm" class="underline-nav" >Register</a></li>
     </ul>
     <div class="nav-icon">
-        <a href="#"><i class="bx bx-search"></i></a>
-        <a  *ngIf="!isLoggedIn" href="/login"><i class='bx bx-user-circle'></i></a>
+        <a  *ngIf="!isLoggedIn" href="/login"><i class='bx bxs-user-circle' ></i></a>
         <div class="bx bx-menu" id="menu-icon"></div>
     </div>
   </header>
 
   <section class="main-home">
     <div class="main-text">
-      <h5>With High Standards</h5>
-      <h1>Search For Your <br> Future <span class="underline-text"> Home </span> </h1>
-      <a href="#" class="main-btn">Check now<i class="bx bx-right-arrow-alt"></i></a>
+      <h5>With a modern touch</h5>
+      <h1>Bring your <br> <span class="underline-text"> ideas </span> to reality </h1>
+      <a href="#trending" class="main-btn">Check now<i class="bx bx-right-arrow-alt"></i></a>
     </div>
 
-    <div class="down-arrow">
-      <a href="#trending" class="down"><i class='bx bx-down-arrow-alt'></i></a>
-    </div>
+
   </section>
 
-  <section class="trending-ads" id="trending">
-    <div class="center-text">
-      <h2>Our Trending <span>Appartments</span></h2>
+
+
+
+  <div class="center-text" id="about">
+    <br>
+    <h2><span>About Our Company</span></h2>
+  </div>
+
+  <div class="about">
+
+  <section id="about-section">
+    
+    <!-- about left  -->
+    <div class="about-left">
+        <img src="../assets/images/company.jpg" alt="About Img"/>
     </div>
-    <div class="ads">
-      <div class="text"  each="annonce: ${annonces}" data-id="${annonce.id}">
-          <div class="row">
-              <img class="popUp"  src="@{|/images/${annonce.image}|}" alt="Annonce Image"/>
 
-          <div class="ad-text">
-            <h5   text="${annonce.localisation}"></h5>
-          </div>
+    <!-- about right  -->
+    <div class="about-right">
+        <h1>Where We Came From</h1>
+        <br>
+        <p>Founded in 2022 as an outsourcing company and a creative agency, Cotek Company
+          offers various services such as graphic design, digital communication, software development,
+          web and mobile development or software architecture consulting.
+          <br>
+          <br>
+          The goal of Cotek is to provide a comprehensive set of services for its customers. It
+          aims to create the best possible match between clients’ market niche and their target audience.
+          This is achieved this by implementing creative and innovative marketing solutions.
+        </p>
+        
 
-          <div class="heart-icon">
-            <i class='bx bx-heart'></i>
-          </div>
+    </div>
+</section>
 
-          <div class="adType">
-            <h5   text="${annonce.typeAnn}"></h5>
-          </div>
+<section id="about-section">
 
-          <div class="price">
-            <h4  text="${annonce.typeBien}"></h4>
-            <p   text="${annonce.prix}">TND</p>
-          </div>
-        </div>
-        <div class="modal">
-          <div class="content">
+  <!-- about right  -->
+  <div class="about-right">
+    <h1>Our Goal</h1>
+    <br>
+    <p>Creativity is in our DNA, people are our inspiration and technology is our playground.<br>
+      We offer simple solutions to complex issues, always following the same principle: creating
+      value for the customer and the consumer.
+      <br>
+      <br>
+      In a changing world, Cotek Company adapts its services and expertise to better support
+its partners and turn good ideas into meaningful experiences and services because
+the quality work is what makes it stand out in regard to our competitors on the market.
+    </p>
+      
+  </div>
 
-            <div class="item">
-              <img  src="../assets/images/annonce.image" alt="Annonce Image"/>
-            </div>
-            
-            <div class="item">
-              <h5 class="flex-item"  text="'ID: #' + ${annonce.id}"></h5>
-              <h5 class="flex-item"  text="${annonce.typeBien}"></h5>
-              <h5 class="flex-item"  text="${annonce.typeAnn}"></h5>
-              <h5 class="flex-item"  text="${annonce.localisation}"></h5>
-              <h5 class="flex-item"  text="${#strings.toString(annonce.nbPiece)}"></h5>
-              <h5 class="flex-item"  text="${#strings.toString(annonce.superficie)}"></h5>
-              <p class="flex-item"  text="${annonce.description}"></p>
-              <h5 class="flex-item"  text="${annonce.prix}"></h5>
-            </div>
-            <div class="item">
-              <button class="close-btn" id="closeBtn">&times;</button>
-            </div>
-          </div>
-        </div>
+    <!-- about left  -->
+    <div class="about-left">
+      <img src="../assets/images/team.jpg" alt="About Img"/>
+  </div>
+</section>
+</div>
+<div class="body">
+  <div class="form_container">
+    <form id="appointmentForm" (ngSubmit)="onSubmit()">
+
+      <div class="center-text">
+        <br>
+        <h2><span>Register For An Appointment</span></h2>
       </div>
-    </div>
-  </section>
+
+      
+      <input type="text" id="firstName" name="firstName" placeholder="Firstname" [(ngModel)]="formData.firstName" required>
+
+
+      <input type="text" id="lastName" name="lastName" placeholder="Lastname" [(ngModel)]="formData.lastName" required>
+
+      <input type="email" id="email" name="email" placeholder="Email" [(ngModel)]="formData.email" required>
+
+      <input type="date" id="appointmentDate" name="appointmentDate" [(ngModel)]="formData.appointmentDate" required>
+
+      <input type="time" id="appointmentTime" name="appointmentTime" [(ngModel)]="formData.appointmentTime" required>
+
+      <button  class="main-btn" id="button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 
   <section class="contact">
     <div class="contact-info">
       <div class="bottom-logo">
-        <a  href="@{/images/logo.png}" class="logo-img"><img  src="@{/images/logo.png}" alt="" /></a>
+        <a class="logo-img"><img  src="../assets/images/CoTEST.png" alt="" /></a>
       </div>
       <div class="first-info">
         <h4>Contact</h4>
@@ -119,8 +148,8 @@
       </div>
       <div class="second-info">
         <h4>Support</h4>
-        <p>About us</p>
-        <p>Admin login</p>
+        <p><a *ngIf="!isLoggedIn" href="#about" >About us</a></p>
+        <p><a   *ngIf="!isLoggedIn" href="/login">Admin login</a></p>
       </div>
       <div class="third-info">
         <h4>Shop</h4>
@@ -136,7 +165,7 @@
 
 
 
-  <script  src="@{/js/script.js}"></script>
+  <script  src="../assets/js/script.js"></script>
 
 </body>
 

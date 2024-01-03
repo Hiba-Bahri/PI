@@ -24,17 +24,13 @@ public class ClientService {
     }
 
     public ResponseEntity<Client> createClient(Client c) {
-        // Set login and password
         c.setLogin(c.getFirstName() + '_' + c.getId());
         c.setPassword(generatePassword());
 
-        // Save the user to generate the ID
         Client createdClient = clientRepo.save(c);
 
-        // Update login with the generated ID
         createdClient.setLogin(createdClient.getFirstName() + '_' + createdClient.getId());
 
-        // Save the user again to update the login
         clientRepo.save(createdClient);
 
         emailService.sendMail(

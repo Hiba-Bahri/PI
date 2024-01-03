@@ -9,11 +9,15 @@
   </head>
   <body>
     <aside class="sidebar">
-      <div class="logo">
-        <img src="" alt="logo">
+      <div   routerLink="/" class="logo">
+        <img  routerLink="/"  src="" alt="logo">
       </div>
       <hr>
       <ul class="links">
+        <a><li *ngIf="hasRole('admin')">
+          <span class="material-symbols-outlined" routerLink="/RDVManagement">calendar_month</span>
+          <a routerLink="/RDVManagement" routerLinkActive="active">Appointments management</a>
+        </li></a>
         <a><li *ngIf="hasRole('admin')">
           <span class="material-symbols-outlined" routerLink="/RDVManagement">calendar_month</span>
           <a routerLink="/RDVManagement" routerLinkActive="active">Appointments management</a>

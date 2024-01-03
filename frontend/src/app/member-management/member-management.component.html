@@ -78,6 +78,7 @@
                                                     <tr>
                                                         <th id="member_other">{{devMember.firstName}} {{devMember.lastName}}</th>
                                                         <th id="member_other">{{devMember.disponibility}}</th>
+                                                        <th *ngIf="!devMember.disponibility" id="member_other">{{devMember.team.name}}</th>
                                                         <th>
                                                           <div class="center">
                                                               <input type="checkbox" id="show">
@@ -147,6 +148,7 @@
                                                   <tr>
                                                       <th id="member_other">{{testMember.firstName}} {{testMember.lastName}}</th>
                                                       <th id="member_other">{{testMember.disponibility}}</th>
+                                                      <th *ngIf="!testMember.disponibility" id="member_other">{{testMember.team.name}}</th>
                                                       <th>
                                                         <div class="center">
                                                             <input type="checkbox" id="show">
@@ -216,6 +218,7 @@
                                                   <tr>
                                                       <th id="member_other">{{scrumManager.firstName}} {{scrumManager.lastName}}</th>
                                                       <th id="member_other">{{scrumManager.disponibility}}</th>
+                                                      <th *ngIf="!scrumManager.disponibility" id="member_other">{{scrumManager.team.name}}</th>
                                                       <th>
                                                         <div class="center">
                                                             <input type="checkbox" id="show">

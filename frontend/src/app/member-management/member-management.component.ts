@@ -41,6 +41,7 @@ export class MemberManagementComponent implements OnInit {
       this.devMembers = this.members.filter((member) => member.occupation === 'Developper');
       this.testMembers = this.members.filter((member) => member.occupation === 'Tester');
       this.scrumManagers = this.members.filter((member) => member.occupation === 'Scrum manager');
+      console.log(this.testMembers);
     });
 
     this.teamService.getAllTeams().subscribe((t: any) => {
@@ -57,7 +58,10 @@ export class MemberManagementComponent implements OnInit {
       console.log('member created successfully:', response);
       this.formData = { firstName: '', lastName: '', email: '', login: '', password: '', disponibility: '',  occupation: '', role: '' };
       this.createSectionVisible = false;
-      this.router.navigate(['/member-management']);
+      this.router.navigate(['/member-management']).then(()=>{
+        location.reload();
+      })
+      
       this.ngOnInit();
       }
     );
@@ -86,6 +90,7 @@ export class MemberManagementComponent implements OnInit {
             })
           })
       console.log('Member added successfully:', response);
+      this.ngOnInit();
     },
     (error) => {
       console.error('Error adding member:', error);
@@ -97,6 +102,7 @@ export class MemberManagementComponent implements OnInit {
   remove(teamId: number, memberId: number){
     this.memberService.removeMemberFromTeam(teamId,memberId).subscribe((response) => {
       console.log('Member removed successfully:', response);
+      this.ngOnInit();
   });
   }
 

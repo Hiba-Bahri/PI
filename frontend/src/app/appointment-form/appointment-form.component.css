@@ -25,4 +25,5 @@ button {
 }
 button:hover {
     background-color: #45a049;
+    align-items: center;
 }
