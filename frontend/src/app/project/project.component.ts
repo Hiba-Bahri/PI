@@ -5,6 +5,7 @@ import { MemberService } from '../member.service';
 import { ProjectService } from '../project.service';
 import { NotificationsService } from '../notifications.service';
 import { Member } from '../member.model';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -29,14 +30,15 @@ export class ProjectComponent implements OnInit {
   notif={message:'',receiver:''}
 
   constructor(
-
+    private http: HttpClient,
     private taskService: TaskService,
     private memberService: MemberService,
     private router: Router,
     private route: ActivatedRoute, 
     private projectService:ProjectService,
     private notificationService: NotificationsService
-  ) {}
+  ) {
+  }
   
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -100,12 +102,8 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  save_work_methodology(id: number) {
-    let updatedProject = { ...this.project, methodology: this.selectedWorkMethodology };
-  
-    console.log('Updated Project:', updatedProject); // Log the updated project for debugging
-  
-    this.projectService.updateProject(id, updatedProject).subscribe(
+  save_work_methodology(id: number) {  
+    this.http.put(`http://localhost:8080/updateMethodolgy/${id}`,this.selectedWorkMethodology).subscribe(
       (res) => {
         console.log('Work Methodology updated successfully', res);
         this.ngOnInit();

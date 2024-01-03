@@ -11,7 +11,8 @@ body{
 } 
 
 h1{
-    color: white;
+    color: #261554;
+  margin-left: 10%;
 }
 
 .container_page{
@@ -33,6 +34,7 @@ h1{
 	display: flex;
 	justify-content:left;
 	flex-wrap: wrap;
+  margin-left: 30%;
 }
 
 .column2{

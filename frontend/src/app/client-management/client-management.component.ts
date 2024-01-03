@@ -38,7 +38,11 @@ export class ClientManagementComponent implements OnInit{
   ngOnInit(): void {
       this.http.get(`http://localhost:8080/getAllClients`).subscribe((result)=>{
         this.clients = result as any;
-        console.log(this.clients)
+        console.log("All Clients",result);
+        this.clients = this.clients.filter(client =>
+          client.ownedProject && client.ownedProject.status === 'In Progress'
+        );
+        console.log("Filtered Clients ",this.clients);
       })
   }
 }

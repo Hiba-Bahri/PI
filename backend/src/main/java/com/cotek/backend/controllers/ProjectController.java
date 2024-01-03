@@ -59,4 +59,11 @@ public class ProjectController {
     public Project getProjectByProjectManager(@PathVariable String login) {
         return projectService.getProjectByProjectManagerLogin(login);
     }
+
+    @PutMapping("/updateMethodolgy/{id}")
+    public ResponseEntity<Project> updateMethodology(@PathVariable Long id, @RequestBody String method){
+        System.out.println("Received id: " + id);
+        System.out.println("Received methodology: " + method);
+        return projectService.updateWorkMethodology(id,method);
+    }
 }
