@@ -8,8 +8,10 @@ body{
 h1{
     color: rgb(49, 49, 49);
     margin-top: 40px;
-    text-align: center;
     font-size: 32px;
+}
+.methodology{
+    text-align: center;
 }
 
 .input-group{
@@ -118,11 +120,13 @@ table td, table th {
     padding-left: 8px;
 }
 table thead tr {
+    color: #fff;
     height: 60px;
-    background: #ffed86;
+    background: #261554;
     font-size: 16px;
 }
 table tbody tr {
+    color: #F98125;
     height: 48px;
     border-bottom: 1px solid #e3f1d5;
 }

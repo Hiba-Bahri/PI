@@ -100,4 +100,16 @@ public class ProjectService {
     public Project getProjectByProjectManagerLogin(String login) {
         return projectRepository.findByProjectManagerLogin(login);
     }
+
+    public ResponseEntity<Project> updateWorkMethodology(Long id, String method){
+        Optional<Project> existing = projectRepository.findById(id);
+        if (existing.isPresent()){
+            Project existingProj = existing.get();
+            existingProj.setMethodology(method);
+            projectRepository.save(existingProj);
+            return ResponseEntity.ok(existingProj);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

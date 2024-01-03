@@ -35,7 +35,7 @@
             </tr>
             <tr>
               <td style="font-weight: bold;">Team</td>
-              <td style="cursor: pointer; color: blue;" (click)="toggleMembers()"><strong>{{project.team.name}}</strong></td>
+              <td style="cursor: pointer; color: #3963C8;" (click)="toggleMembers()"><strong>{{project.team.name}}</strong></td>
             </tr>
             <tr>
               <td style="font-weight: bold;">Work methodology</td>
@@ -65,6 +65,7 @@
       </div>
       <!-- methodology section -->
       <div class="methodology" style="margin-top:25px;">
+        <label for="">Work methodoogy : </label>
         <select [(ngModel)]="selectedWorkMethodology" class="">
           <option value="">Choose a working Methodology</option>
           <option value="Scrum">Scrum</option>
